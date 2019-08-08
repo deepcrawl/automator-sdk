@@ -2,24 +2,30 @@
 
 ## Introduction
 
+These scripts are meant for use with DeepCrawl Automator system and placed in your CI platform after deployment is complete.
+
 ## Debugging
 
 ### Bash
 
+Add `-x` to `#!/bin/bash`
+
 ### Powershell
+
+using vscode is easiest way to lint, autocomplete and debug
 
 ## Enviroment Varialbes
 
 ```
-$env:AUTOMATOR_TIMEOUT_SEC (number of seconds until polling is cancelled)
+AUTOMATOR_TIMEOUT_SEC (number of seconds until polling is cancelled)
 
-$env:AUTOMATOR_TOKEN (access token)
+AUTOMATOR_TOKEN (access token)
 
-$env:AUTOMATOR_TEST_SUITE_ID (optional) //can be passed into ci as param
+AUTOMATOR_TEST_SUITE_ID (optional) //can be passed into ci as param
 
-$env:AUTOMATOR_POLL_URL (in instructions sections of site)
+AUTOMATOR_POLL_URL (in instructions sections of site)
 
-$env:AUTOMATOR_START_URL (in instructions section of site)
+AUTOMATOR_START_URL (in instructions section of site)
 ```
 
 ## CI Platform Usage
