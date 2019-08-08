@@ -1,16 +1,19 @@
 #!/bin/bash
+testSuiteId=${1:-$AUTOMATOR_TEST_SUITE_ID}
+
+if [ -z $testSuiteId ]; then
+    exit "No TestSuite Id Set"
+fi
 
 totalRunTime=0
 maxRunTime=$AUTOMATOR_TIMEOUT_SEC
-body="{\"authToken\":\"$AUTOMATOR_TOKEN\",\"testSuiteId\":\"$AUTOMATOR_TEST_SUITE_ID\"}"
-meridianResults='';
+body="{\"authToken\":\"$AUTOMATOR_TOKEN\",\"testSuiteId\":\"$testSuiteId\"}"
+testResults='';
 
 function GetResults () {
-
     local bodyPoll="{\"authToken\":\"$AUTOMATOR_TOKEN\",\"buildId\":$1}"
-    resultResponse=$(curl -v -X POST $AUTOMATOR_POLL_URL -H "Content-Type:application/json" -d $bodyPoll)
-    echo $resultResponse
-    
+    resultResponse=$(curl -s -X POST $AUTOMATOR_POLL_URL -H "Content-Type:application/json" -d $bodyPoll)
+    echo $resultResponse   
 }
 
 function WriteResults () {
@@ -24,9 +27,9 @@ function WriteResults () {
 }
 
 function StartPoll () {
-    meridianResults="$(GetResults $1)"
-    if [ $meridianResults ]; then
-        WriteResults $meridianResults
+    testResults="$(GetResults $1)"
+    if [ $testResults ]; then
+        WriteResults $testResults
     else
         echo "Waiting for DeepCrawl Test Results ..."
         sleep 30
@@ -39,7 +42,7 @@ function StartBuild () {
     resp=`echo $RESPONSE | jq '.buildId'`
 
     if [ $? -eq 0 ]; then
-        until [[ $meridianResults && $totalRunTime -lt $maxRunTime ]]; do
+        until [[ $testResults && $totalRunTime -lt $maxRunTime ]]; do
             StartPoll $resp
         done
     fi
