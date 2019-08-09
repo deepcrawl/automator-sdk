@@ -21,7 +21,16 @@ function Get-Results {
             authToken = $token
             buildId   = $buildId
         }
-        $resultResponse = Invoke-RestMethod -Uri $Uri -Method 'Post' -Body ($bodyPoll | ConvertTo-Json) -ContentType "application/json"
+
+        $params = @{
+            Uri         = $Uri
+            Method      = 'Post'
+            Body        = ($bodyPoll | ConvertTo-Json)
+            ContentType = "application/json"
+
+        }
+
+        $resultResponse = Invoke-RestMethod @params;
         return $resultResponse
     }
     catch [System.Net.WebException] {
@@ -63,7 +72,15 @@ function Start-Poll {
 
 function Start-Build {
 
-    $triggerResponse = Invoke-RestMethod -Uri $env:AUTOMATOR_START_URL -Method "Post" -Body ($body | ConvertTo-Json) -ContentType "application/json";
+    $params = @{
+        Uri         = $env:AUTOMATOR_START_URL
+        Method      = 'Post'
+        Body        = ($body | ConvertTo-Json)
+        ContentType = "application/json"
+
+    }
+
+    $triggerResponse = Invoke-RestMethod @params;
     Write-Output $triggerResponse;
 
     while ( ($null -eq $testResults) -and ($totalRunTime -lt $maxRunTime) ) {
