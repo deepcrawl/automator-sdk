@@ -8,12 +8,12 @@ fi
 totalRunTime=0
 maxRunTime=$AUTOMATOR_TIMEOUT_SEC
 body="{\"authToken\":\"$AUTOMATOR_TOKEN\",\"testSuiteId\":\"$testSuiteId\"}"
-testResults='';
+testResults=''
 
 function GetResults () {
     local bodyPoll="{\"authToken\":\"$AUTOMATOR_TOKEN\",\"buildId\":$1}"
     resultResponse=$(curl -s -X POST $AUTOMATOR_POLL_URL -H "Content-Type:application/json" -d $bodyPoll)
-    echo $resultResponse   
+    echo $resultResponse
 }
 
 function WriteResults () {
