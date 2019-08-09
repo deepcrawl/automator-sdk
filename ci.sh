@@ -17,12 +17,14 @@ function GetResults () {
 }
 
 function WriteResults () {
-    if [ $(echo "$resultResponse" | jq '.passed') -eq "true" ]; then
+    if [ $(echo "$1" | jq '.passed') == "true" ]; then
         #have tests passed 
         echo "DeepCrawl Tests Passed"
+        exit 0
     else
         #have tests failed
         echo "DeepCrawl Tests Failed"
+        exit 1 
     fi
 }
 
