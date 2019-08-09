@@ -17,7 +17,7 @@ function GetResults () {
 }
 
 function WriteResults () {
-    if [ $(echo "$1" | jq '.passed') -eq "true" ]; then
+    if [ $(echo "$resultResponse" | jq '.passed') -eq "true" ]; then
         #have tests passed 
         echo "DeepCrawl Tests Passed"
     else
