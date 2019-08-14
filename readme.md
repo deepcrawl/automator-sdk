@@ -14,7 +14,7 @@ Add `-x` to `#!/bin/bash`
 
 Using vscode is easiest way to lint, autocomplete and debug
 
-## Enviroment Variables
+## Environment Variables
 
 The following environment variables should be set in your CI platform to allow the scripts to work correctly.
 
