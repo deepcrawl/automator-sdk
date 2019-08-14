@@ -12,9 +12,11 @@ Add `-x` to `#!/bin/bash`
 
 ### Powershell
 
-using vscode is easiest way to lint, autocomplete and debug
+Using vscode is easiest way to lint, autocomplete and debug
 
 ## Enviroment Variables
+
+The following environment variables should be set in your CI platform to allow the scripts to work correctly.
 
 ```
 AUTOMATOR_TIMEOUT_SEC (number of seconds until polling is cancelled)
