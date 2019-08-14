@@ -14,7 +14,7 @@ Add `-x` to `#!/bin/bash`
 
 using vscode is easiest way to lint, autocomplete and debug
 
-## Enviroment Varialbes
+## Enviroment Variables
 
 ```
 AUTOMATOR_TIMEOUT_SEC (number of seconds until polling is cancelled)
