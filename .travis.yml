@@ -1,3 +1,10 @@
-jobs:
+matrix:
   include:
-    - script: ./ci.sh
+    -language: "powershell"
+      os: windows
+      script: ./ci.ps1
+    -language: "bash"
+      os: bionic
+      before_script:
+        - apt install jq
+      script: ./ci.sh
