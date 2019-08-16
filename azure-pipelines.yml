@@ -19,6 +19,4 @@ steps:
       AUTOMATOR_TIMEOUT_SEC: $(AUTOMATOR_TIMEOUT_SEC)
     inputs:
       filePath: "$(System.DefaultWorkingDirectory)/ci.ps1"
-      arguments: 
-        - -isTimeoutFatal=1
-      
+      arguments: "-isTimeoutFatal=1"
