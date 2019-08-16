@@ -8,21 +8,23 @@ fi
 totalRunTime=0
 maxRunTime=$AUTOMATOR_TIMEOUT_SEC
 body="{\"authToken\":\"$AUTOMATOR_TOKEN\",\"testSuiteId\":\"$testSuiteId\"}"
-testResults='';
+testResults=''
 
 function GetResults () {
-    local bodyPoll="{\"authToken\":\"$AUTOMATOR_TOKEN\",\"buildId\":$1}"
-    resultResponse=$(curl -s -X POST $AUTOMATOR_POLL_URL -H "Content-Type:application/json" -d $bodyPoll)
+    local bodyPoll="{\"authToken\":\"$AUTOMATOR_TOKEN\",\"buildId\":\"$1\"}"
+    resultResponse=$(curl -s -X POST "https://beta-triggers.deepcrawl.com/poller" -H "Content-Type:application/json" -d $bodyPoll)
     echo $resultResponse   
 }
 
 function WriteResults () {
-    if [ $(echo "$resultResponse" | jq '.passed') -eq "true" ]; then
+    if [ $(echo "$1" | jq '.passed') == "true" ]; then
         #have tests passed 
         echo "DeepCrawl Tests Passed"
+        exit 0
     else
         #have tests failed
         echo "DeepCrawl Tests Failed"
+        exit 1
     fi
 }
 
@@ -38,7 +40,7 @@ function StartPoll () {
 }
 
 function StartBuild () {
-    RESPONSE=$(curl -s -X POST $AUTOMATOR_START_URL -H "Content-Type:application/json" -d $body )
+    RESPONSE=$(curl -s -X POST "https://beta-triggers.deepcrawl.com/start" -H "Content-Type:application/json" -d $body )
     resp=`echo $RESPONSE | jq '.buildId'`
 
     if [ $? -eq 0 ]; then
