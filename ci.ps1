@@ -1,5 +1,4 @@
 param( [string]$testSuiteId = $env:AUTOMATOR_TEST_SUITE_ID )
-param( [boolean]$isTimeoutFatal = $env:AUTOMATOR_TIMEOUT_FATAL )
 
 $token = $env:AUTOMATOR_TOKEN
 
@@ -71,7 +70,7 @@ function Start-Poll {
 }
 
 function Get-Timeout() {
-    if ($isTimeoutFatal -and ($totalRunTime -lt $maxRunTime)) {
+    if ($totalRunTime -lt $maxRunTime) {
         return true;
     }
     else {
