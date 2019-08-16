@@ -8,7 +8,7 @@ fi
 totalRunTime=0
 maxRunTime=$AUTOMATOR_TIMEOUT_SEC
 body="{\"authToken\":\"$AUTOMATOR_TOKEN\",\"testSuiteId\":\"$testSuiteId\"}"
-testResults='';
+testResults=''
 
 function GetResults () {
     local bodyPoll="{\"authToken\":\"$AUTOMATOR_TOKEN\",\"buildId\":\"$1\"}"
@@ -17,7 +17,7 @@ function GetResults () {
 }
 
 function WriteResults () {
-    if [ $(echo "$resultResponse" | jq '.passed') -eq "true" ]; then
+    if [ $(echo "$1" | jq '.passed') == "true" ]; then
         #have tests passed 
         echo "DeepCrawl Tests Passed"
         exit 0
