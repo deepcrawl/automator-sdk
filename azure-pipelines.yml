@@ -1,0 +1,19 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+  - master
+pr:
+  - master
+pool:
+  vmImage: "vs2017-win2016"
+
+steps:
+  - task: PowerShell@2
+    env:
+      AUTOMATOR_TEST_SUITE_ID: $(testId)
+      AUTOMATOR_TOKEN: $(token)
+    inputs:
+      filePath: "$(System.DefaultWorkingDirectory)/ci.ps1"
