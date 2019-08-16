@@ -15,5 +15,7 @@ steps:
     env:
       AUTOMATOR_TEST_SUITE_ID: $(testId)
       AUTOMATOR_TOKEN: $(token)
+      AUTOMATOR_TIMEOUT_FATAL: $(AUTOMATOR_TIMEOUT_FATAL)
+      AUTOMATOR_TIMEOUT_SEC: $(AUTOMATOR_TIMEOUT_SEC)
     inputs:
       filePath: "$(System.DefaultWorkingDirectory)/ci.ps1"
