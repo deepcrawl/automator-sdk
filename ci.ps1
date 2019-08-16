@@ -10,7 +10,7 @@ $body = @{
 }
 
 [int]$totalRunTime = 0
-[int]$maxRunTime = $env:AUTOMATOR_TIMEOUT_SEC
+[int]$maxRunTime = 3000
 
 $testResults = $null;
 
