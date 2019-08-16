@@ -1,4 +1,5 @@
 param( [string]$testSuiteId = $env:AUTOMATOR_TEST_SUITE_ID )
+param( [boolean]$isTimeoutFatal = $env:AUTOMATOR_TIMEOUT_FATAL )
 
 $token = $env:AUTOMATOR_TOKEN
 
@@ -34,15 +35,15 @@ function Get-Results {
         return $resultResponse
     }
     catch [System.Net.WebException] {
-        Write-Verbose "An exception was caught: $($_.Exception.Message)"
+        Write-Warning "An exception was caught: $($_.Exception.Message)"
         exit 1;
     }
-    Write-Output $resultResponse
+    Write-Information $resultResponse
 }
 
 function Write-Results {
     Param($resultsData)
-    Write-Output $resultsData
+    Write-Information $resultsData
     if ($testResults.passed -eq $true) {
         #have tests passed 
         Write-Output "DeepCrawl Tests Passed"
@@ -57,23 +58,31 @@ function Write-Results {
 
 function Start-Poll {
     Param($BuildId)
-    $testResults = Get-Results -Uri $env:AUTOMATOR_POLL_URL -BuildId $BuildId
+    $testResults = Get-Results -Uri "https://beta-triggers.deepcrawl.com/poller" -BuildId $BuildId
     if ( [bool]($testResults.PSobject.Properties.name -match "passed")) {
         #do results contain the passed prop
         Write-Results($testResults)
     }
     else {
-        Write-Output "Waiting for DeepCrawl Test Results ..."
+        Write-Information "Waiting for DeepCrawl Test Results ..."
         Start-Sleep -Seconds 30 #wait and run poll again
         $totalRunTime += 30
     }
 }
 
+function Get-Timeout() {
+    if ($isTimeoutFatal -and ($totalRunTime -lt $maxRunTime)) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
 
 function Start-Build {
 
     $params = @{
-        Uri         = $env:AUTOMATOR_START_URL
+        Uri         = "https://beta-triggers.deepcrawl.com/start"
         Method      = 'Post'
         Body        = ($body | ConvertTo-Json)
         ContentType = "application/json"
@@ -83,7 +92,7 @@ function Start-Build {
     $triggerResponse = Invoke-RestMethod @params;
     Write-Output $triggerResponse;
 
-    while ( ($null -eq $testResults) -and ($totalRunTime -lt $maxRunTime) ) {
+    while ( ($null -eq $testResults) -and (Get-Timeout) ) {
         #poll server
         Start-Poll -BuildId $triggerResponse.buildId
     }

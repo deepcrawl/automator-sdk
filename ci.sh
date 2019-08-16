@@ -12,8 +12,8 @@ testResults=''
 
 function GetResults () {
     local bodyPoll="{\"authToken\":\"$AUTOMATOR_TOKEN\",\"buildId\":\"$1\"}"
-    resultResponse=$(curl -s -X POST $AUTOMATOR_POLL_URL -H "Content-Type:application/json" -d $bodyPoll)
-    echo $resultResponse
+    resultResponse=$(curl -s -X POST "https://beta-triggers.deepcrawl.com/poller" -H "Content-Type:application/json" -d $bodyPoll)
+    echo $resultResponse   
 }
 
 function WriteResults () {
@@ -24,7 +24,7 @@ function WriteResults () {
     else
         #have tests failed
         echo "DeepCrawl Tests Failed"
-        exit 1 
+        exit 1
     fi
 }
 
@@ -40,7 +40,7 @@ function StartPoll () {
 }
 
 function StartBuild () {
-    RESPONSE=$(curl -s -X POST $AUTOMATOR_START_URL -H "Content-Type:application/json" -d $body )
+    RESPONSE=$(curl -s -X POST "https://beta-triggers.deepcrawl.com/start" -H "Content-Type:application/json" -d $body )
     resp=`echo $RESPONSE | jq '.buildId'`
 
     if [ $? -eq 0 ]; then
