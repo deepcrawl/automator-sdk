@@ -16,5 +16,5 @@ steps:
       filePath: '$(System.DefaultWorkingDirectory)/ci.ps1'
       pwsh: true
     env:
-      AUTOMATOR_TEST_SUITE_ID: $(AUTOMATOR_TEST_SUITE_ID)
-      AUTOMATOR_TOKEN: $(AUTOMATOR_TEST_SUITE_ID)
+      AUTOMATOR_TEST_SUITE_ID: $(TESTSUITEID)
+      AUTOMATOR_TOKEN: $(TOKEN)
