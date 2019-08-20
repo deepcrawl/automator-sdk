@@ -37,7 +37,7 @@ function Get-Results {
         Write-Warning "An exception was caught: $($_.Exception.Message)"
         exit 1;
     }
-    Write-Information $resultResponse
+    Write-Output $resultResponse
 }
 
 function Write-Results {
@@ -63,7 +63,7 @@ function Start-Poll {
         Write-Results($testResults)
     }
     else {
-        Write-Information "Waiting for DeepCrawl Test Results ..."
+        Write-Output "Waiting for DeepCrawl Test Results ..."
         Start-Sleep -Seconds 30 #wait and run poll again
         $totalRunTime += 30
     }
@@ -71,10 +71,10 @@ function Start-Poll {
 
 function Get-Timeout() {
     if ($totalRunTime -lt $maxRunTime) {
-        return true;
+        return $true;
     }
     else {
-        return false;
+        return $false;
     }
 }
 
