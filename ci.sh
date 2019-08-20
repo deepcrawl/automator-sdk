@@ -11,7 +11,7 @@ body="{\"authToken\":\"$AUTOMATOR_TOKEN\",\"testSuiteId\":\"$testSuiteId\"}"
 testResults=''
 
 function GetResults () {
-    local bodyPoll="{\"authToken\":\"$AUTOMATOR_TOKEN\",\"buildId\":$1}"
+    local bodyPoll="{\"authToken\":\"$AUTOMATOR_TOKEN\",\"buildId\":\"$1\"}"
     resultResponse=$(curl -s -X POST "https://beta-triggers.deepcrawl.com/poller" -H "Content-Type:application/json" -d $bodyPoll)
     echo $resultResponse   
 }
