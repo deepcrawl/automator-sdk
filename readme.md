@@ -72,7 +72,6 @@ steps:
       AUTOMATOR_TOKEN: $(token)
     inputs:
       filePath: "$(System.DefaultWorkingDirectory)/ci.ps1"
-      arguments: "-isTimeoutFatal=1"
 ```
 
 ### General
