@@ -13,7 +13,7 @@ pool:
 steps:
   - task: PowerShell@2
     env:
-      AUTOMATOR_TEST_SUITE_ID: $(testId)
-      AUTOMATOR_TOKEN: $(token)
+      AUTOMATOR_TEST_SUITE_ID: $(AUTOMATOR_TEST_SUITE_ID)
+      AUTOMATOR_TOKEN: $(AUTOMATOR_TEST_SUITE_ID)
     inputs:
       filePath: "$(System.DefaultWorkingDirectory)/ci.ps1"
