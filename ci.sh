@@ -6,12 +6,12 @@ if [ -z $testSuiteId ]; then
 fi
 
 totalRunTime=0
-maxRunTime=$AUTOMATOR_TIMEOUT_SEC
+maxRunTime=3000
 body="{\"authToken\":\"$AUTOMATOR_TOKEN\",\"testSuiteId\":\"$testSuiteId\"}"
 testResults=''
 
 function GetResults () {
-    local bodyPoll="{\"authToken\":\"$AUTOMATOR_TOKEN\",\"buildId\":\"$1\"}"
+    local bodyPoll="{\"authToken\":\"$AUTOMATOR_TOKEN\",\"buildId\":$1}"
     resultResponse=$(curl -s -X POST "https://beta-triggers.deepcrawl.com/poller" -H "Content-Type:application/json" -d $bodyPoll)
     echo $resultResponse   
 }
