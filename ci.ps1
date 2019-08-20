@@ -29,8 +29,9 @@ function Get-Results {
             ContentType = "application/json"
 
         }
-
+        Write-Output @params;
         $resultResponse = Invoke-RestMethod @params;
+
         return $resultResponse
     }
     catch [System.Net.WebException] {
