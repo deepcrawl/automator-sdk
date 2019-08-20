@@ -8,13 +8,13 @@ These scripts are meant for use with DeepCrawl Automator system and placed in yo
 
 ### Bash
 
-Add `-x` to `#!/bin/bash`
+For basic debugging output you can edit your bash script to add `-x` to `#!/bin/bash` in the start of the file.
 
-or if you want to debug via vs-code this extension is useful https://marketplace.visualstudio.com/items?itemName=rogalmic.bash-debug
+If you want to debug via vs-code this extension is useful https://marketplace.visualstudio.com/items?itemName=rogalmic.bash-debug
 
 ### Powershell
 
-Using vscode is easiest way to lint, autocomplete and debug
+Using vscode is easiest way to lint, autocomplete and debug powershell
 https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell
 
 ## Environment Variables
