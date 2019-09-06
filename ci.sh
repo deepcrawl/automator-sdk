@@ -1,16 +1,19 @@
 #!/bin/bash
+testSuiteId=${1:-$AUTOMATOR_TEST_SUITE_ID}
+
+if [ -z $testSuiteId ]; then
+    exit "No TestSuite Id Set"
+fi
 
 totalRunTime=0
-maxRunTime=$AUTOMATOR_TIMEOUT_SEC
-body="{\"authToken\":\"$AUTOMATOR_TOKEN\",\"testSuiteId\":\"$AUTOMATOR_TEST_SUITE_ID\"}"
-meridianResults='';
+maxRunTime=3000
+body="{\"authToken\":\"$AUTOMATOR_TOKEN\",\"testSuiteId\":\"$testSuiteId\"}"
+testResults=''
 
 function GetResults () {
-
     local bodyPoll="{\"authToken\":\"$AUTOMATOR_TOKEN\",\"buildId\":$1}"
     resultResponse=$(curl -s "$AUTOMATOR_POLL_URL" -H "Content-Type:application/json" -d "$bodyPoll")
     echo "$resultResponse"
-    
 }
 
 function WriteResults () {

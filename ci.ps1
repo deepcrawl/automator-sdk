@@ -1,15 +1,18 @@
-param( $testSuiteId = $env:AUTOMATOR_TEST_SUITE_ID )
+param( [string]$testSuiteId = $env:AUTOMATOR_TEST_SUITE_ID )
+
 $token = $env:AUTOMATOR_TOKEN
+
 Write-Output $testSuiteId
+
 $body = @{
     "authToken"   = $token
     "testSuiteId" = $testSuiteId
 }
 
 [int]$totalRunTime = 0
-[int]$maxRunTime = $env:AUTOMATOR_TIMEOUT_SEC
+[int]$maxRunTime = 3000
 
-$meridianResults = $null;
+$testResults = $null;
 
 function Get-Results {
     Param([string]$Uri, $BuildId)
@@ -18,20 +21,30 @@ function Get-Results {
             authToken = $token
             buildId   = $buildId
         }
-        $resultResponse = Invoke-RestMethod -Uri $Uri -Method 'Post' -Body ($bodyPoll | ConvertTo-Json) -ContentType "application/json"
+
+        $params = @{
+            Uri         = $Uri
+            Method      = 'Post'
+            Body        = ($bodyPoll | ConvertTo-Json)
+            ContentType = "application/json"
+
+        }
+
+        $resultResponse = Invoke-RestMethod @params;
+
         return $resultResponse
     }
     catch [System.Net.WebException] {
-        Write-Verbose "An exception was caught: $($_.Exception.Message)"
-        return $null;
+        Write-Warning "An exception was caught: $($_.Exception.Message)"
+        exit 1;
     }
     Write-Output $resultResponse
 }
 
 function Write-Results {
     Param($resultsData)
-    Write-Output $resultsData
-    if ($meridianResults.passed -eq $true) {
+    Write-Information $resultsData
+    if ($testResults.passed -eq $true) {
         #have tests passed 
         Write-Output "DeepCrawl Tests Passed"
         exit 0
@@ -45,10 +58,10 @@ function Write-Results {
 
 function Start-Poll {
     Param($BuildId)
-    $meridianResults = Get-Results -Uri $env:AUTOMATOR_POLL_URL -BuildId $BuildId
-    if ( [bool]($meridianResults.PSobject.Properties.name -match "passed")) {
+    $testResults = Get-Results -Uri "https://beta-triggers.deepcrawl.com/poller" -BuildId $BuildId
+    if ( [bool]($testResults.PSobject.Properties.name -match "passed")) {
         #do results contain the passed prop
-        Write-Results($meridianResults)
+        Write-Results($testResults)
     }
     else {
         Write-Output "Waiting for DeepCrawl Test Results ..."
@@ -57,13 +70,29 @@ function Start-Poll {
     }
 }
 
+function Get-Timeout() {
+    if ($totalRunTime -lt $maxRunTime) {
+        return $true;
+    }
+    else {
+        return $false;
+    }
+}
 
 function Start-Build {
 
-    $triggerResponse = Invoke-RestMethod -Uri $env:AUTOMATOR_START_URL -Method "Post" -Body ($body | ConvertTo-Json) -ContentType "application/json";
+    $params = @{
+        Uri         = "https://beta-triggers.deepcrawl.com/start"
+        Method      = 'Post'
+        Body        = ($body | ConvertTo-Json)
+        ContentType = "application/json"
+
+    }
+
+    $triggerResponse = Invoke-RestMethod @params;
     Write-Output $triggerResponse;
 
-    while ( ($null -eq $meridianResults) -and ($totalRunTime -lt $maxRunTime) ) {
+    while ( ($null -eq $testResults) -and (Get-Timeout) ) {
         #poll server
         Start-Poll -BuildId $triggerResponse.buildId
     }

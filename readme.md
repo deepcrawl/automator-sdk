@@ -8,32 +8,72 @@ These scripts are meant for use with DeepCrawl Automator system and placed in yo
 
 ### Bash
 
-Add `-x` to `#!/bin/bash`
+For basic debugging output you can edit your bash script to add `-x` to `#!/bin/bash` in the start of the file.
+
+If you want to debug via vs-code this extension is useful https://marketplace.visualstudio.com/items?itemName=rogalmic.bash-debug
 
 ### Powershell
 
-using vscode is easiest way to lint, autocomplete and debug
+Using vscode is easiest way to lint, autocomplete and debug powershell
+https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell
 
-## Enviroment Varialbes
+## Environment Variables
+
+The following environment variables should be set in your CI platform to allow the scripts to work correctly.
 
 ```
-AUTOMATOR_TIMEOUT_SEC (number of seconds until polling is cancelled)
-
 AUTOMATOR_TOKEN (access token)
 
-AUTOMATOR_TEST_SUITE_ID (optional) //can be passed into ci as param
+AUTOMATOR_TEST_SUITE_ID (optional) // can be passed into ci as param
+```
 
-AUTOMATOR_POLL_URL (in instructions sections of site)
+example:
+**AUTOMATOR_TEST_SUITE_ID** replace with your id
 
-AUTOMATOR_START_URL (in instructions section of site)
+```bash
+$: ./ci.ps1 -testSuiteId AUTOMATOR_TEST_SUITE_ID
+$: ./ci.sh AUTOMATOR_TEST_SUITE_ID
 ```
 
 ## CI Platform Usage
 
 ### Travis
 
+```yaml
+matrix:
+  include:
+    - language: bash
+      os: linux
+      dist: bionic
+      sudo: false
+      addons:
+        apt:
+          packages:
+            - jq
+      script: ./ci.sh
+```
+
 ### Jenkins
 
 ### Azure Pipelines
 
+```yaml
+trigger:
+  - master
+pr:
+  - master
+pool:
+  vmImage: "vs2017-win2016"
+
+steps:
+  - task: PowerShell@2
+    env:
+      AUTOMATOR_TEST_SUITE_ID: $(testId)
+      AUTOMATOR_TOKEN: $(token)
+    inputs:
+      filePath: "$(System.DefaultWorkingDirectory)/ci.ps1"
+```
+
 ### General
+
+Run either script with the correct enviroment variables and that should start the test suite build and poll for results.
