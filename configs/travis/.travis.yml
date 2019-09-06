@@ -8,4 +8,6 @@ matrix:
         apt:
           packages:
             - jq
+            - shellcheck
+      before_script: shellcheck ./ci.sh
       script: ./ci.sh
