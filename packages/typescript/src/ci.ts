@@ -1,7 +1,3 @@
-import { hasTimedOut } from "./helpers/hasTimedOut";
-import { restRequest } from "./restRequest";
-import { AxiosResponse } from "axios";
-import { getResults } from "./getResults";
 import { startBuild } from "./startBuild";
 
 const token = process.env.AUTOMATOR_TOKEN || "";
