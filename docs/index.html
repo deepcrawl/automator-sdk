@@ -16,12 +16,20 @@
       search: 'auto',
       repo: 'https://github.com/deepcrawl/automator-sdk',
       loadSidebar: true,
-      subMaxLevel: 10
+      subMaxLevel: 10,
+      tabs: {
+        persist    : true,
+        sync       : false,
+        theme      : 'classic',
+        tabComments: true,
+        tabHeadings: true
+      }
     }
   </script>
   <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
   <script src="//unpkg.com/docsify/lib/plugins/search.min.js"></script>
   <script src="//unpkg.com/prismjs/components/prism-graphql.min.js"></script>
   <script src="//unpkg.com/prismjs/components/prism-json.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify-tabs@1"></script>
 </body>
 </html>

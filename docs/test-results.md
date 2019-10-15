@@ -31,9 +31,15 @@ Example
 
 ## List of available test result fields
 
+<!-- tabs:start -->
+
+#### ** Query **
+
 Name | Type
 --- | ---
 `passed` | Boolean
 `severity` | Severity!
 `reportTemplate` | ReportTemplate!
 `id` | ObjectID!
+
+<!-- tabs:end -->

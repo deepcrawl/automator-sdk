@@ -111,6 +111,61 @@ mutation {
 
 ## List of available test suite fields
 
+<!-- tabs:start -->
+
+#### ** Query **
+
+Name | Type
+--- | ---
+`alertEmails` | [String!]
+`crawlRate` | Float!
+`createdAt` | DateTime!
+`customDns` | [CustomDnsSetting!]
+`customHeaderUserAgent` | String
+`customHeaderUserAgentShort` | String
+`duplicatePrecision` | Float!
+`emptyPageThreshold` | Float!
+`highLogSummaryRequests` | Float!
+`limitPagesMax` | Float!
+`lowLogSummaryRequests` | Float!
+`maxContentSize` | Float!
+`maxDescriptionLength` | Float!
+`maxExternalLinks` | Float!
+`maxHtmlSize` | Float!
+`maxLinks` | Float!
+`maxLoadTime` | Float!
+`maxRedirections` | Float!
+`maxTitleWidth` | Float!
+`maxUrlLength` | Float!
+`minContentRatio` | Float!
+`minDescriptionLength` | Float!
+`minTitleLength` | Float!
+`name` | String!
+`rendererBlockAds` | Boolean!
+`rendererBlockAnalytics` | Boolean!
+`rendererBlockCustom` | [String!]
+`rendererJsString` | String
+`rendererJsUrls` | [String!]
+`robotsOverwrite` | String
+`sitePrimary` | String!
+`siteTest` | String
+`siteTestPass` | String
+`siteTestUser` | String
+`thinPageThreshold` | Float!
+`updatedAt` | DateTime!
+`urlsExcluded` | [String!]
+`urlsIncluded` | [String!]
+`useRenderer` | Boolean!
+`useRobotsOverwrite` | Boolean!
+`account` | Account!
+`location` | Location!
+`id` | ObjectID!
+`tests(...)` | TestConnection!
+`crawlTypes` | [TestSuiteCrawlType!]!
+`builds(...)` | BuildConnection!
+
+#### ** Create **
+
 Name | Type | Default
 --- | --- | ---
 `accountId` | ObjectID! |
@@ -154,6 +209,54 @@ Name | Type | Default
 `urlsIncluded` | [String!] |
 `useRenderer` | Boolean | false
 `useRobotsOverwrite` | Boolean | false
+
+#### ** Update **
+
+Name | Type
+--- | ---
+`crawlTypes` | [TestSuiteCrawlType!]
+`location` | TestSuiteLocationCode
+`testSuiteId` | ObjectID!
+`alertEmails` | [String!]
+`crawlRate` | Float
+`customDns` | [CustomDnsSettingInput!]
+`customHeaderUserAgent` | String
+`customHeaderUserAgentShort` | String
+`duplicatePrecision` | Int
+`emptyPageThreshold` | Int
+`highLogSummaryRequests` | Int
+`limitPagesMax` | Int
+`lowLogSummaryRequests` | Int
+`maxContentSize` | Int
+`maxDescriptionLength` | Int
+`maxExternalLinks` | Int
+`maxHtmlSize` | Int
+`maxLinks` | Int
+`maxLoadTime` | Float
+`maxRedirections` | Int
+`maxTitleWidth` | Int
+`maxUrlLength` | Int
+`minContentRatio` | Float
+`minDescriptionLength` | Int
+`minTitleLength` | Int
+`name` | String
+`rendererBlockAds` | Boolean
+`rendererBlockAnalytics` | Boolean
+`rendererBlockCustom` | [String!]
+`rendererJsString` | String
+`rendererJsUrls` | [String!]
+`robotsOverwrite` | String
+`sitePrimary` | String
+`siteTest` | String
+`siteTestPass` | String
+`siteTestUser` | String
+`thinPageThreshold` | Int
+`urlsExcluded` | [String!]
+`urlsIncluded` | [String!]
+`useRenderer` | Boolean
+`useRobotsOverwrite` | Boolean
+
+<!-- tabs:end -->
 
 ## Uploading a list file (via old API)
 

@@ -77,6 +77,31 @@ Response:
 }
 ```
 
+## List of available account fields
+
+<!-- tabs:start -->
+
+#### ** Query **
+
+Name | Type
+--- | ---
+`limitPagesMax` | Int!
+`limitLevelsMax` | Int!
+`phone` | String
+`country` | String
+`addressCity` | String
+`addressZip` | String
+`name` | String
+`packagePlan` | String!
+`createdAt` | DateTime!
+`updatedAt` | DateTime!
+`id` | ObjectID!
+`testSuites(...)` | TestSuiteConnection
+`projects(...)` | ProjectConnection!
+`featureFlags` | [FeatureFlag!]!
+
+<!-- tabs:end -->
+
 ## Requesting other resources
 As GraphQL allows easy access to nested resources all you need to do to access other resources is to nest it in a parents query.
 

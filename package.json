@@ -19,5 +19,6 @@
   "homepage": "https://github.com/deepcrawl/automator-sdk#readme",
   "dependencies": {
     "@types/node": "^10.14.15"
-  }
+  },
+  "devDependencies": {}
 }

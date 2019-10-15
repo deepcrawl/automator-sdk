@@ -122,6 +122,10 @@ Name | Description
 
 ## List of available build fields
 
+<!-- tabs:start -->
+
+#### ** Query **
+
 Name | Type
 --- | ---
 `ciBuildId` | String
@@ -137,3 +141,12 @@ Name | Type
 `id` | ObjectID!
 `status` | BuildStatus!
 `crawlDcWebUrl` | String
+
+#### ** Create **
+
+Name | Type | Default
+--- | --- | ---
+`ciBuildId` | String
+`testSuiteId` | ObjectID!
+
+<!-- tabs:end -->

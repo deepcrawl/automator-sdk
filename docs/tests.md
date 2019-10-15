@@ -104,12 +104,38 @@ mutation {
 
 ### Fields
 
+<!-- tabs:start -->
+
+#### ** Query **
+
+Name | Type
+--- | ---
+`createdAt` | DateTime!
+`updatedAt` | DateTime!
+`severity` | Severity!
+`threshold` | Int!
+`reportTemplateCode` | String!
+`id` | ObjectID!
+`reportTemplate` | ReportTemplate!
+
+#### ** Create **
+
 Name | Type | Default
 --- | --- | ---
 `threshold` | Float | 10
 `severity` | Severity | "Fail"
 `testSuiteId` | ObjectID!
 `reportTemplateCode` | String!
+
+#### ** Update **
+
+Name | Type
+--- | ---
+`threshold` | Float
+`severity` | Severity
+`testId` | ObjectID!
+
+<!-- tabs:end -->
 
 ### Report Template Codes
 
