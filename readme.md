@@ -77,3 +77,9 @@ steps:
 ### General
 
 Run either script with the correct enviroment variables and that should start the test suite build and poll for results.
+
+## Using Automator scripts without blocking builds
+
+From time to time, you may want to use Automator without letting your CI system wait for the crawl to complete, or allowing the script impact whether your build succeeds. In this case, you can set the `startOnly` variable in your script to `true`. This flag modifies the behaviour of the script to start a test suite test, then return without polling for a result.
+
+In this case Automator will send an email or other notification about the status of your tests, and the test results will be available in the automator app.
