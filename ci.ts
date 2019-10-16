@@ -12,6 +12,7 @@ const startRequestBody: StartRequestBody = {
     testSuiteId : testSuiteId
 }
 
+const startOnly = false
 let totalRunTime = 0
 const maxRunTime = 3000
 
@@ -56,6 +57,11 @@ function writeResults(resultsData) {
 
 function startPoll(BuildId) {
     testResults = getResults("https://beta-triggers.deepcrawl.com/poller", BuildId);
+    if(startOnly === true){
+        console.log("DeepCrawl Skipped Polling")
+        process.exit(0)
+    }
+
     if ( testResults.name === "passed") {
         writeResults(testResults)
     }

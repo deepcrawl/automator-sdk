@@ -9,6 +9,7 @@ $body = @{
     "testSuiteId" = $testSuiteId
 }
 
+[bool]$startOnly = $false
 [int]$totalRunTime = 0
 [int]$maxRunTime = 3000
 
@@ -91,7 +92,10 @@ function Start-Build {
 
     $triggerResponse = Invoke-RestMethod @params;
     Write-Output $triggerResponse;
-
+    if($startOnly -eq $true){
+        Write-Output "DeepCrawl Skipped Polling"
+        exit 0
+    }
     while ( ($null -eq $testResults) -and (Get-Timeout) ) {
         #poll server
         Start-Poll -BuildId $triggerResponse.buildId
