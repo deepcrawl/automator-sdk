@@ -2,9 +2,9 @@
 ---
 ## Listing test suites
 
-To list test sutes, you should know your Automator account name or id. On how to get those check [Accounts](/accounts) section.
+An account name or ID is required to list test suites. See the [Accounts](/accounts) section for information on how to find this.
 
-Example query to list 100 test suites would look like this:
+The query to list 100 test suites looks like:
 
 ```graphql
 {
@@ -23,7 +23,7 @@ Example query to list 100 test suites would look like this:
 }
 ```
 
-You can also search for a teas suite:
+You can also search for a test suite using the account name:
 
 ```graphql
 {
@@ -44,7 +44,7 @@ You can also search for a teas suite:
 
 ## Creating a test suite
 
-To create a new tests suite you need to use `createTestSuite` mutation.
+To create a new test suite, use the `createTestSuite` mutation.
 
 Example mutation:
 ```graphql
@@ -62,12 +62,12 @@ mutation {
   }
 }
 ```
-`accountId`, `name` and `sitePrimary` are the only required fields. For the full list of available fields see [List of available test suite fields](test-suites?id=list-of-available-test-suite-fields) section.
+`accountId`, `name`, and `sitePrimary` are the only required fields. For the full list of available fields see [List of available test suite fields](test-suites?id=list-of-available-test-suite-fields) section.
 
 
 ## Updating a test suite
 
-To create a new tests suite you need to use `updateTestSuite` mutation.
+To change a test suite's settings, use the `updateTestSuite` mutation.
 
 Example mutation:
 ```graphql
@@ -91,7 +91,7 @@ For the full list of available fields see [List of available test suite fields](
 
 ## Deleting a test suite
 
-To delete a tests suite you need to use `deleteTestSuite` mutation.
+To delete a test suite, use the `deleteTestSuite` mutation.
 
 Example mutation:
 ```graphql
@@ -107,7 +107,7 @@ mutation {
 }
 ```
 
-!> Deleting a test suite will also delete all the related builds and tests tesults.
+!> Deleting a test suite will also delete all the related builds and test results.
 
 ## List of available test suite fields
 

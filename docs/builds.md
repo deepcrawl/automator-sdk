@@ -2,7 +2,7 @@
 ---
 ## Listing builds for a test suite
 
-To list builds run you should know your test suite id. On how to get it check [Test Suites](test-suites?id=listing-test-suites) section.
+To list the builds that have been run you'll need the Test Suite's ID. To find a Test Suite's ID see the [Test Suites](test-suites?id=listing-test-suites) section.
 
 Example query to list latest 50 buildss would look like this:
 
@@ -24,9 +24,9 @@ Example query to list latest 50 buildss would look like this:
 }
 ```
 
-## Listing latest build for a test suite
+## Listing the latest build for a test suite
 
-It will be very common to search for the latest build in test suite, for example to check it's status. Here's example query for how to do that:
+A common query is finding the latest build in a Test Suite, for instance to check it's status. The following query does this:
 
 ```graphql
 {
@@ -45,7 +45,7 @@ It will be very common to search for the latest build in test suite, for example
 
 ## Creating a build
 
-To create a new build you need to use `createBuild` mutation.
+To create a new build, use the `createBuild` mutation.
 
 Example mutation:
 ```graphql
@@ -63,11 +63,11 @@ mutation {
   }
 }
 ```
-`testSuiteId` is the only required fields. `ciBuildId` is the Id that you can set to identify your CI build. These are the only two parameters available for build creation.
+`testSuiteId` is the only required field. `ciBuildId` is an optional string that you can set to identify your CI build. These are the only two parameters available during build creation.
 
 ## Running a build
 
-Created Build will have `Queued` status and won't have a crawl run yet. To kick off a build, you need to use `runBuild` mutation.
+A created Build will have `Queued` status and won't have a crawl run yet. To kick off a build, you need to use `runBuild` mutation.
 
 Example: 
 
@@ -87,11 +87,11 @@ mutation {
 }
 ```
 
-!> Build status may be still `Queued` immediatly after running the mutation. It will change to `Running` after crawl starts crawling your website.
+!> Build status may be still `Queued` immediately after running the mutation. It will change to `Running` after DeepCrawl starts crawling your website.
 
 ## Canceling a build
 
-You can have only one build running per test suite. To cancel current running build use `cancelBuild` mutation.
+You can have only one build running per test suite. To cancel current running build use the `cancelBuild` mutation.
 
 Example:
 ```graphql
@@ -116,9 +116,9 @@ Name | Description
 --- | ---
 `Queued` | Build has been created but not run yet
 `Running` | Build has been run and corresponding crawl is crawling.
-`Aborted` | Build has been stopped due to automator internal reasons. It's impossible to resume aborted build.
-`Cancelled` | Build has been stoped by the user. It's impossible to resume canceled build.
-`Finished` | Build is ready. Tests results are available.
+`Aborted` | Build has been stopped due to automator internal reasons. It's impossible to resume an aborted build.
+`Cancelled` | Build has been stopped by the user. It's impossible to resume cancelled build.
+`Finished` | Build is ready and test results are available.
 
 ## List of available build fields
 

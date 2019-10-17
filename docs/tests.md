@@ -2,9 +2,9 @@
 ---
 ## Listing test suite tests
 
-To list test that test suite will run you should know your test suite id. On how to get it check [Test Suites](test-suites?id=listing-test-suites) section.
+Tests are individual assertions that we make during a build. To list the tests, you will need a test suite ID. See the [Test Suites](test-suites?id=listing-test-suites) section to find this.
 
-Example query to list 50 tests would look like this:
+The following query lists 50 tests:
 
 ```graphql
 {
@@ -26,14 +26,14 @@ Example query to list 50 tests would look like this:
 }
 ```
 
-Every new tests suite has 3 default test assigned:
+Every new test suite has 3 default tests assigned:
 - Broken Pages (4xx Errors)
 - 5xx Errors
 - Max Fetch Time
 
 ## Adding test to tests suite
 
-Automator tests are based on DeepCrawl reports, to add test to a test suite, you need to use `createTest` mutation:
+Automator tests are based on DeepCrawl reports, to add test to a test suite, use the `createTest` mutation:
 
 Example mutation:
 
@@ -54,7 +54,7 @@ mutation {
 
 ## Updating a test
 
-To update a test you need to use `updateTest` mutation.
+To update a test, use the `updateTest` mutation.
 
 Example: 
 
@@ -74,14 +74,14 @@ mutation {
 }
 ```
 
-!> It's not posible to update report template code for test suite test. You'd have to delete test and create a new one with different report template code.
+!> It's not possible to update the report template code for a test suite's test. You need to delete the test and create a new one with the new report template code.
 
-?> Updating test won't affect your already completed builds and test results.
+?> Updating test won't affect previously completed builds and test results.
 
 
 ## Deleting a test from a test suite
 
-To remove a test form test suite you need to use `deleteTest` mutation.
+To remove a test from a test suite, use the `deleteTest` mutation.
 
 Example:
 
@@ -98,7 +98,7 @@ mutation {
 }
 ```
 
-?> Removing test from a test suite won't affect your already completed builds and test results.
+?> Removing a test from a test suite won't affect any previously completed builds and test results.
 
 ## List of available test fields
 

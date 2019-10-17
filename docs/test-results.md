@@ -1,9 +1,9 @@
 # Test results
 ---
-## Getting tests result list for a build
+## Getting test results for a build
 
-To list test results you should know your build id. On how to get it check [Builds](builds?id=listing-builds-for-a-test-suite) section.
-Test results will be available only if build status is `Finished`.
+A build ID is required to list test results. See the [Builds](builds?id=listing-builds-for-a-test-suite) section to learn how to get a build ID.
+Test results are only available if the build status is `Finished`.
 
 Example
 

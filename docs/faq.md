@@ -3,7 +3,7 @@
 
 ## Check if test suite with given name already exists
 
-To check if test suite exists send a query that filter by the name and check if returned array of results is not empty.
+To check if a given test suite already exists, send a query with a "name" filter and check if returned array of results contains a Test Suite.
 
 ```graphql
 {
@@ -36,16 +36,16 @@ Response
 }
 ```
 
-this means there is no test suite with "Test suite name" name as `nodes` array is empty.
+When the testSuite `nodes` array is empty, this means there is no test suite with "Test suite name" name.
 
-## Create the deepcrawl project/test suite if it does not exist, with all required details.
+## Create the DeepCrawl project/test suite if it does not exist, with all required details.
 
 1. To see if project exists see [previous section](faq?id=checking-if-test-suite-with-given-name-already-exists)
-2. On how to create a new test suite use [createTestSuite](test-suites?id=creating-a-test-suite)
+2. To create a new test suite use [createTestSuite](test-suites?id=creating-a-test-suite)
 
 ## Update the email alert if the project already exists.
 
-Tu update `alertEmail` field on already created tests suite first you need to find that projects id:
+To update `alertEmail` field on an existing test suite, you'll need to find that test suite id:
 
 ```graphql
 {
@@ -80,7 +80,7 @@ Response:
 }
 ```
 
-once you have the test suite ID, use [updateTestSuite](test-suites?id=updating-a-test-suite) mutation to set alert emails:
+Once you have the test suite ID, use [updateTestSuite](test-suites?id=updating-a-test-suite) mutation to set alert emails:
 
 ```graphql
 mutation {

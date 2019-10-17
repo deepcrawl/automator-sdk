@@ -2,7 +2,7 @@
 ---
 
 ## Listing available accounts
-At the moment our API lists all DeepCrawl accounts that you have access to, but not all accounts are Automator accounts.
+The API currently lists all of the DeepCrawl accounts that the user has access to, this is not limited to accounts which have permission to access Automator.
 
 
 To list all available accounts run following query.
@@ -20,7 +20,7 @@ To list all available accounts run following query.
 
 ```
 
-If you know your Automator account name, you can filter the call down to one account:
+If you know the Automator account name, the query can be filtered using this name:
 ```graphql
 {
   me {
@@ -52,7 +52,7 @@ Response:
 }
 ```
 
-After you know your account ID, you can get single account using `node` query:
+When the account ID has been obtained, subsequent queries can be filtered to this using `node`:
 
 ```graphql
 {
@@ -103,9 +103,9 @@ Name | Type
 <!-- tabs:end -->
 
 ## Requesting other resources
-As GraphQL allows easy access to nested resources all you need to do to access other resources is to nest it in a parents query.
+As GraphQL allows easy access to nested resources: to access other resources you need to nest it in a parent's query.
 
-Example request that lists first 5 Test Suites for an account and last build per Test Suite:
+The following request lists first 5 Test Suites for an account and the last build in each Test Suite:
 ```graphql
 {
   node(id: "TjAwN0FjY291bnQxMA") {
@@ -151,4 +151,4 @@ or using account name:
 }
 ```
 
-Next secttions explain in more detail how to interact with other Automator resources.
+The next sections explain in more detail how to interact with other Automator resources.
