@@ -1,37 +1,6 @@
+
 const testSuiteId: string = process.params.testSuiteId
-const key_id: string = process.env.AUTOMATOR_USER_KEY_ID
-const secret: string = process.env.AUTOMATOR_SECRET
-
-function getAuthToken(): any {
-  const params = {
-      Uri         : "https://canary-api.deepcrawl.com/",
-      Method      : 'Post',
-      Body        : JSON.stringify({"query" : `mutation { createSessionUsingUserKey(input: {userKeyId:"${key_id}", secret:"${secret}"}) { token }}`}),
-      ContentType : "application/json"
-  }
-
-  const response = runRequest(params); // replace with proper requester
-
-  return response.data.createSessionUsingUserKey.token
-}
-
-function deleteAuthToken(token: string): any {
-  const params = {
-      Uri         : "https://canary-api.deepcrawl.com/",
-      Method      : 'Post',
-      Body        : JSON.stringify({"query" : "mutation { deleteSession { token }}"}),
-      ContentType : "application/json",
-      Headers     : {
-          'X-Auth-Token' : token
-      }
-  }
-
-  const response = runRequest(params); // replace with proper requester
-
-  return response.data.deleteSession.token
-}
-
-const token = getAuthToken()
+const token: string = process.env.AUTOMATOR_TOKEN
 
 interface StartRequestBody {
     authToken  : string,
@@ -118,5 +87,3 @@ function startBuild {
 }
 
 startBuild()
-
-deleteAuthToken(token)
