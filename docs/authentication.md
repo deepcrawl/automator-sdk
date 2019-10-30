@@ -63,7 +63,7 @@ You can create the user key using `createUserKey` mutation (You need to be authe
 
 `id` and `secret` are important values as you'll be using them to get your `X-Auth-Token` instead of username and password.
 
-!> `createUserKey` mutation is the only place where you can see your `secret`. After that it'll be not possible to retrieve full secret value for this key. Please copy it and save somewhere for later use.
+!> `createUserKey` mutation is the only place where you can see your `secret`. After that, it'll be not possible to retrieve a full secret value for this key. Please copy it and save somewhere for later use.
 
 You can delete the key using `createUserKey` mutation:
 
