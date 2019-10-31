@@ -1,6 +1,6 @@
 param( [string]$testSuiteId = $env:AUTOMATOR_TEST_SUITE_ID )
 
-$secret = $env:AUTOMATOR_SECRET
+$secret = $env:AUTOMATOR_USER_KEY_SECRET
 $key_id = $env:AUTOMATOR_USER_KEY_ID
 
 Write-Output $testSuiteId

@@ -10,7 +10,7 @@ maxRunTime=3000
 testResults=''
 
 function GetAuthToken() {
-    local bodyMutation="{\"query\":\"mutation{createSessionUsingUserKey(input:{userKeyId:\\\"$AUTOMATOR_USER_KEY_ID\\\",secret:\\\"$AUTOMATOR_SECRET\\\"}){token}}\"}"
+    local bodyMutation="{\"query\":\"mutation{createSessionUsingUserKey(input:{userKeyId:\\\"$AUTOMATOR_USER_KEY_ID\\\",secret:\\\"$AUTOMATOR_USER_KEY_SECRET\\\"}){token}}\"}"
     resultResponse=$(curl -s -X POST "https://canary-api.deepcrawl.com/" -H "Content-Type:application/json" -d $bodyMutation)
     authToken=$(echo $resultResponse | jq -r '.data.createSessionUsingUserKey.token')
 }
