@@ -1,8 +1,38 @@
 param( [string]$testSuiteId = $env:AUTOMATOR_TEST_SUITE_ID )
 
-$token = $env:AUTOMATOR_TOKEN
+$secret = $env:AUTOMATOR_USER_KEY_SECRET
+$key_id = $env:AUTOMATOR_USER_KEY_ID
 
 Write-Output $testSuiteId
+
+function Get-Auth-Token {
+    $params = @{
+        Uri         = "https://canary-api.deepcrawl.com/"
+        Method      = 'Post'
+        Body        = (@{"query" = "mutation { createSessionUsingUserKey(input: {userKeyId:`"$($key_id)`", secret:`"$($secret)`"}) { token }}"} | ConvertTo-Json)
+        ContentType = "application/json"
+    }
+
+    $response = Invoke-RestMethod @params;
+    return $response.data.createSessionUsingUserKey.token
+}
+
+function Delete-Auth-Token {
+    $params = @{
+        Uri         = "https://canary-api.deepcrawl.com/"
+        Method      = 'Post'
+        Body        = (@{"query" = "mutation { deleteSession { token }}"} | ConvertTo-Json)
+        ContentType = "application/json"
+        Headers     = @{
+            'X-Auth-Token' = $token
+        }
+    }
+
+    $response = Invoke-RestMethod @params;
+    return $response.data.deleteSession.token
+}
+
+$token = Get-Auth-Token
 
 $body = @{
     "authToken"   = $token
@@ -100,3 +130,5 @@ function Start-Build {
 }
 
 Start-Build
+
+Delete-Auth-Token

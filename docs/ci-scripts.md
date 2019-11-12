@@ -22,7 +22,9 @@ https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell
 The following environment variables should be set in your CI platform to allow the scripts to work correctly.
 
 ```
-AUTOMATOR_TOKEN (access token)
+AUTOMATOR_USER_KEY_ID (Key ID for generated API Key)
+
+AUTOMATOR_USER_KEY_SECRET (Secret value for generated API Key)
 
 AUTOMATOR_TEST_SUITE_ID (optional) // can be passed into ci as param
 ```

@@ -7,18 +7,28 @@ fi
 
 totalRunTime=0
 maxRunTime=3000
-body="{\"authToken\":\"$AUTOMATOR_TOKEN\",\"testSuiteId\":\"$testSuiteId\"}"
 testResults=''
 
-function GetResults () {
-    local bodyPoll="{\"authToken\":\"$AUTOMATOR_TOKEN\",\"buildId\":$1}"
-    resultResponse=$(curl -s -X POST "https://beta-triggers.deepcrawl.com/poller" -H "Content-Type:application/json" -d $bodyPoll)
-    echo $resultResponse   
+function GetAuthToken() {
+    local bodyMutation="{\"query\":\"mutation{createSessionUsingUserKey(input:{userKeyId:\\\"$AUTOMATOR_USER_KEY_ID\\\",secret:\\\"$AUTOMATOR_USER_KEY_SECRET\\\"}){token}}\"}"
+    resultResponse=$(curl -s -X POST "https://canary-api.deepcrawl.com/" -H "Content-Type:application/json" -d $bodyMutation)
+    authToken=$(echo $resultResponse | jq -r '.data.createSessionUsingUserKey.token')
 }
 
-function WriteResults () {
+function DeleteAuthToken() {
+    local bodyMutation="{\"query\":\"mutation{deleteSession{token}}\"}"
+    resultResponse=$(curl -s -H "X-Auth-Token: $authToken" -X POST "https://canary-api.deepcrawl.com/" -H "Content-Type:application/json" -d $bodyMutation)
+}
+
+function GetResults() {
+    local bodyPoll="{\"authToken\":\"$authToken\",\"buildId\":$1}"
+    resultResponse=$(curl -s -X POST "https://beta-triggers.deepcrawl.com/poller" -H "Content-Type:application/json" -d $bodyPoll)
+    echo $resultResponse
+}
+
+function WriteResults() {
     if [ $(echo "$1" | jq '.passed') == "true" ]; then
-        #have tests passed 
+        #have tests passed
         echo "DeepCrawl Tests Passed"
         exit 0
     else
@@ -28,7 +38,7 @@ function WriteResults () {
     fi
 }
 
-function StartPoll () {
+function StartPoll() {
     testResults="$(GetResults $1)"
     if [ $testResults ]; then
         WriteResults $testResults
@@ -39,9 +49,10 @@ function StartPoll () {
     fi
 }
 
-function StartBuild () {
-    RESPONSE=$(curl -s -X POST "https://beta-triggers.deepcrawl.com/start" -H "Content-Type:application/json" -d $body )
-    resp=`echo $RESPONSE | jq '.buildId'`
+function StartBuild() {
+    local body="{\"authToken\":\"$authToken\",\"testSuiteId\":\"$testSuiteId\"}"
+    RESPONSE=$(curl -s -X POST "https://beta-triggers.deepcrawl.com/start" -H "Content-Type:application/json" -d $body)
+    resp=$(echo $RESPONSE | jq '.buildId')
 
     if [ $? -eq 0 ]; then
         until [[ $testResults && $totalRunTime -lt $maxRunTime ]]; do
@@ -50,4 +61,8 @@ function StartBuild () {
     fi
 }
 
+GetAuthToken
+
 StartBuild
+
+DeleteAuthToken

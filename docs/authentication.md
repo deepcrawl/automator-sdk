@@ -2,11 +2,11 @@
 ---
 ## Regular Auth token
 
-Use the `createAuthToken` mutation to get regular auth token, providing your DeepCrawl username and password. This token will be valid for 30 days.
+Use the `createSessionUsingUsername` mutation to get regular auth token, providing your DeepCrawl username and password. This token will be valid for 30 days.
 
 ```graphql
 mutation {
-  createAuthToken(username: "your-deepcrawl-username", password: "your-deepcrawl-password") {
+  createSessionUsingUsername(username: "your-deepcrawl-username", password: "your-deepcrawl-password") {
     value
   }
 }
@@ -45,3 +45,49 @@ Response:
 }
 ```
 Now you can use `your-long-lasting-auth-token` in the `X-Auth-Token` header.
+
+## User Keys
+
+Instead of using your username and password to get token, you can generate up to two user keys that you can use to authenticate.
+
+You can create the user key using `createUserKey` mutation (You need to be authenticated):
+
+```graphql
+  mutation {
+    createUserKey {
+      id
+      secret
+    }
+  }
+```
+
+`id` and `secret` are important values as you'll be using them to get your `X-Auth-Token` instead of username and password.
+
+!> `createUserKey` mutation is the only place where you can see your `secret`. After that, it'll be not possible to retrieve a full secret value for this key. Please copy it and save somewhere for later use.
+
+You can delete the key using `createUserKey` mutation:
+
+```graphql
+  mutation {
+    deleteUserKey(input: {
+      userKeyId: "<your user key id>"
+    }) {
+      userKey {
+        id
+      }
+    }
+  }
+```
+
+Once you have the user key, you can get your 'X-Auth-Token' unsing `createSessionUsingUserKey`:
+
+```graphql
+  mutation {
+    createSessionUsingUserKey(input: {
+      userKeyId: "<your-user-key-id>",
+      secret: "<your-user-key-secret>"
+    }) {
+      value
+    }
+  }
+```
