@@ -23,6 +23,8 @@ example:
 $: ./ci.ps1 -testSuiteId AUTOMATOR_TEST_SUITE_ID
 $: ./ci.sh AUTOMATOR_TEST_SUITE_ID
 ```
+### Authentication variables
+The authentication variables `AUTOMATOR_USER_KEY_ID` and `AUTOMATOR_USER_KEY_SECRET` can be retrieved from either your [DeepCrawl API settings](https://app.deepcrawl.com/dc-api), or by [generating them in the API](https://deepcrawl.github.io/automator-sdk/#/authentication)
 
 ## CI Platform Usage
 
