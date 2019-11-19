@@ -13,7 +13,7 @@ The following query lists 50 tests:
       tests(first: 50) {
         nodes {
           id
-          threshold
+          relativeThreshold
           severity
           reportTemplate {
             name
@@ -62,12 +62,12 @@ Example:
 mutation {
   updateTest(input: {
     testId: "test-id",
-    threshold: 20,
+    relativeThreshold: 20,
     severity: Warning
   }) {
     test {
       id
-      threshold
+      relativeThreshold
       severity
     }
   }
@@ -113,27 +113,36 @@ Name | Type
 `createdAt` | DateTime!
 `updatedAt` | DateTime!
 `severity` | Severity!
-`threshold` | Int!
+`threshold` | Int! @deprecated
 `reportTemplateCode` | String!
 `id` | ObjectID!
+`rawId` | String!
+`relativeThreshold`: Int | 10
+`absoluteThreshold`: Int | 1
 `reportTemplate` | ReportTemplate!
 
 #### ** Create **
 
 Name | Type | Default
 --- | --- | ---
-`threshold` | Float | 10
+`threshold` | Int | 10
+`relativeThreshold`: Int | 10
+`absoluteThreshold`: Int | 1
 `severity` | Severity | "Fail"
 `testSuiteId` | ObjectID!
 `reportTemplateCode` | String!
+`thresholdType`: ThresholdType | "Relative"
 
 #### ** Update **
 
 Name | Type
 --- | ---
-`threshold` | Float
+`threshold` | Int | 10
+`relativeThreshold`: Int | 10
+`absoluteThreshold`: Int | 1
 `severity` | Severity
 `testId` | ObjectID!
+`thresholdType`: ThresholdType | "Relative"
 
 <!-- tabs:end -->
 
