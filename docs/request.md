@@ -4,7 +4,7 @@
 
 Our GraphQL uses single endpoint:
 ```
-https://canary-api.deepcrawl.com/
+https://graph.deepcrawl.com/
 ```
 
 ## Request method
