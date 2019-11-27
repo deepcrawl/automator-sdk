@@ -1,5 +1,6 @@
 #!/bin/bash
 testSuiteId=${1:-$AUTOMATOR_TEST_SUITE_ID}
+startOnly=${2:-$AUTOMATOR_START_ONLY}
 
 if [ -z $testSuiteId ]; then
     exit "No TestSuite Id Set"
@@ -53,6 +54,11 @@ function StartBuild() {
     local body="{\"authToken\":\"$authToken\",\"testSuiteId\":\"$testSuiteId\"}"
     RESPONSE=$(curl -s -X POST "https://beta-triggers.deepcrawl.com/start" -H "Content-Type:application/json" -d $body)
     resp=$(echo $RESPONSE | jq '.buildId')
+
+    if [ "$startOnly" = "true" ] || [ "$startOnly" = "1" ]; then
+        echo "DeepCrawl Skipped Polling"
+        exit 0
+    fi
 
     if [ $? -eq 0 ]; then
         until [[ $testResults && $totalRunTime -lt $maxRunTime ]]; do

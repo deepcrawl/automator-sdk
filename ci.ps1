@@ -1,4 +1,7 @@
-param( [string]$testSuiteId = $env:AUTOMATOR_TEST_SUITE_ID )
+param( 
+    [string]$testSuiteId = $env:AUTOMATOR_TEST_SUITE_ID,
+    [string]$startOnly = $env:AUTOMATOR_START_ONLY
+)
 
 $secret = $env:AUTOMATOR_USER_KEY_SECRET
 $key_id = $env:AUTOMATOR_USER_KEY_ID
@@ -121,6 +124,11 @@ function Start-Build {
 
     $triggerResponse = Invoke-RestMethod @params;
     Write-Output $triggerResponse;
+
+    if (($startOnly -eq $true) -or ($startOnly -eq 1)) {
+        Write-Output "DeepCrawl Skipped Polling"
+        exit 0
+    }
 
     while ( ($null -eq $testResults) -and (Get-Timeout) ) {
         #poll server

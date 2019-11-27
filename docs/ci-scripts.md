@@ -14,6 +14,8 @@ AUTOMATOR_USER_KEY_ID (Key ID for generated API Key)
 AUTOMATOR_USER_KEY_SECRET (Secret value for generated API Key)
 
 AUTOMATOR_TEST_SUITE_ID (optional) // can be passed into ci as param
+
+AUTOMATOR_START_ONLY (optional, set to `1` or `true` to run Automator without blocking a build)
 ```
 
 example:
@@ -71,16 +73,11 @@ steps:
 
 Run either script with the correct environment variables. This should start the test suite build and poll for results.
 
-### Preventing Automator from delaying or blocking builds
-Crawling a test environment can take several minutes depending on the configured speed and number of URLs. During your initial usage of Automator, you may not want Automator to delay your builds, or have the ability to block a deployment.
-In this case, you can configure the shell script to have a "start only" behaviour. 
+## Using Automator scripts without blocking builds
 
-Under this strategy, the bash script will start a crawl of the environment then immediate return a passed status. The crawl will continue in the background and will send a notification of the test results on completion.
+From time to time, you may want to use Automator without letting your CI system wait for the crawl to complete, or allowing the script impact whether your build succeeds. In this case, you can add the `AUTOMATOR_START_ONLY` environment variable set to `true` or `1`. You can also pass the value as a second script argument after test suite ID. This flag modifies the behaviour of the script to start a test suite test, then return without polling for a result.
 
-Native support for a "start only" mode is coming to the shell scripts soon. To achieve this in the meantime, you should modify the shell script to exit with a `0` status immediately after making the 'Start Build' request.
-For instance,
-- in [`ci.sh`](https://github.com/deepcrawl/automator-sdk/blob/master/ci.sh), add `exit 0` before the `until` loop in the `StartBuild` function
-- in [`ci.ps`](https://github.com/deepcrawl/automator-sdk/blob/master/ci.ps), add `exit 0` before the `while` loop in the `Start-Build` function
+In this case Automator will send an email or other notification about the status of your tests, and the test results will be available in the automator app.
 
 ## Debugging
 
