@@ -14,6 +14,8 @@ AUTOMATOR_USER_KEY_ID (Key ID for generated API Key)
 AUTOMATOR_USER_KEY_SECRET (Secret value for generated API Key)
 
 AUTOMATOR_TEST_SUITE_ID (optional) // can be passed into ci as param
+
+AUTOMATOR_START_ONLY (optional, set to `1` or `true` to run Automator without blocking a build)
 ```
 
 example:
