@@ -12,13 +12,13 @@ testResults=''
 
 function GetAuthToken() {
     local bodyMutation="{\"query\":\"mutation{createSessionUsingUserKey(input:{userKeyId:\\\"$AUTOMATOR_USER_KEY_ID\\\",secret:\\\"$AUTOMATOR_USER_KEY_SECRET\\\"}){token}}\"}"
-    resultResponse=$(curl -s -X POST "https://canary-api.deepcrawl.com/" -H "Content-Type:application/json" -d $bodyMutation)
+    resultResponse=$(curl -s -X POST "https://graph.deepcrawl.com/" -H "Content-Type:application/json" -d $bodyMutation)
     authToken=$(echo $resultResponse | jq -r '.data.createSessionUsingUserKey.token')
 }
 
 function DeleteAuthToken() {
     local bodyMutation="{\"query\":\"mutation{deleteSession{token}}\"}"
-    resultResponse=$(curl -s -H "X-Auth-Token: $authToken" -X POST "https://canary-api.deepcrawl.com/" -H "Content-Type:application/json" -d $bodyMutation)
+    resultResponse=$(curl -s -H "X-Auth-Token: $authToken" -X POST "https://graph.deepcrawl.com/" -H "Content-Type:application/json" -d $bodyMutation)
 }
 
 function GetResults() {
