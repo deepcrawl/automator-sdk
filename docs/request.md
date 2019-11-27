@@ -4,7 +4,7 @@
 
 Our GraphQL uses single endpoint:
 ```
-https://canary-api.deepcrawl.com/
+https://graph.deepcrawl.com/
 ```
 
 ## Request method
@@ -29,7 +29,7 @@ curl -H 'Content-Type: application/json' \
   -H "Accept: application/vnd.deepcrawl.meridian-preview" \
   -X POST \
   -d '{ "query":"{ me { username }}"}' \
-  https://canary-api.deepcrawl.com/
+  https://graph.deepcrawl.com/
 ```
 
 Response will come in JSON format: 

@@ -10,7 +10,7 @@ Write-Output $testSuiteId
 
 function Get-Auth-Token {
     $params = @{
-        Uri         = "https://canary-api.deepcrawl.com/"
+        Uri         = "https://graph.deepcrawl.com/"
         Method      = 'Post'
         Body        = (@{"query" = "mutation { createSessionUsingUserKey(input: {userKeyId:`"$($key_id)`", secret:`"$($secret)`"}) { token }}"} | ConvertTo-Json)
         ContentType = "application/json"
@@ -22,7 +22,7 @@ function Get-Auth-Token {
 
 function Delete-Auth-Token {
     $params = @{
-        Uri         = "https://canary-api.deepcrawl.com/"
+        Uri         = "https://graph.deepcrawl.com/"
         Method      = 'Post'
         Body        = (@{"query" = "mutation { deleteSession { token }}"} | ConvertTo-Json)
         ContentType = "application/json"
