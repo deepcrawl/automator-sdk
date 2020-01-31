@@ -2,11 +2,11 @@
 
 ## Create a URL file upload
 
-To create a URL file upload, use the `createUrlFileUpload` [graphql multipart request](https://github.com/jaydenseric/graphql-multipart-request-spec).
+To create a URL file upload, use the `createUrlFileUpload` mutation in [graphql multipart request](https://github.com/jaydenseric/graphql-multipart-request-spec#single-file).
 
 Example curl request:
 ```bash
-curl https://graph.dev.deepcrawl.com/graphql \
+curl https://graph.deepcrawl.com/graphql \
   -H 'X-Auth-Token: <auth token>' \
   -H 'Accept: */*, application/vnd.deepcrawl.meridian-preview' \
   -F operations='{ "query": "mutation ($file: Upload) { createUrlFileUpload(file: $file, input: { crawlType: List, testSuiteId: \"test-suite-id\" }) { urlFileUpload { fileName } } }", "variables": { "file": null } }' \
