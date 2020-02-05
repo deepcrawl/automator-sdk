@@ -20,7 +20,9 @@ mutation {
   }
 }
 ```
-The `Upload` scalar type represents a file upload. `crawlType` and `testSuiteId` are the only required fields. For the full list of available fields see [List of available URL file upload fields](url-file-uploads?id=list-of-available-url-file-upload-fields) section.
+The `Upload` scalar type represents a file upload. `crawlType` and `testSuiteId` are the only required fields. For the full list of available fields see [List of available URL file upload fields](url-file-uploads?id=list-of-available-url-file-upload-fields) section. 
+
+It may take a while to process a url file upload. The `status` field shows the current status of a url file upload. For the list of available upload statuses see [Available URL file upload statuses](url-file-uploads?available-url-file-upload-statuses)
 
 ## Update a URL file upload
 
@@ -57,6 +59,14 @@ mutation {
   }
 }
 ```
+
+## Available URL file upload statuses
+
+Name | Description
+`draft` | // Alek, any idea what about description for this?
+`processing` | File upload is on progress.
+`processed` | File upload is completed.
+`errored` | File upload couldn't complete due to the error.
 
 ## List of available URL file upload fields
 
