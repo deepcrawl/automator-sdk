@@ -4,7 +4,7 @@
 
 To create a URL file upload, use the `createUrlFileUpload` mutation in [graphql multipart request](https://github.com/jaydenseric/graphql-multipart-request-spec#single-file).
 
-```Example curl request:
+Example curl request:
 ```bash
 curl https://graph.deepcrawl.com/graphql \
   -H 'X-Auth-Token: <auth token>' \
