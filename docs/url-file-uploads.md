@@ -2,25 +2,18 @@
 
 ## Create a URL file upload
 
-To create a URL file upload, use the `CreateUrlFileUploadPayload` mutation.
+To create a URL file upload, use the `createUrlFileUpload` mutation in [graphql multipart request](https://github.com/jaydenseric/graphql-multipart-request-spec#single-file).
 
-Example mutation:
-```graphql
-mutation {
-  CreateUrlFileUploadPayload(
-    file: Upload,
-    input: {
-      crawlType: "list-crawl-type",
-      testSuiteId: "test-suite-id",
-      uploadBaseDomain: "http://test.com"
-    }) {
-      urlFileUpload {
-        fileName
-      }
-  }
-}
+Example curl request:
+```bash
+curl https://graph.deepcrawl.com/graphql \
+  -H 'X-Auth-Token: <auth token>' \
+  -H 'Accept: */*, application/vnd.deepcrawl.meridian-preview' \
+  -F operations='{ "query": "mutation ($file: Upload) { createUrlFileUpload(file: $file, input: { crawlType: List, testSuiteId: \"test-suite-id\" }) { urlFileUpload { fileName } } }", "variables": { "file": null } }' \
+  -F map='{ "0": ["variables.file"] }' \
+  -F 0=@url-list-file.csv
 ```
-The `Upload` scalar type represents a file upload. `crawlType` and `testSuiteId` are the only required fields. For the full list of available fields see [List of available URL file upload fields](url-file-uploads?id=list-of-available-url-file-upload-fields) section.
+The `Upload` scalar type represents a file upload. The `crawlType`, `file` and `testSuiteId` are the only required fields. For the full list of available fields see [List of available URL file upload input fields](url-file-uploads?id=list-of-available-url-file-upload-input-fields) section.
 
 ## Update a URL file upload
 
@@ -58,7 +51,7 @@ mutation {
 }
 ```
 
-## List of available URL file upload fields
+## List of available URL file upload input fields
 
 <!-- tabs:start -->
 
