@@ -8,7 +8,9 @@ Automator is a platform for ensuring that deployments are not causing SEO regres
 Users can define specific tests, thresholds, and severity of regressions in the Automator app, as well as view test results or set notification preferences. 
 
 ## Connecting Automator to your CI pipeline
-Automator can be connected to all popular CI or CD platforms by adding a shell script to your pipeline after the deployment is complete. 
+Automator can be connected to all popular CI or CD platforms by adding a shell script to your pipeline after the deployment is complete.
+
+It is required to install `jq` to run the shell scripts. [Download jq here.](https://stedolan.github.io/jq/download/)
 
 Our sample shell scripts are available in this repository in a range of languages ([`ci.sh`](ci.sh) and [`ci.ps`](ci.ps)), and require both API credentials from your DeepCrawl account, and the test suite ID from Automator. 
 [Find full information about using these shell scripts in our documentation.](https://deepcrawl.github.io/automator-sdk/#/ci-scripts)
