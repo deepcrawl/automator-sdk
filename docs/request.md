@@ -16,7 +16,7 @@ When interacting with our API, send all requests to a single endpoint using the 
 There are 3 required request headers to interact with our API:
 
   - `X-Auth-Token: "<your token>"` - token that you get from the [createAuthToken](/authentication?id=regular-auth-token) mutation (this is the only mutation that does not require authentication).
-  - `Accept: "application/vnd.deepcrawl.meridian-preview"` - as Automator is currently in beta, this header is required to access resources.
+  - `Accept: "application/vnd.deepcrawl.meridian-preview"` - This header is required to access automator resources.
   - `Content-Type: application/json`
 
 ## Example request
