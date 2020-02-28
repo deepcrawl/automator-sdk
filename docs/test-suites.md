@@ -257,9 +257,3 @@ Name | Type
 `useRobotsOverwrite` | Boolean
 
 <!-- tabs:end -->
-
-## Uploading a list file (via old API)
-
-Coming soon!
-
-<!-- TODO: Do we need this? -->
