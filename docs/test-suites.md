@@ -109,6 +109,27 @@ mutation {
 
 !> Deleting a test suite will also delete all the related builds and test results.
 
+## Cloning a test suite
+
+To clone a test suite, use the `cloneTestSuite` mutation.
+
+Example mutation:
+```graphql
+mutation {
+  cloneTestSuite(input: {
+    testSuiteId: "test-suite-id"
+  }) {
+    testSuite {
+      # Cloned test suite fields to be returned
+      id
+    }
+  }
+}
+
+All settings and tests will be cloned into a new test suite with the name: 'Copy of <original test suite name>'.
+
+!> File uploads won't be copied into a new test suite.
+
 ## List of available test suite fields
 
 <!-- tabs:start -->
