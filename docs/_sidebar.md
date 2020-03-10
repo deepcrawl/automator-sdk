@@ -9,6 +9,7 @@
   - [Builds](builds.md)
   - [Test Results](test-results.md)
   - [URL File Upload](url-file-uploads.md)
+  - [Slack Webhooks](slack-webhooks.md)
   - [FAQ](faq.md)
 
 - CI Scripts
