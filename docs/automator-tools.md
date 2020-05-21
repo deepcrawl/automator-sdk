@@ -59,8 +59,8 @@ If build is still running the response HTTP status will be `202` and the body wi
 If build has finished running the response HTTP status will be `200` and the example body will look like this:
 ```json
 {
-  id: "YourBuildId",
-  status: "Finished",
-  passed: true
+  "id": "YourBuildId",
+  "status": "Finished",
+  "passed:: true
 }
 ```
