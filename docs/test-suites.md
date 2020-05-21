@@ -142,6 +142,7 @@ Name | Type
 `crawlRate` | Float!
 `createdAt` | DateTime!
 `customDns` | [CustomDnsSetting!]
+`customExtractions` | [CustomExtractionSetting!] |
 `customHeaderUserAgent` | String
 `customHeaderUserAgentShort` | String
 `duplicatePrecision` | Float!
@@ -194,6 +195,7 @@ Name | Type | Default
 `crawlRate` | Float | 3
 `crawlTypes` | [TestSuiteCrawlType!] | [ "Web" ]
 `customDns` | [CustomDnsSettingInput!] |
+`customExtractions` | [CustomExtractionSettingInput!] |
 `customHeaderUserAgent` | String |
 `customHeaderUserAgentShort` | String |
 `duplicatePrecision` | Int | 3
@@ -241,6 +243,7 @@ Name | Type
 `alertEmails` | [String!]
 `crawlRate` | Float
 `customDns` | [CustomDnsSettingInput!]
+`customExtractions` | [CustomExtractionSettingInput!] |
 `customHeaderUserAgent` | String
 `customHeaderUserAgentShort` | String
 `duplicatePrecision` | Int
