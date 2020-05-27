@@ -113,21 +113,21 @@ Name | Type
 `createdAt` | DateTime!
 `updatedAt` | DateTime!
 `severity` | Severity!
-`threshold` | Int! @deprecated
 `reportTemplateCode` | String!
 `id` | ObjectID!
 `rawId` | String!
 `relativeThreshold`: Int | 10
 `absoluteThreshold`: Int | 1
+`thresholdPredicate`: ThresholdPredicate!
 `reportTemplate` | ReportTemplate!
 
 #### ** Create **
 
 Name | Type | Default
 --- | --- | ---
-`threshold` | Int | 10
 `relativeThreshold`: Int | 10
 `absoluteThreshold`: Int | 1
+`thresholdPredicate`: ThresholdPredicate | "GreaterThanOrEqual"
 `severity` | Severity | "Fail"
 `testSuiteId` | ObjectID!
 `reportTemplateCode` | String!
@@ -137,9 +137,9 @@ Name | Type | Default
 
 Name | Type
 --- | ---
-`threshold` | Int | 10
 `relativeThreshold`: Int | 10
 `absoluteThreshold`: Int | 1
+`thresholdPredicate`: ThresholdPredicate
 `severity` | Severity
 `testId` | ObjectID!
 `thresholdType`: ThresholdType | "Relative"
