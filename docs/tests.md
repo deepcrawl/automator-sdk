@@ -119,6 +119,7 @@ Name | Type
 `relativeThreshold` | Int
 `absoluteThreshold` | Int
 `thresholdPredicate` | ThresholdPredicate!
+`thresholdType` | ThresholdType!
 `reportTemplate` | ReportTemplate!
 
 #### ** Create **
