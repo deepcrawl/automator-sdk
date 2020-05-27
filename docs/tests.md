@@ -116,18 +116,18 @@ Name | Type
 `reportTemplateCode` | String!
 `id` | ObjectID!
 `rawId` | String!
-`relativeThreshold`: Int | 10
-`absoluteThreshold`: Int | 1
-`thresholdPredicate`: ThresholdPredicate!
+`relativeThreshold` | Int
+`absoluteThreshold` | Int
+`thresholdPredicate` | ThresholdPredicate!
 `reportTemplate` | ReportTemplate!
 
 #### ** Create **
 
 Name | Type | Default
 --- | --- | ---
-`relativeThreshold`: Int | 10
-`absoluteThreshold`: Int | 1
-`thresholdPredicate`: ThresholdPredicate | "GreaterThanOrEqual"
+`relativeThreshold` | Int | 10
+`absoluteThreshold` | Int | 1
+`thresholdPredicate` | ThresholdPredicate | "GreaterThanOrEqual"
 `severity` | Severity | "Fail"
 `testSuiteId` | ObjectID!
 `reportTemplateCode` | String!
@@ -137,18 +137,18 @@ Name | Type | Default
 
 Name | Type
 --- | ---
-`relativeThreshold`: Int | 10
-`absoluteThreshold`: Int | 1
-`thresholdPredicate`: ThresholdPredicate
+`relativeThreshold` | Int
+`absoluteThreshold` | Int
+`thresholdPredicate` | ThresholdPredicate
 `severity` | Severity
 `testId` | ObjectID!
-`thresholdType`: ThresholdType | "Relative"
+`thresholdType`: ThresholdType
 
 <!-- tabs:end -->
 
 ### Report Template Codes
 
-Code | Name | Description 
+Code | Name | Description
 --- | --- | ---
 `4xx_errors` | Broken Pages (4xx Errors) | All HTML pages which return a 200 HTTP code in the response header.
 `5xx_errors` | 5xx Errors | URLs that return any 5xx Server Error HTTP status code, such as a 503, often caused by a temporary server performance problem or a permanent issue.
