@@ -131,7 +131,7 @@ Name | Type | Default
 `severity` | Severity | "Fail"
 `testSuiteId` | ObjectID!
 `reportTemplateCode` | String!
-`thresholdType`: ThresholdType | "Relative"
+`thresholdType` | ThresholdType | "Relative"
 
 #### ** Update **
 
@@ -142,7 +142,7 @@ Name | Type
 `thresholdPredicate` | ThresholdPredicate
 `severity` | Severity
 `testId` | ObjectID!
-`thresholdType`: ThresholdType
+`thresholdType` | ThresholdType
 
 <!-- tabs:end -->
 
