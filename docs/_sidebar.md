@@ -15,3 +15,4 @@
 - CI Scripts
   
   - [Overview](/ci-scripts.md)
+  - [Tools API](/automator-tools.md)
