@@ -12,7 +12,7 @@ Automator can be connected to all popular CI or CD platforms by adding a shell s
 
 It is required to install `jq` to run the shell scripts. [Download jq here.](https://stedolan.github.io/jq/download/)
 
-Our sample shell scripts are available in this repository in a range of languages ([`ci.sh`](ci.sh) and [`ci.ps`](ci.ps)), and require both API credentials from your DeepCrawl account, and the test suite ID from Automator. 
+Our sample shell scripts are available in this repository in a range of languages ([`ci.sh`](ci.sh) and [`ci.ps1`](ci.ps1)), and require both API credentials from your DeepCrawl account, and the test suite ID from Automator. 
 [Find full information about using these shell scripts in our documentation.](https://deepcrawl.github.io/automator-sdk/#/ci-scripts)
 
 ### Preventing Automator from delaying or blocking builds
