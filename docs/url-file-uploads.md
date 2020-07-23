@@ -15,6 +15,8 @@ curl https://graph.deepcrawl.com/graphql \
 ```
 The `Upload` scalar type represents a file upload. The `crawlType`, `file` and `testSuiteId` are the only required fields. For the full list of available fields see [List of available URL file upload input fields](url-file-uploads?id=list-of-available-url-file-upload-input-fields) section.
 
+It may take a while to process a url file upload. The `status` field shows the current status of a url file upload. For the list of available upload statuses see [Available URL file upload statuses](url-file-uploads?available-url-file-upload-statuses)
+
 ## Update a URL file upload
 
 To update a URL file upload, use the `updateUrlFileUpload` mutation.
@@ -50,6 +52,15 @@ mutation {
   }
 }
 ```
+
+## Available URL file upload statuses
+
+Name | Description
+--- | ---
+`draft` | File upload has been created, but is not processing yet
+`processing` | File upload is in progress.
+`processed` | File upload is completed.
+`errored` | File upload couldn't complete due to the error.
 
 ## List of available URL file upload input fields
 

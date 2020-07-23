@@ -109,6 +109,27 @@ mutation {
 
 !> Deleting a test suite will also delete all the related builds and test results.
 
+## Cloning a test suite
+
+To clone a test suite, use the `cloneTestSuite` mutation.
+
+Example mutation:
+```graphql
+mutation {
+  cloneTestSuite(input: {
+    testSuiteId: "test-suite-id"
+  }) {
+    testSuite {
+      # Cloned test suite fields to be returned
+      id
+    }
+  }
+}
+
+All settings and tests will be cloned into a new test suite with the name: 'Copy of <original test suite name>'.
+
+!> File uploads won't be copied into a new test suite.
+
 ## List of available test suite fields
 
 <!-- tabs:start -->
@@ -121,6 +142,7 @@ Name | Type
 `crawlRate` | Float!
 `createdAt` | DateTime!
 `customDns` | [CustomDnsSetting!]
+`customExtractions` | [CustomExtractionSetting!] |
 `customHeaderUserAgent` | String
 `customHeaderUserAgentShort` | String
 `duplicatePrecision` | Float!
@@ -173,6 +195,7 @@ Name | Type | Default
 `crawlRate` | Float | 3
 `crawlTypes` | [TestSuiteCrawlType!] | [ "Web" ]
 `customDns` | [CustomDnsSettingInput!] |
+`customExtractions` | [CustomExtractionSettingInput!] |
 `customHeaderUserAgent` | String |
 `customHeaderUserAgentShort` | String |
 `duplicatePrecision` | Int | 3
@@ -220,6 +243,7 @@ Name | Type
 `alertEmails` | [String!]
 `crawlRate` | Float
 `customDns` | [CustomDnsSettingInput!]
+`customExtractions` | [CustomExtractionSettingInput!] |
 `customHeaderUserAgent` | String
 `customHeaderUserAgentShort` | String
 `duplicatePrecision` | Int
@@ -257,9 +281,3 @@ Name | Type
 `useRobotsOverwrite` | Boolean
 
 <!-- tabs:end -->
-
-## Uploading a list file (via old API)
-
-Coming soon!
-
-<!-- TODO: Do we need this? -->

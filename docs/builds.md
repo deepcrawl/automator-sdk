@@ -43,14 +43,14 @@ A common query is finding the latest build in a Test Suite, for instance to chec
 }
 ```
 
-## Creating a build
+## Creating and running a build
 
-To create a new build, use the `createBuild` mutation.
+To create and run a new build, use the `createAndRunBuild` mutation.
 
 Example mutation:
 ```graphql
 mutation {
-  createBuild(input: {
+  createAndRunBuild(input: {
     testSuiteId: "test-suite-id",
     ciBuildId: "custom-build-id"
   }) {
@@ -64,28 +64,6 @@ mutation {
 }
 ```
 `testSuiteId` is the only required field. `ciBuildId` is an optional string that you can set to identify your CI build. These are the only two parameters available during build creation.
-
-## Running a build
-
-A created Build will have `Queued` status and won't have a crawl run yet. To kick off a build, you need to use `runBuild` mutation.
-
-Example: 
-
-```graphql
-mutation {
-  runBuild(input: {
-    buildId: "build-id"
-  }) {
-    build {
-      # Run build fields to be returned
-      id
-      createdAt
-      updatedAt
-      status
-    }
-  }
-}
-```
 
 !> Build status may be still `Queued` immediately after running the mutation. It will change to `Running` after DeepCrawl starts crawling your website.
 

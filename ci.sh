@@ -23,7 +23,7 @@ function DeleteAuthToken() {
 
 function GetResults() {
     local bodyPoll="{\"authToken\":\"$authToken\",\"buildId\":$1}"
-    resultResponse=$(curl -s -X POST "https://beta-triggers.deepcrawl.com/poller" -H "Content-Type:application/json" -d $bodyPoll)
+    resultResponse=$(curl -s -X POST "https://tools.automator.deepcrawl.com/poller" -H "Content-Type:application/json" -d $bodyPoll)
     echo $resultResponse
 }
 
@@ -52,7 +52,7 @@ function StartPoll() {
 
 function StartBuild() {
     local body="{\"authToken\":\"$authToken\",\"testSuiteId\":\"$testSuiteId\"}"
-    RESPONSE=$(curl -s -X POST "https://beta-triggers.deepcrawl.com/start" -H "Content-Type:application/json" -d $body)
+    RESPONSE=$(curl -s -X POST "https://tools.automator.deepcrawl.com/start" -H "Content-Type:application/json" -d $body)
     resp=$(echo $RESPONSE | jq '.buildId')
 
     if [ "$startOnly" = "true" ] || [ "$startOnly" = "1" ]; then

@@ -6,8 +6,13 @@ Use the `createSessionUsingUsername` mutation to get regular auth token, providi
 
 ```graphql
 mutation {
-  createSessionUsingUsername(username: "your-deepcrawl-username", password: "your-deepcrawl-password") {
-    value
+  createSessionUsingUsername(
+    input: {
+      username: "your-deepcrawl-username",
+      password: "your-deepcrawl-password"
+    }
+  ) {
+    token
   }
 }
 ```
@@ -16,8 +21,8 @@ Response:
 ```json
 {
   "data": {
-    "createAuthToken": {
-      "value": "your-auth-token"
+    "createSessionUsingUsername": {
+      "token": "your-auth-token"
     }
   }
 }
@@ -38,7 +43,7 @@ Response:
 ```json
 {
   "data": {
-    "createAuthToken": {
+    "createAutomatorAuthToken": {
       "value": "your-long-lasting-auth-token"
     }
   }
@@ -53,12 +58,12 @@ Instead of using your username and password to get token, you can generate up to
 You can create the user key using `createUserKey` mutation (You need to be authenticated):
 
 ```graphql
-  mutation {
-    createUserKey {
-      id
-      secret
-    }
+mutation {
+  createUserKey {
+    id
+    secret
   }
+}
 ```
 
 `id` and `secret` are important values as you'll be using them to get your `X-Auth-Token` instead of username and password.
@@ -68,26 +73,28 @@ You can create the user key using `createUserKey` mutation (You need to be authe
 You can delete the key using `createUserKey` mutation:
 
 ```graphql
-  mutation {
-    deleteUserKey(input: {
-      userKeyId: "<your user key id>"
-    }) {
-      userKey {
-        id
-      }
+mutation {
+  deleteUserKey(input: {
+    userKeyId: "<your user key id>"
+  }) {
+    userKey {
+      id
     }
   }
+}
 ```
 
 Once you have the user key, you can get your 'X-Auth-Token' unsing `createSessionUsingUserKey`:
 
 ```graphql
-  mutation {
-    createSessionUsingUserKey(input: {
+mutation {
+  createSessionUsingUserKey(
+    input: {
       userKeyId: "<your-user-key-id>",
       secret: "<your-user-key-secret>"
-    }) {
-      value
     }
+  ) {
+    token
   }
+}
 ```

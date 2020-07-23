@@ -91,7 +91,7 @@ function Write-Results {
 
 function Start-Poll {
     Param($BuildId)
-    $testResults = Get-Results -Uri "https://beta-triggers.deepcrawl.com/poller" -BuildId $BuildId
+    $testResults = Get-Results -Uri "https://tools.automator.deepcrawl.com/poller" -BuildId $BuildId
     if ( [bool]($testResults.PSobject.Properties.name -match "passed")) {
         #do results contain the passed prop
         Write-Results($testResults)
@@ -115,7 +115,7 @@ function Get-Timeout() {
 function Start-Build {
 
     $params = @{
-        Uri         = "https://beta-triggers.deepcrawl.com/start"
+        Uri         = "https://tools.automator.deepcrawl.com/start"
         Method      = 'Post'
         Body        = ($body | ConvertTo-Json)
         ContentType = "application/json"
