@@ -1,6 +1,7 @@
 #!/bin/bash
 testSuiteId=${1:-$AUTOMATOR_TEST_SUITE_ID}
 startOnly=${2:-$AUTOMATOR_START_ONLY}
+ciBuildId=${3:-$CI_BUILD_ID}
 
 if [ -z $testSuiteId ]; then
     exit "No TestSuite Id Set"
@@ -51,7 +52,7 @@ function StartPoll() {
 }
 
 function StartBuild() {
-    local body="{\"authToken\":\"$authToken\",\"testSuiteId\":\"$testSuiteId\"}"
+    local body="{\"authToken\":\"$authToken\",\"testSuiteId\":\"$testSuiteId\",\"ciBuildId\":\"$ciBuildId\"}"
     RESPONSE=$(curl -s -X POST "https://tools.automator.deepcrawl.com/start" -H "Content-Type:application/json" -d $body)
     resp=$(echo $RESPONSE | jq '.buildId')
 
