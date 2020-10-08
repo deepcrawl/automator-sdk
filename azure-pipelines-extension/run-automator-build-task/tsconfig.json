@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "target": "es2016",
+    "moduleResolution": "node",
+    "module": "commonjs",
+    "outDir": "dist"
+  },
+  "include": ["src"]
+}
