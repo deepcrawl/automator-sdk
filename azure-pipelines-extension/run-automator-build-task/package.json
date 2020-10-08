@@ -4,15 +4,21 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "tsc",
+    "doit": "node ./dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/axios": "^0.14.0",
+    "tfx-cli": "^0.8.3",
     "typescript": "^4.0.3"
   },
   "dependencies": {
-    "axios": "^0.20.0"
+    "@apollo/client": "^3.2.2",
+    "axios": "^0.20.0",
+    "graphql": "^15.3.0",
+    "node-fetch": "^2.6.1"
   }
 }

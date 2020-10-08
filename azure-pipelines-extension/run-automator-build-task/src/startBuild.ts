@@ -19,10 +19,9 @@ export async function startBuild(
       body: JSON.stringify(body)
     };
     const triggerResponse = await restRequest<{ buildId: string }>(params);
-
-    startPoll(triggerResponse.data.buildId, token, 0);
+    await startPoll(triggerResponse.data.buildId, token, 0);
   } catch (e) {
-    console.warn(e);
+    console.warn(e.response.data);
     process.exit(1);
   }
 }

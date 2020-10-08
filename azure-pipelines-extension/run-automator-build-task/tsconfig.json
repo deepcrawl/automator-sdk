@@ -3,7 +3,8 @@
     "target": "es2016",
     "moduleResolution": "node",
     "module": "commonjs",
-    "outDir": "dist"
+    "outDir": "dist",
+    "allowSyntheticDefaultImports": true
   },
   "include": ["src"]
 }
