@@ -1,11 +1,7 @@
 import { getAuthToken } from "./getAuthToken";
 import { startBuild } from "./startBuild";
 
-export async function runTask() {
-  const testSuiteId = process.env.AUTOMATOR_TEST_SUITE_ID || "";
-  const userKeyId = process.env.AUTOMATOR_USER_KEY_ID || "";
-  const userKeySecret = process.env.AUTOMATOR_USER_KEY_SECRET || "";
-
+export async function runTask(userKeyId: string, userKeySecret: string, testSuiteId: string) {
   if (!userKeyId) {
     console.error("no AUTOMATOR_USER_KEY_ID set!");
     process.exit(1);
@@ -27,5 +23,7 @@ export async function runTask() {
   } catch (e) {
     console.warn(e);
     process.exit(1);
+  } finally {
+    // Remove auth token
   }
 }

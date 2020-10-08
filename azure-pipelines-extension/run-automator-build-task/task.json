@@ -8,19 +8,19 @@
   "category": "Utility",
   "author": "Deepcrawl",
   "version": {
-      "Major": 0,
-      "Minor": 1,
-      "Patch": 4
+      "Major": 1,
+      "Minor": 0,
+      "Patch": 7
   },
   "instanceNameFormat": "Running Automator Build for Test Suite with ID #$(testSuiteId)",
   "inputs": [
       {
-          "name": "testSuiteId",
-          "type": "string",
-          "label": "Test Suite ID",
-          "defaultValue": "",
-          "required": true,
-          "helpMarkDown": "Test Suite ID"
+        "name": "testSuiteId",
+        "type": "string",
+        "label": "Test Suite ID",
+        "defaultValue": "",
+        "required": true,
+        "helpMarkDown": "Test Suite ID"
       },
       {
         "name": "startOnly",
