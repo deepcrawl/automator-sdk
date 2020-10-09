@@ -10,7 +10,7 @@ interface IRunTaskOptions {
 
 export async function runTask({ userKeyId, userKeySecret, testSuiteId, startOnly }: IRunTaskOptions) {
   if (!userKeyId || !userKeySecret || !testSuiteId) {
-    console.error("The following inputs need to be set: userKeyId / userKeySecret / testSuiteId")
+    console.error("The following inputs need to be set: userKeyId / userKeySecret / testSuiteId");
     process.exit(1);
   }
   try {

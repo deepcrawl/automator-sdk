@@ -1,4 +1,4 @@
-import { runTask } from "./ci"
+import { runTask } from "./ci";
 import tl = require("azure-pipelines-task-lib/task");
 
 const userKeyId = tl.getInput("userKeyId", true);

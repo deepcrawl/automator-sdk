@@ -2,16 +2,8 @@ import { getResults } from "./getResults";
 import { hasTimedOut } from "./helpers/hasTimedOut";
 import { writeResults } from "./writeResults";
 
-export async function startPoll(
-  BuildId: string,
-  token: string,
-  runTime: number
-): Promise<void> {
-  const testResults = await getResults(
-    "https://tools.automator.staging.deepcrawl.com/poller",
-    BuildId,
-    token
-  );
+export async function startPoll(BuildId: string, token: string, runTime: number): Promise<void> {
+  const testResults = await getResults("https://tools.automator.staging.deepcrawl.com/poller", BuildId, token);
   if (testResults && testResults.status === 200) {
     writeResults(testResults.data);
   } else {

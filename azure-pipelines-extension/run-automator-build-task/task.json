@@ -8,48 +8,48 @@
   "category": "Utility",
   "author": "Deepcrawl",
   "version": {
-      "Major": 1,
-      "Minor": 0,
-      "Patch": 7
+    "Major": 1,
+    "Minor": 0,
+    "Patch": 7
   },
   "instanceNameFormat": "Running Automator Build for Test Suite with ID #$(testSuiteId)",
   "inputs": [
-      {
-        "name": "testSuiteId",
-        "type": "string",
-        "label": "Test Suite ID",
-        "defaultValue": "",
-        "required": true,
-        "helpMarkDown": "Test Suite ID"
-      },
-      {
-        "name": "startOnly",
-        "type": "boolean",
-        "label": "Start Only",
-        "defaultValue": false,
-        "required": false,
-        "helpMarkDown": "Start Only"
-      },
-      {
-        "name": "userKeyId",
-        "type": "string",
-        "label": "User Key ID",
-        "defaultValue": "",
-        "required": true,
-        "helpMarkDown": "User Key ID"
-      },
-      {
-        "name": "userKeySecret",
-        "type": "string",
-        "label": "User Key Secret",
-        "defaultValue": "",
-        "required": true,
-        "helpMarkDown": "User Key Secret"
-      }
+    {
+      "name": "testSuiteId",
+      "type": "string",
+      "label": "Test Suite ID",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "Test Suite ID"
+    },
+    {
+      "name": "startOnly",
+      "type": "boolean",
+      "label": "Start Only",
+      "defaultValue": false,
+      "required": false,
+      "helpMarkDown": "Start Only"
+    },
+    {
+      "name": "userKeyId",
+      "type": "string",
+      "label": "User Key ID",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "User Key ID"
+    },
+    {
+      "name": "userKeySecret",
+      "type": "string",
+      "label": "User Key Secret",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "User Key Secret"
+    }
   ],
   "execution": {
-      "Node10": {
-          "target": "dist/index.js"
-      }
+    "Node10": {
+      "target": "dist/index.js"
+    }
   }
 }

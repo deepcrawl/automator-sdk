@@ -4,7 +4,10 @@
     "moduleResolution": "node",
     "module": "commonjs",
     "outDir": "dist",
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictPropertyInitialization": true
   },
   "include": ["src"]
 }
