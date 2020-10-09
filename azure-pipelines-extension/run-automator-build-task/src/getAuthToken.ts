@@ -1,22 +1,18 @@
+import { ApolloClient, HttpLink, InMemoryCache } from "@apollo/client/core";
 import fetch from "node-fetch";
-import { ApolloClient, gql, HttpLink, InMemoryCache } from "@apollo/client/core";
 
-export async function getAuthToken(url: string, userKeyId: string, userKeySecret: string) {
+import { getAuthTokenGql } from "./graphql/getAuthTokenGql";
+
+export async function getAuthToken(url: string, userKeyId: string, userKeySecret: string): Promise<string> {
   const apolloClient = new ApolloClient({
     cache: new InMemoryCache(),
     link: new HttpLink({
       uri: url,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       fetch: <any>fetch,
     }),
   });
 
-  const getAuthTokenGql = gql`
-    mutation CreateSessionUsingUserKey($userKeyId: ObjectID!, $userKeySecret: String!) {
-      createSessionUsingUserKey(input: { userKeyId: $userKeyId, secret: $userKeySecret }) {
-        token
-      }
-    }
-  `;
   const response = await apolloClient.mutate({
     mutation: getAuthTokenGql,
     variables: {
@@ -24,5 +20,6 @@ export async function getAuthToken(url: string, userKeyId: string, userKeySecret
       userKeySecret,
     },
   });
-  return response.data.createSessionUsingUserKey.token;
+
+  return <string>response.data.createSessionUsingUserKey.token;
 }

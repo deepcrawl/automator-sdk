@@ -1,10 +1,38 @@
+# Automator Azure run build script
+
+## Variables
+Required variables:
 
 ```
-AUTOMATOR_USER_KEY_ID=
-AUTOMATOR_USER_KEY_SECRET=
-AUTOMATOR_TEST_SUITE_ID=
+userKeyId: <string>
+userKeySecret: <string>
+testSuiteId: <string>
 ```
 
+Optional variable:
+
 ```
+startOnly: <boolean>
+ciBuildId: <string>
+```
+
+## Building the source code
+
+```
+npm install -g yarn
+yarn 
+yarn build
+```
+
+## Linting
+
+```
+yarn lint
+```
+
+## Creating a azure package
+
+```
+cd ..
 tfx extension create --manifest-globs vss-extension.json
 ```

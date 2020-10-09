@@ -1,10 +1,10 @@
 import { restRequest } from "./helpers/restRequest";
-import { URL_START_BUILD } from "./settings";
+import { URL_START_BUILD } from "./helpers/settings";
 
 export async function startBuild(token: string, testSuiteId: string): Promise<string> {
   const body = {
     authToken: token,
-    testSuiteId: testSuiteId,
+    testSuiteId,
     ciBuildId: process.env.GITHUB_SHA,
   };
 

@@ -13,4 +13,16 @@ module.exports = {
     node: true,
   },
   extends: ["deepcrawl"],
+  overrides: [
+    {
+      files: ["**/*.ts"],
+      rules: {
+        "no-console": "off",
+        "no-process-exit": "off",
+      },
+    },
+  ],
+  settings: {
+    "import/internal-regex": "^@(graphql|helpers|src)/",
+  },
 };
