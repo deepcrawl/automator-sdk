@@ -3,7 +3,8 @@ import { startPoll } from "./startPoll";
 
 export async function startBuild(
   token: string,
-  testSuiteId: string
+  testSuiteId: string,
+  startOnly?: boolean,
 ): Promise<void> {
   const body = {
     authToken: token,
@@ -19,7 +20,7 @@ export async function startBuild(
       body: JSON.stringify(body)
     };
     const triggerResponse = await restRequest<{ buildId: string }>(params);
-    await startPoll(triggerResponse.data.buildId, token, 0);
+    if (!startOnly) await startPoll(triggerResponse.data.buildId, token, 0);
   } catch (e) {
     console.warn(e.response.data);
     process.exit(1);
