@@ -1,4 +1,5 @@
 import { ApolloClient, HttpLink, InMemoryCache, NormalizedCacheObject } from "@apollo/client/core";
+import fetch from "node-fetch";
 
 import { URL_FOR_AUTH_TOKEN } from "@common/constants";
 import { getAuthTokenGQL } from "@sdk/graph-api/gql/get-auth-token.gql";
