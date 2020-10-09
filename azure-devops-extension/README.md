@@ -18,7 +18,7 @@ userKeySecret: <string>
 testSuiteId: <string>
 ```
 
-#### Optional variable
+#### Optional variables
 
 ```
 startOnly: <boolean>

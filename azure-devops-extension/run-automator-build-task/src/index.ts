@@ -1,4 +1,4 @@
-import azurePipelinesTask = require("azure-pipelines-task-lib/task");
+import azurePipelinesTask = require("azure-pipelines-task-lib");
 
 import { inputParameters } from "@common/constants";
 import { automatorSDKClient } from "@src/automator-sdk-client";
