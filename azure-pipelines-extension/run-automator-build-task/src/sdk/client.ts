@@ -10,7 +10,13 @@ export interface IRunBuildOptions {
 }
 
 export class AutomatorSDKClient {
-  public async runBuild({ userKeyId, userKeySecret, testSuiteId, ciBuildId, isStartOnly }: IRunBuildOptions): Promise<void> {
+  public async runBuild({
+    userKeyId,
+    userKeySecret,
+    testSuiteId,
+    ciBuildId,
+    isStartOnly,
+  }: IRunBuildOptions): Promise<void> {
     const token = await graphAPIClient.getAuthToken(userKeyId, userKeySecret);
     const buildId = await toolsAPIClient.startBuild(token, testSuiteId, ciBuildId);
     if (!isStartOnly) await toolsAPIClient.poll(token, buildId);
