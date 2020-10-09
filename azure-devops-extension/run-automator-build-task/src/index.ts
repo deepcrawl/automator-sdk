@@ -23,10 +23,9 @@ automatorSDKClient
     isStartOnly,
   })
   .then(() => {
-    console.log("Success");
     return 0;
   })
-  .catch((e: Error) => {
+  .catch((e: any) => {
     console.error(e);
     process.exit(1);
   });

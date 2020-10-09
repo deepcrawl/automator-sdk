@@ -11,6 +11,7 @@ import { BuildNotFinishedError } from "@sdk/tools-api/errors/build-not-finished.
 import { BuildResultPollingTimeoutError } from "@sdk/tools-api/errors/build-result-polling-timeout.error";
 import { IPollBuildResultsResponse } from "@sdk/tools-api/interfaces/poll-build-results-response.interface";
 import { IStartBuildResponse } from "@sdk/tools-api/interfaces/start-build-response.interface";
+import { sleep } from "@common/helpers/sleep.helper";
 
 enum ToolsAPIRoute {
   StartBuild,
@@ -39,15 +40,11 @@ class ToolsAPIClient {
   private async makePostRequest<T>(parameters: IRequestParameters): Promise<AxiosResponse<T>> {
     const routeURL = this.routes.get(parameters.route);
     if (!routeURL) throw new Error("Route URL not available");
-    try {
-      return await axios.post<T>(routeURL, JSON.stringify(parameters.body), {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-    } catch (e) {
-      throw new Error(e.response.data);
-    }
+    return axios.post<T>(routeURL, JSON.stringify(parameters.body), {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
   }
 
   public async startBuild(authToken: string, testSuiteId: string, ciBuildId?: string): Promise<string> {
@@ -70,11 +67,8 @@ class ToolsAPIClient {
       if (!(e instanceof BuildNotFinishedError)) throw e;
       console.log("Waiting for DeepCrawl Test Results ...");
       if (this.hasTimedOut(currentRunTime)) throw new BuildResultPollingTimeoutError();
-      // eslint-disable-next-line @typescript-eslint/no-misused-promises
-      setTimeout(async (): Promise<void> => {
-        const totalRunTime = currentRunTime + POLLING_INTERVAL;
-        await this.poll(buildId, token, totalRunTime);
-      }, POLLING_INTERVAL);
+      await sleep(POLLING_INTERVAL);
+      await this.poll(token, buildId, currentRunTime + POLLING_INTERVAL);
     }
   }
 

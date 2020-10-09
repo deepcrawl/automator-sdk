@@ -51,6 +51,24 @@ yarn build
 yarn lint
 ```
 
+### Run
+
+To run locally, set the following environment variables:
+
+```
+INPUT_USERKEYID: <string> (required)
+INPUT_USERKEYSECRET: <string> (required)
+INPUT_TESTSUITEID: <string> (required)
+INPUT_STARTONLY: <boolean> (optional)
+INPUT_CIBUILDID: <string> (optional)
+```
+
+and run:
+
+```
+yarn start
+```
+
 ## Release
 
 In order to release, the following steps should be followed:

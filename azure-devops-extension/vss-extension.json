@@ -2,35 +2,29 @@
   "manifestVersion": 1,
   "id": "automator-tools",
   "name": "Automator Tools",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "publisher": "deepcrawl",
-  "targets": [
-      {
-          "id": "Microsoft.VisualStudio.Services"
-      }
-  ],    
+  "targets": [{
+    "id": "Microsoft.VisualStudio.Services"
+  }],    
   "description": "Tools for using Automator.",
   "categories": [
-      "Azure Pipelines"
+    "Azure Pipelines"
   ],
   "icons": {
-      "default": "images/extension-icon.png"        
+    "default": "images/extension-icon.png"        
   },
-  "files": [
-      {
-          "path": "run-automator-build-task"
-      }
-  ],
-  "contributions": [
-      {
-          "id": "run-automator-build-task",
-          "type": "ms.vss-distributed-task.task",
-          "targets": [
-              "ms.vss-distributed-task.tasks"
-          ],
-          "properties": {
-              "name": "run-automator-build-task"
-          }
-      }
-  ]
+  "files": [{
+    "path": "run-automator-build-task"
+  }],
+  "contributions": [{
+    "id": "run-automator-build-task",
+    "type": "ms.vss-distributed-task.task",
+    "targets": [
+      "ms.vss-distributed-task.tasks"
+    ],
+    "properties": {
+      "name": "run-automator-build-task"
+    }
+  }]
 }
