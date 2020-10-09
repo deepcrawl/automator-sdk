@@ -6,7 +6,7 @@ It has the following tasks:
 
 ## Tasks
 
-### Run Automator Build Task
+### Run Automator Build Task (`run-automator-build-task`)
 
 #### Inputs
 
