@@ -1,21 +1,23 @@
 import { getResults } from "./getResults";
 import { hasTimedOut } from "./helpers/hasTimedOut";
-import { writeResults } from "./writeResults";
+import { URL_BUILD_RESULTS, HTTP_STATUS_CODE_OK, POLLING_INTERVAL, MAX_TIME_SPEND_ON_POLLING } from "./settings";
+import { printOutResults } from "./helpers/printOutResults";
 
-export async function startPoll(BuildId: string, token: string, runTime: number): Promise<void> {
-  const testResults = await getResults("https://tools.automator.staging.deepcrawl.com/poller", BuildId, token);
-  if (testResults && testResults.status === 200) {
-    writeResults(testResults.data);
+export async function startPoll(buildId: string, token: string, currentRunTime: number = 0): Promise<void> {
+  const testResults = await getResults(URL_BUILD_RESULTS, buildId, token);
+
+  if (testResults?.status === HTTP_STATUS_CODE_OK) {
+    printOutResults(testResults.data);
   } else {
     console.log("Waiting for DeepCrawl Test Results ...");
-    const updateRunTime = runTime + 30;
+    const totalRunTime = currentRunTime + POLLING_INTERVAL;
 
     setTimeout(async () => {
-      if (!hasTimedOut(runTime)) {
-        await startPoll(BuildId, token, updateRunTime);
+      if (!hasTimedOut(currentRunTime)) {
+        await startPoll(buildId, token, totalRunTime);
       } else {
-        console.error("timed out");
+        console.error(`Maximum polling time exceeded ${MAX_TIME_SPEND_ON_POLLING} ms.`);
       }
-    }, 30000);
+    }, POLLING_INTERVAL);
   }
 }

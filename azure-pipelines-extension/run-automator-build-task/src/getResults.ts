@@ -1,21 +1,18 @@
 import { AxiosResponse } from "axios";
-import { restRequest } from "./restRequest";
+import { restRequest } from "./helpers/restRequest";
 
-export async function getResults(
+export function getResults(
   uri: string,
   buildId: string,
   token: string,
 ): Promise<AxiosResponse<{ passed: boolean }>> {
-  const bodyPoll = {
-    authToken: token,
-    buildId,
-  };
-
   const params = {
     uri,
-    body: JSON.stringify(bodyPoll),
+    body: JSON.stringify({
+      authToken: token,
+      buildId,
+    }),
   };
 
-  const resultResponse = await restRequest<{ passed: boolean }>(params);
-  return resultResponse;
+  return restRequest<{ passed: boolean }>(params);
 }
