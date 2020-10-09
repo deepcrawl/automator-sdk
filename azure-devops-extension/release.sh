@@ -15,5 +15,5 @@ cp ../run-automator-build-task/yarn.lock run-automator-build-task/.
 cd run-automator-build-task
 yarn install --production
 cd ../
-yarn tfx extension create --manifest-globs vss-extension.json --output-path ../releases/.
+yarn tfx extension create --manifest-globs vss-extension.json --output-path ../release/.
 cd ../ && rm -rf .tmp
