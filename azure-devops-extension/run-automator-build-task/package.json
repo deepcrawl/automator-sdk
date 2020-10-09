@@ -1,7 +1,7 @@
 {
   "name": "automator-tools-azure-pipelines-extension",
   "version": "1.0.0",
-  "description": "Azure dev-ops package for running the build of Automator/Deepcrawl test suite.",
+  "description": "Azure task for running the build of Automator/Deepcrawl test suite.",
   "main": "index.js",
   "scripts": {
     "build": "ttsc",
