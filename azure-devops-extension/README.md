@@ -6,11 +6,11 @@ It has the following tasks:
 
 ## Tasks
 
-### Run Automator Build Task (`run-automator-build-task`)
+## Run Automator Build Task (`run-automator-build-task`)
 
-#### Inputs
+### Inputs
 
-##### Required variables
+#### Required variables
 
 ```
 userKeyId: <string>
@@ -18,14 +18,14 @@ userKeySecret: <string>
 testSuiteId: <string>
 ```
 
-##### Optional variable
+#### Optional variable
 
 ```
 startOnly: <boolean>
 ciBuildId: <string>
 ```
 
-#### Requirements
+### Requirements
 
 - Install yarn globally
 
@@ -39,13 +39,13 @@ npm install -g yarn
 yarn
 ```
 
-#### Build
+### Build
 
 ```
 yarn build
 ```
 
-#### Lint
+### Lint
 
 ```
 yarn lint
