@@ -7,11 +7,11 @@ import {
   MAX_TIME_SPEND_ON_POLLING,
   POLLING_INTERVAL,
 } from "@common/constants";
+import { sleep } from "@common/helpers/sleep.helper";
 import { BuildNotFinishedError } from "@sdk/tools-api/errors/build-not-finished.error";
 import { BuildResultPollingTimeoutError } from "@sdk/tools-api/errors/build-result-polling-timeout.error";
 import { IPollBuildResultsResponse } from "@sdk/tools-api/interfaces/poll-build-results-response.interface";
 import { IStartBuildResponse } from "@sdk/tools-api/interfaces/start-build-response.interface";
-import { sleep } from "@common/helpers/sleep.helper";
 
 enum ToolsAPIRoute {
   StartBuild,
