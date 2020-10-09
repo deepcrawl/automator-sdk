@@ -2,6 +2,7 @@ import { ApolloClient, HttpLink, InMemoryCache, NormalizedCacheObject } from "@a
 import fetch from "node-fetch";
 
 import { URL_FOR_AUTH_TOKEN } from "@common/constants";
+import { deleteAuthTokenGQL } from "@sdk/graph-api/gql/delete-auth-token.gql";
 import { getAuthTokenGQL } from "@sdk/graph-api/gql/get-auth-token.gql";
 
 class GraphAPIClient {
@@ -28,6 +29,18 @@ class GraphAPIClient {
       },
     });
     return <string>response.data.createSessionUsingUserKey.token;
+  }
+
+  public async deleteAuthToken(token: string): Promise<string> {
+    const response = await this.apolloClient.mutate({
+      mutation: deleteAuthTokenGQL,
+      context: {
+        headers: {
+          "X-Auth-Token": token,
+        },
+      },
+    });
+    return <string>response.data.deleteSession.token;
   }
 }
 
