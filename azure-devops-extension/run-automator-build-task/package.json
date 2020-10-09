@@ -1,6 +1,6 @@
 {
   "name": "automator-tools-azure-pipelines-extension",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Azure task for running the build of Automator/Deepcrawl test suite.",
   "main": "index.js",
   "scripts": {
