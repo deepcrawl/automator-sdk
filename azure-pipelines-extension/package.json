@@ -4,7 +4,7 @@
   "description": "Automator Tools for Azure Devops",
   "main": "index.js",
   "scripts": {
-    "release": "./release.sh"
+    "release": "yarn && ./release.sh"
   },
   "author": "Andrei Bitca, Daniel Mon Chit & Lukas Kalcok",
   "license": "ISC",

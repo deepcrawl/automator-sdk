@@ -6,6 +6,7 @@ import { automatorSDKClient } from "@src/automator-sdk-client";
 const userKeyId = tl.getInput(inputParameters.userKeyId, true);
 const userKeySecret = tl.getInput(inputParameters.userKeySecret, true);
 const testSuiteId = tl.getInput(inputParameters.testSuiteId, true);
+const ciBuildId = tl.getInput(inputParameters.ciBuildId);
 const isStartOnly = tl.getBoolInput(inputParameters.isStartOnly);
 
 if (!userKeyId || !userKeySecret || !testSuiteId) {
@@ -18,6 +19,7 @@ automatorSDKClient
     userKeyId,
     userKeySecret,
     testSuiteId,
+    ciBuildId,
     isStartOnly,
   })
   .then(() => {

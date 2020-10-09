@@ -10,5 +10,6 @@ export const inputParameters = {
   userKeyId: "userKeyId",
   userKeySecret: "userKeySecret",
   testSuiteId: "testSuiteId",
+  ciBuildId: "ciBuildId",
   isStartOnly: "startOnly",
 };
