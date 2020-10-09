@@ -1,0 +1,14 @@
+{
+  "name": "automator-tools-azure-pipelines-extension",
+  "version": "1.0.0",
+  "description": "Automator Tools for Azure Devops",
+  "main": "index.js",
+  "scripts": {
+    "release": "./release.sh"
+  },
+  "author": "Andrei Bitca, Daniel Mon Chit & Lukas Kalcok",
+  "license": "ISC",
+  "devDependencies": {
+    "tfx-cli": "^0.8.3"
+  }
+}
