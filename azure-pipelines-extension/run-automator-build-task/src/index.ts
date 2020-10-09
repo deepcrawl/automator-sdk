@@ -1,7 +1,7 @@
 import tl = require("azure-pipelines-task-lib/task");
-import { inputParameters } from "helpers/settings";
 
-import { runTask, IRunTaskOptions } from "./runTask";
+import { inputParameters } from "@common/constants";
+import { automatorSDKClient } from "@src/client";
 
 const userKeyId = tl.getInput(inputParameters.userKeyId, true);
 const userKeySecret = tl.getInput(inputParameters.userKeySecret, true);
@@ -13,18 +13,18 @@ if (!userKeyId || !userKeySecret || !testSuiteId) {
   process.exit(1);
 }
 
-const runOptions: IRunTaskOptions = {
-  userKeyId,
-  userKeySecret,
-  testSuiteId,
-  isStartOnly,
-};
-
-runTask(runOptions)
+automatorSDKClient
+  .runBuild({
+    userKeyId,
+    userKeySecret,
+    testSuiteId,
+    isStartOnly,
+  })
   .then(() => {
     console.log("Success");
     return 0;
   })
-  .catch(e => {
+  .catch((e: Error) => {
     console.error(e);
+    process.exit(1);
   });

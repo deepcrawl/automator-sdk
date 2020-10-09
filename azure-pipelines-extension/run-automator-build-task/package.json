@@ -13,6 +13,7 @@
   "devDependencies": {
     "@types/axios": "^0.14.0",
     "@typescript-eslint/eslint-plugin": "^4.1.1",
+    "@zerollup/ts-transform-paths": "^1.7.18",
     "eslint": "^7.9.0",
     "eslint-config-deepcrawl": "^5.6.0",
     "eslint-plugin-array-func": "^3.1.7",
@@ -29,6 +30,7 @@
     "jest": "^26.5.2",
     "prettier": "^2.1.2",
     "tfx-cli": "^0.8.3",
+    "ttypescript": "^1.5.12",
     "typescript": "^4.0.3"
   },
   "dependencies": {

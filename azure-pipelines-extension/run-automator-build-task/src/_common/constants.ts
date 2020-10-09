@@ -1,5 +1,6 @@
-export const URL_BUILD_RESULTS = "https://tools.automator.staging.deepcrawl.com/poller";
-export const URL_START_BUILD = "https://tools.automator.staging.deepcrawl.com/start";
+export const TOOLS_API_BASE_URL = "https://tools.automator.staging.deepcrawl.com";
+export const TOOLS_API_POLL_BUILD_RESULTS_URL = "/poller";
+export const TOOLS_API_START_BUILD_URL = "/start";
 export const URL_FOR_AUTH_TOKEN = "https://graph.staging.deepcrawl.com";
 export const POLLING_INTERVAL = 30000; // 30 seconds
 export const HTTP_STATUS_CODE_OK = 200;

@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
-    "target": "es2016",
+    "target": "es2019",
+    "lib": ["es2019", "esnext"],
     "moduleResolution": "node",
     "module": "commonjs",
     "outDir": "dist",
@@ -9,7 +10,18 @@
     "strictNullChecks": true,
     "strictPropertyInitialization": true,
     "baseUrl": "./src",
-    "rootDir": "./src"
+    "rootDir": "./src",
+    "paths": {
+      "@common/*": ["_common/*"],
+      "@sdk/*": ["sdk/*"],
+      "@src/*": ["*"]
+    },
+    "plugins": [
+      {
+        "transform": "@zerollup/ts-transform-paths",
+        "exclude": ["*"]
+      }
+    ]
   },
   "include": ["src"]
 }

@@ -23,6 +23,6 @@ module.exports = {
     },
   ],
   settings: {
-    "import/internal-regex": "^@(graphql|helpers|src)/",
+    "import/internal-regex": "^@(common|sdk|src)/",
   },
 };
