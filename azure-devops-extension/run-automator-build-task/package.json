@@ -6,12 +6,18 @@
   "scripts": {
     "build": "ttsc",
     "start": "node ./dist/index.js",
-    "lint": "yarn prettier --write . && yarn eslint --ext .js,.ts src"
+    "lint": "yarn prettier --write . && yarn eslint --ext .js,.ts src",
+    "test": "jest --maxWorkers=1",
+    "test:integration": "jest --config jest.config.integration.js --maxWorkers=1",
+    "test:integration:watch": "yarn test:integration --watch",
+    "test:unit": "jest --config jest.config.test.js --maxWorkers=4",
+    "test:unit:watch": "yarn test:unit --watch"
   },
   "author": "Andrei Bitca, Daniel Mon Chit & Lukas Kalcok",
   "license": "ISC",
   "devDependencies": {
     "@types/axios": "^0.14.0",
+    "@types/nock": "^11.1.0",
     "@typescript-eslint/eslint-plugin": "^4.1.1",
     "@zerollup/ts-transform-paths": "^1.7.18",
     "eslint": "^7.9.0",
@@ -27,8 +33,12 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-sonarjs": "^0.5.0",
-    "jest": "^26.5.2",
+    "jest": "^26.5.3",
+    "jest-extended": "^0.11.5",
+    "jest-fetch-mock": "^3.0.3",
+    "nock": "^13.0.4",
     "prettier": "^2.1.2",
+    "ts-jest": "^26.4.1",
     "ttypescript": "^1.5.12",
     "typescript": "^4.0.3"
   },

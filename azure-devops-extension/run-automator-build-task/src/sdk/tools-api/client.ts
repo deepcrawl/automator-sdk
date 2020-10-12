@@ -1,9 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 
 import {
-  TOOLS_API_START_BUILD_URL,
-  TOOLS_API_POLL_BUILD_RESULTS_URL,
-  TOOLS_API_BASE_URL,
   MAX_TIME_SPEND_ON_POLLING,
   POLLING_INTERVAL,
 } from "@common/constants";
@@ -23,17 +20,23 @@ interface IRequestParameters {
   body: Record<string, unknown>;
 }
 
-class ToolsAPIClient {
+export interface IToolsAPIClientOptions {
+  baseURL: string;
+  startBuildPath: string;
+  pollBuildResultsPath: string;
+}
+
+export class ToolsAPIClient {
   private routes: Map<ToolsAPIRoute, string>;
 
-  constructor() {
-    this.routes = this.initRoutes();
+  constructor(options: IToolsAPIClientOptions) {
+    this.routes = this.initRoutes(options);
   }
 
-  private initRoutes(): Map<ToolsAPIRoute, string> {
+  private initRoutes({ baseURL, startBuildPath, pollBuildResultsPath }: Pick<IToolsAPIClientOptions, "baseURL" | "startBuildPath" | "pollBuildResultsPath">): Map<ToolsAPIRoute, string> {
     const routes = new Map<ToolsAPIRoute, string>();
-    routes.set(ToolsAPIRoute.StartBuild, `${TOOLS_API_BASE_URL}${TOOLS_API_START_BUILD_URL}`);
-    routes.set(ToolsAPIRoute.PollBuildResults, `${TOOLS_API_BASE_URL}${TOOLS_API_POLL_BUILD_RESULTS_URL}`);
+    routes.set(ToolsAPIRoute.StartBuild, `${baseURL}${startBuildPath}`);
+    routes.set(ToolsAPIRoute.PollBuildResults, `${baseURL}${pollBuildResultsPath}`);
     return routes;
   }
 
@@ -88,5 +91,3 @@ class ToolsAPIClient {
     return runTime >= MAX_TIME_SPEND_ON_POLLING;
   }
 }
-
-export const toolsAPIClient = new ToolsAPIClient();

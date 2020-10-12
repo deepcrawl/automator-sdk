@@ -1,18 +1,21 @@
 import { ApolloClient, HttpLink, InMemoryCache, NormalizedCacheObject } from "@apollo/client/core";
 import fetch from "node-fetch";
 
-import { URL_FOR_AUTH_TOKEN } from "@common/constants";
 import { deleteAuthTokenGQL } from "@sdk/graph-api/gql/delete-auth-token.gql";
 import { getAuthTokenGQL } from "@sdk/graph-api/gql/get-auth-token.gql";
 
-class GraphAPIClient {
+export interface IGraphAPIClientOptions {
+  url: string,
+}
+
+export class GraphAPIClient {
   private readonly apolloClient: ApolloClient<NormalizedCacheObject>;
 
-  constructor() {
+  constructor({ url }: IGraphAPIClientOptions) {
     this.apolloClient = new ApolloClient({
       cache: new InMemoryCache(),
       link: new HttpLink({
-        uri: URL_FOR_AUTH_TOKEN,
+        uri: url,
         // TODO: https://github.com/apollographql/apollo-link/issues/513
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         fetch: <any>fetch,
@@ -43,5 +46,3 @@ class GraphAPIClient {
     return <string>response.data.deleteSession.token;
   }
 }
-
-export const graphAPIClient = new GraphAPIClient();
