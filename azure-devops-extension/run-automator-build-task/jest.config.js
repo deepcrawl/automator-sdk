@@ -6,11 +6,7 @@ const { compilerOptions } = require("./tsconfig.json");
 module.exports = {
   automock: false,
   collectCoverage: true,
-  collectCoverageFrom: [
-    "<rootDir>/src/**/*.ts",
-    "!<rootDir>/src/**/*.integration.ts",
-    "!<rootDir>/src/**/*.test.ts",
-  ],
+  collectCoverageFrom: ["<rootDir>/src/**/*.ts", "!<rootDir>/src/**/*.integration.ts", "!<rootDir>/src/**/*.test.ts"],
   coverageDirectory: "coverage",
   coverageReporters: ["html", "json", "text-summary"],
   coverageThreshold: {

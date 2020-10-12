@@ -12,23 +12,27 @@ describe("GraphAPIClient", () => {
       const userKeyId = "user-key-id";
       const userKeySecret = "user-key-secret";
       const error = new GraphQLError("API Error");
-      nock(url).post("/").reply(200, {
-        data: null,
-        errors: [error]
-      });
+      nock(url)
+        .post("/")
+        .reply(200, {
+          data: null,
+          errors: [error],
+        });
       await expect(graphAPIClient.getAuthToken(userKeyId, userKeySecret)).rejects.toEqual(error);
     });
 
     it("should return token", async () => {
       const userKeyId = "user-key-id";
       const userKeySecret = "user-key-secret";
-      nock(url).post("/").reply(200, {
-        data: {
-          createSessionUsingUserKey: {
-            token: `${userKeyId},${userKeySecret}`,
+      nock(url)
+        .post("/")
+        .reply(200, {
+          data: {
+            createSessionUsingUserKey: {
+              token: `${userKeyId},${userKeySecret}`,
+            },
           },
-        },
-      });
+        });
       expect(await graphAPIClient.getAuthToken(userKeyId, userKeySecret)).toEqual(`${userKeyId},${userKeySecret}`);
     });
   });
@@ -36,22 +40,26 @@ describe("GraphAPIClient", () => {
     it("should throw error if API throws error", async () => {
       const token = "token";
       const error = new GraphQLError("API Error");
-      nock(url).post("/").reply(200, {
-        data: null,
-        errors: [error]
-      });
+      nock(url)
+        .post("/")
+        .reply(200, {
+          data: null,
+          errors: [error],
+        });
       await expect(graphAPIClient.deleteAuthToken(token)).rejects.toEqual(error);
     });
 
     it("should return token", async () => {
       const token = "token";
-      nock(url).post("/").reply(200, {
-        data: {
-          deleteSession: {
-            token,
+      nock(url)
+        .post("/")
+        .reply(200, {
+          data: {
+            deleteSession: {
+              token,
+            },
           },
-        },
-      });
+        });
       expect(await graphAPIClient.deleteAuthToken(token)).toEqual(token);
     });
   });

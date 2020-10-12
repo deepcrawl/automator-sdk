@@ -5,7 +5,7 @@ import { deleteAuthTokenGQL } from "@sdk/graph-api/gql/delete-auth-token.gql";
 import { getAuthTokenGQL } from "@sdk/graph-api/gql/get-auth-token.gql";
 
 export interface IGraphAPIClientOptions {
-  url: string,
+  url: string;
 }
 
 export class GraphAPIClient {

@@ -1,9 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 
-import {
-  MAX_TIME_SPEND_ON_POLLING,
-  POLLING_INTERVAL,
-} from "@common/constants";
+import { MAX_TIME_SPEND_ON_POLLING, POLLING_INTERVAL } from "@common/constants";
 import { sleep } from "@common/helpers/sleep.helper";
 import { BuildNotFinishedError } from "@sdk/tools-api/errors/build-not-finished.error";
 import { BuildResultPollingTimeoutError } from "@sdk/tools-api/errors/build-result-polling-timeout.error";
@@ -33,7 +30,11 @@ export class ToolsAPIClient {
     this.routes = this.initRoutes(options);
   }
 
-  private initRoutes({ baseURL, startBuildPath, pollBuildResultsPath }: Pick<IToolsAPIClientOptions, "baseURL" | "startBuildPath" | "pollBuildResultsPath">): Map<ToolsAPIRoute, string> {
+  private initRoutes({
+    baseURL,
+    startBuildPath,
+    pollBuildResultsPath,
+  }: Pick<IToolsAPIClientOptions, "baseURL" | "startBuildPath" | "pollBuildResultsPath">): Map<ToolsAPIRoute, string> {
     const routes = new Map<ToolsAPIRoute, string>();
     routes.set(ToolsAPIRoute.StartBuild, `${baseURL}${startBuildPath}`);
     routes.set(ToolsAPIRoute.PollBuildResults, `${baseURL}${pollBuildResultsPath}`);
