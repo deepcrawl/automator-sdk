@@ -1,5 +1,5 @@
-import { GraphAPIClient, IGraphAPIClientOptions } from "@sdk/graph-api/client";
-import { ToolsAPIClient, IToolsAPIClientOptions } from "@sdk/tools-api/client";
+import { IGraphAPIClient } from "@sdk/graph-api/interfaces/graph-api-client.interface";
+import { IToolsAPIClient } from "@sdk/tools-api/interfaces/tools-api-client.interface";
 
 export interface IRunBuildOptions {
   userKeyId: string;
@@ -9,19 +9,8 @@ export interface IRunBuildOptions {
   isStartOnly?: boolean;
 }
 
-interface IAutomatorSDKClientOptions {
-  graphAPI: IGraphAPIClientOptions;
-  toolsAPI: IToolsAPIClientOptions;
-}
-
 export class AutomatorSDKClient {
-  private graphAPIClient: GraphAPIClient;
-  private toolsAPIClient: ToolsAPIClient;
-
-  constructor({ graphAPI: graphAPIOptions, toolsAPI: toolsAPIOptions }: IAutomatorSDKClientOptions) {
-    this.graphAPIClient = new GraphAPIClient(graphAPIOptions);
-    this.toolsAPIClient = new ToolsAPIClient(toolsAPIOptions);
-  }
+  constructor(private readonly graphAPIClient: IGraphAPIClient, private readonly toolsAPIClient: IToolsAPIClient) {}
 
   public async runBuild({
     userKeyId,

@@ -36,6 +36,7 @@ describe("GraphAPIClient", () => {
       expect(await graphAPIClient.getAuthToken(userKeyId, userKeySecret)).toEqual(`${userKeyId},${userKeySecret}`);
     });
   });
+
   describe("#deleteAuthToken", () => {
     it("should throw error if API throws error", async () => {
       const token = "token";

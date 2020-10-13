@@ -5,14 +5,15 @@ import {
   TOOLS_API_START_BUILD_PATH,
 } from "@common/constants";
 import { AutomatorSDKClient } from "@sdk/client";
+import { GraphAPIClient } from "@sdk/graph-api/client";
+import { ToolsAPIClient } from "@sdk/tools-api/client";
 
-export const automatorSDKClient = new AutomatorSDKClient({
-  graphAPI: {
-    url: GRAPH_API_URL,
-  },
-  toolsAPI: {
-    baseURL: TOOLS_API_BASE_URL,
-    startBuildPath: TOOLS_API_START_BUILD_PATH,
-    pollBuildResultsPath: TOOLS_API_POLL_BUILD_RESULTS_PATH,
-  },
+const graphAPIClient = new GraphAPIClient({
+  url: GRAPH_API_URL,
 });
+const toolsAPIClient = new ToolsAPIClient({
+  baseURL: TOOLS_API_BASE_URL,
+  startBuildPath: TOOLS_API_START_BUILD_PATH,
+  pollBuildResultsPath: TOOLS_API_POLL_BUILD_RESULTS_PATH,
+});
+export const automatorSDKClient = new AutomatorSDKClient(graphAPIClient, toolsAPIClient);
