@@ -1,8 +1,8 @@
 import azurePipelinesTask = require("azure-pipelines-task-lib");
 
 import { inputParameters } from "@common/constants";
-import { automatorSDKClient } from "@src/automator-sdk-client";
 import { loggerService } from "@common/services/logger.service";
+import { automatorSDKClient } from "@src/automator-sdk-client";
 
 const userKeyId = azurePipelinesTask.getInput(inputParameters.userKeyId, true);
 const userKeySecret = azurePipelinesTask.getInput(inputParameters.userKeySecret, true);
