@@ -2,6 +2,7 @@ import axios, { AxiosResponse } from "axios";
 
 import { MAX_POLLING_TIME, POLLING_INTERVAL } from "@common/constants";
 import { sleep } from "@common/helpers/sleep.helper";
+import { loggerService } from "@common/services/logger.service";
 import { BuildNotFinishedError } from "@sdk/tools-api/errors/build-not-finished.error";
 import { BuildResultPollingTimeoutError } from "@sdk/tools-api/errors/build-result-polling-timeout.error";
 import { IPollBuildResultsResponse } from "@sdk/tools-api/interfaces/poll-build-results-response.interface";
@@ -72,10 +73,10 @@ export class ToolsAPIClient implements IToolsAPIClient {
   ): Promise<void> {
     try {
       const didTestsPass = await this.getResults(token, buildId);
-      console.log(`DeepCrawl Tests ${didTestsPass ? "Passed" : "Failed"}`);
+      loggerService.info(`DeepCrawl Tests ${didTestsPass ? "Passed" : "Failed"}`);
     } catch (e) {
       if (!(e instanceof BuildNotFinishedError)) throw e;
-      console.log("Waiting for DeepCrawl Test Results ...");
+      loggerService.info("Waiting for DeepCrawl Test Results ...");
       if (currentRunTime > options.maxPollingTime) throw new BuildResultPollingTimeoutError(options.maxPollingTime);
       await sleep(options.pollingInterval);
       return this.poll(token, buildId, currentRunTime + options.pollingInterval);

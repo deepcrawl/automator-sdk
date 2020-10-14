@@ -18,6 +18,9 @@
   "devDependencies": {
     "@types/axios": "^0.14.0",
     "@types/nock": "^11.1.0",
+    "@types/node-fetch": "^2.5.7",
+    "@types/pino": "^6.3.2",
+    "@types/q": "^1.5.4",
     "@types/sinon": "^9.0.8",
     "@typescript-eslint/eslint-plugin": "^4.1.1",
     "@zerollup/ts-transform-paths": "^1.7.18",
@@ -46,11 +49,11 @@
   },
   "dependencies": {
     "@apollo/client": "^3.2.2",
-    "@types/node-fetch": "^2.5.7",
-    "@types/q": "^1.5.4",
     "axios": "^0.20.0",
     "azure-pipelines-task-lib": "^2.11.2",
     "graphql": "^15.3.0",
-    "node-fetch": "^2.6.1"
+    "node-fetch": "^2.6.1",
+    "pino": "^6.7.0",
+    "pino-pretty": "^4.3.0"
   }
 }
