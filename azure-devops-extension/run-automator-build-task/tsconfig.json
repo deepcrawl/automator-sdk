@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "target": "es2019",
+    "lib": ["es2019", "esnext"],
+    "moduleResolution": "node",
+    "module": "commonjs",
+    "outDir": "dist",
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictPropertyInitialization": true,
+    "skipLibCheck": true,
+    "baseUrl": "./src",
+    "rootDir": "./src",
+    "paths": {
+      "@common/*": ["_common/*"],
+      "@sdk/*": ["sdk/*"],
+      "@tests/*": ["__tests__/*"],
+      "@src/*": ["*"]
+    },
+    "plugins": [
+      {
+        "transform": "@zerollup/ts-transform-paths",
+        "exclude": ["*"]
+      }
+    ]
+  },
+  "include": ["src"]
+}

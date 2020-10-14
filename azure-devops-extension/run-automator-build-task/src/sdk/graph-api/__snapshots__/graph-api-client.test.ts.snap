@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GraphAPIClient #deleteAuthToken should return token 1`] = `
+Object {
+  "query": "mutation {
+  deleteSession {
+    token
+    __typename
+  }
+}
+",
+  "variables": Object {},
+}
+`;
+
+exports[`GraphAPIClient #getAuthToken should return token 1`] = `
+Object {
+  "operationName": "CreateSessionUsingUserKey",
+  "query": "mutation CreateSessionUsingUserKey($userKeyId: ObjectID!, $userKeySecret: String!) {
+  createSessionUsingUserKey(input: {userKeyId: $userKeyId, secret: $userKeySecret}) {
+    token
+    __typename
+  }
+}
+",
+  "variables": Object {
+    "userKeyId": "user-key-id",
+    "userKeySecret": "user-key-secret",
+  },
+}
+`;

@@ -1,0 +1,62 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Microsoft/azure-pipelines-task-lib/master/tasks.schema.json",
+  "id": "e9302682-32cb-444e-b36e-595281a8a409",
+  "name": "run-automator-build-task",
+  "friendlyName": "Automator Run Build",
+  "description": "Runs build on Automator",
+  "helpMarkDown": "",
+  "category": "Utility",
+  "author": "Deepcrawl",
+  "version": {
+    "Major": 1,
+    "Minor": 0,
+    "Patch": 2
+  },
+  "instanceNameFormat": "Running Automator Build for Test Suite with ID #$(testSuiteId)",
+  "inputs": [
+    {
+      "name": "userKeyId",
+      "type": "string",
+      "label": "User Key ID",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "User Key ID"
+    },
+    {
+      "name": "userKeySecret",
+      "type": "string",
+      "label": "User Key Secret",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "User Key Secret"
+    },
+    {
+      "name": "testSuiteId",
+      "type": "string",
+      "label": "Test Suite ID",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "Test Suite ID"
+    },
+    {
+      "name": "ciBuildId",
+      "type": "string",
+      "label": "CI Build ID",
+      "required": false,
+      "helpMarkDown": "CI Build ID"
+    },
+    {
+      "name": "startOnly",
+      "type": "boolean",
+      "label": "Start Only",
+      "defaultValue": false,
+      "required": false,
+      "helpMarkDown": "Start Only"
+    }
+  ],
+  "execution": {
+    "Node10": {
+      "target": "dist/index.js"
+    }
+  }
+}

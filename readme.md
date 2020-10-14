@@ -26,5 +26,12 @@ When an Automator crawl is run on your environment, DeepCrawl will crawl a sampl
 
 All configuration takes place within the Automator app - contact your DeepCrawl Customer Success Manager for more information.
 
+## Using the Automator Tools Azure Devops extension
+In order to access our Azure Devops extension, please request permission by sending an e-mail to cosmin.elefterscu@deepcrawl.com.
+
+Once you are given access to the extension, install it through Microsoft Marketplace for your ogranization and configure it in your organzation's project. 
+
+For more info on Automator Tools Azure Devops extension, please see: [Automator Tools README](./azure-devops-extension/README.md)
+
 ## Using the Automator API
 The Automator API uses the GraphQL protocol to make it easy to retrieve any information or make any changes you'd like to make. [You can find the full API documentation here.](https://deepcrawl.github.io/automator-sdk/)
