@@ -60,12 +60,15 @@ describe("GraphAPIClient", () => {
       const token = "token";
       nock(url)
         .post("/")
-        .reply(200, {
-          data: {
-            deleteSession: {
-              token,
+        .reply(function(_uri, body) {
+          expect(body).toMatchSnapshot();
+          return [200, {
+            data: {
+              deleteSession: {
+                token,
+              },
             },
-          },
+          }];
         });
       expect(await graphAPIClient.deleteAuthToken(token)).toEqual(token);
     });
