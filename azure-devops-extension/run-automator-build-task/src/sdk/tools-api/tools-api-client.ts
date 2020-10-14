@@ -1,11 +1,12 @@
 import axios, { AxiosResponse } from "axios";
 
-import { MAX_TIME_SPEND_ON_POLLING, POLLING_INTERVAL } from "@common/constants";
+import { MAX_POLLING_TIME, POLLING_INTERVAL } from "@common/constants";
 import { sleep } from "@common/helpers/sleep.helper";
 import { BuildNotFinishedError } from "@sdk/tools-api/errors/build-not-finished.error";
 import { BuildResultPollingTimeoutError } from "@sdk/tools-api/errors/build-result-polling-timeout.error";
 import { IPollBuildResultsResponse } from "@sdk/tools-api/interfaces/poll-build-results-response.interface";
 import { IStartBuildResponse } from "@sdk/tools-api/interfaces/start-build-response.interface";
+import { IToolsAPIClient } from "@sdk/tools-api/interfaces/tools-api-client.interface";
 
 enum ToolsAPIRoute {
   StartBuild,
@@ -23,7 +24,7 @@ export interface IToolsAPIClientOptions {
   pollBuildResultsPath: string;
 }
 
-export class ToolsAPIClient {
+export class ToolsAPIClient implements IToolsAPIClient {
   private routes: Map<ToolsAPIRoute, string>;
 
   constructor(options: IToolsAPIClientOptions) {
@@ -52,7 +53,7 @@ export class ToolsAPIClient {
   }
 
   public async startBuild(authToken: string, testSuiteId: string, ciBuildId?: string): Promise<string> {
-    const triggerResponse = await this.makePostRequest<IStartBuildResponse>({
+    const response = await this.makePostRequest<IStartBuildResponse>({
       route: ToolsAPIRoute.StartBuild,
       body: {
         authToken,
@@ -60,19 +61,24 @@ export class ToolsAPIClient {
         ciBuildId,
       },
     });
-    return triggerResponse.data.buildId;
+    return response.data.buildId;
   }
 
-  public async poll(token: string, buildId: string, currentRunTime = 0): Promise<void> {
+  public async poll(
+    token: string,
+    buildId: string,
+    currentRunTime = 0,
+    options = { pollingInterval: POLLING_INTERVAL, maxPollingTime: MAX_POLLING_TIME },
+  ): Promise<void> {
     try {
       const didTestsPass = await this.getResults(token, buildId);
       console.log(`DeepCrawl Tests ${didTestsPass ? "Passed" : "Failed"}`);
     } catch (e) {
       if (!(e instanceof BuildNotFinishedError)) throw e;
       console.log("Waiting for DeepCrawl Test Results ...");
-      if (this.hasTimedOut(currentRunTime)) throw new BuildResultPollingTimeoutError();
-      await sleep(POLLING_INTERVAL);
-      await this.poll(token, buildId, currentRunTime + POLLING_INTERVAL);
+      if (currentRunTime > options.maxPollingTime) throw new BuildResultPollingTimeoutError(options.maxPollingTime);
+      await sleep(options.pollingInterval);
+      return this.poll(token, buildId, currentRunTime + options.pollingInterval);
     }
   }
 
@@ -86,9 +92,5 @@ export class ToolsAPIClient {
     });
     if (response.status !== 200) throw new BuildNotFinishedError();
     return response.data.passed;
-  }
-
-  private hasTimedOut(runTime: number): boolean {
-    return runTime >= MAX_TIME_SPEND_ON_POLLING;
   }
 }

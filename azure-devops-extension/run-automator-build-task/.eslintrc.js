@@ -42,6 +42,6 @@ module.exports = {
     },
   ],
   settings: {
-    "import/internal-regex": "^@(common|sdk|src)/",
+    "import/internal-regex": "^@(common|sdk|tests|src)/",
   },
 };

@@ -15,6 +15,7 @@
     "paths": {
       "@common/*": ["_common/*"],
       "@sdk/*": ["sdk/*"],
+      "@tests/*": ["__tests__/*"],
       "@src/*": ["*"]
     },
     "plugins": [

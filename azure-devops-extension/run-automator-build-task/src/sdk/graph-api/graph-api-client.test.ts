@@ -1,7 +1,7 @@
 import { GraphQLError } from "graphql";
 import * as nock from "nock";
 
-import { GraphAPIClient } from "./client";
+import { GraphAPIClient } from "./graph-api-client";
 
 const url = "http://test.com";
 const graphAPIClient = new GraphAPIClient({ url });
@@ -26,12 +26,18 @@ describe("GraphAPIClient", () => {
       const userKeySecret = "user-key-secret";
       nock(url)
         .post("/")
-        .reply(200, {
-          data: {
-            createSessionUsingUserKey: {
-              token: `${userKeyId},${userKeySecret}`,
+        .reply(function (_uri, body) {
+          expect(body).toMatchSnapshot();
+          return [
+            200,
+            {
+              data: {
+                createSessionUsingUserKey: {
+                  token: `${userKeyId},${userKeySecret}`,
+                },
+              },
             },
-          },
+          ];
         });
       expect(await graphAPIClient.getAuthToken(userKeyId, userKeySecret)).toEqual(`${userKeyId},${userKeySecret}`);
     });

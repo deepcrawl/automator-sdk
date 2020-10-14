@@ -2,10 +2,11 @@ import { IGraphAPIClient } from "@sdk/graph-api/interfaces/graph-api-client.inte
 
 export class GraphAPIClientMock implements IGraphAPIClient {
   public getAuthToken(userKeyId: string, userKeySecret: string): Promise<string> {
-    throw new Error("Method not implemented.");
+    if (userKeyId === "user-key-id-error") throw new Error(userKeyId);
+    return Promise.resolve(`${userKeyId}|${userKeySecret}`);
   }
-  
+
   public deleteAuthToken(token: string): Promise<string> {
-    throw new Error("Method not implemented.");
+    return Promise.resolve(token);
   }
 }
