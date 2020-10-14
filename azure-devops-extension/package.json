@@ -1,6 +1,6 @@
 {
   "name": "automator-tools-azure-pipelines-extension",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Automator Tools for Azure Devops",
   "main": "index.js",
   "scripts": {

@@ -2,7 +2,7 @@
   "manifestVersion": 1,
   "id": "automator-tools",
   "name": "Automator Tools",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "publisher": "deepcrawl",
   "targets": [{
     "id": "Microsoft.VisualStudio.Services"
