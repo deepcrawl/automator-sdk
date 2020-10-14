@@ -17,7 +17,6 @@ module.exports = {
     {
       files: ["**/*.ts"],
       rules: {
-        "no-console": "off",
         "no-process-exit": "off",
       },
     },
