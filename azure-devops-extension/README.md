@@ -23,8 +23,10 @@ It has the following tasks:
     userKeySecret: 'USER_KEY_SECRET' (string - generate new api key on deepcrawl core app)
     testSuiteId: 'TEST_SUITE_ID' (string - use your created test suite id)
     ciBuildId: 'CI_BUILD_ID' (optional - string)
-    startOnly: false (optional - boolean)
+    startOnly: false (optional - boolean - use it if you want to skip polling)
 ```
+
+*Note: Unless `startOnly` is set to `true`, max polling time is set to 50 minutes. If the build takes longer the 50 minutes, it will automatically fail the pipeline.* 
 
 ### How to test (QA)
 
@@ -54,7 +56,7 @@ steps:
     userKeySecret: 'USER_KEY_SECRET' (string - generate new api key on deepcrawl core app)
     testSuiteId: 'TEST_SUITE_ID' (string - use your created test suite id)
     ciBuildId: 'CI_BUILD_ID' (optional - string)
-    startOnly: false (optional - boolean)
+    startOnly: false (optional - boolean - use it if you want to skip polling)
 ```
 
 - Save and run
