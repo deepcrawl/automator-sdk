@@ -26,7 +26,7 @@ It has the following tasks:
     startOnly: false (optional - boolean - use it if you want to skip polling)
 ```
 
-*Note: Unless `startOnly` is set to `true`, max polling time is set to 50 minutes. If the build takes longer the 50 minutes, it will automatically fail the pipeline.* 
+*Note: Unless `startOnly` is set to `true`, max polling time is set to 50 minutes. If the build takes longer than 50 minutes, it will automatically fail the pipeline.* 
 
 ### How to test (QA)
 
