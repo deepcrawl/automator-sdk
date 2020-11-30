@@ -15,4 +15,5 @@
 - CI Scripts
   
   - [Overview](/ci-scripts.md)
+  - [Azure Devops Extension](/azure-devops-extension.md)
   - [Tools API](/automator-tools.md)
