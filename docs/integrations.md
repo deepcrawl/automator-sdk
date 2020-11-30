@@ -55,6 +55,7 @@ In order to get integrations for a given account use the following query, by pro
             nodes {
               id
             }
+            totalCount
           }
           createdAt
           updatedAt
