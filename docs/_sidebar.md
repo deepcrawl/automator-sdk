@@ -10,6 +10,7 @@
   - [Test Results](test-results.md)
   - [URL File Upload](url-file-uploads.md)
   - [Slack Webhooks](slack-webhooks.md)
+  - [Automator Statistics](automator-statistics.md)
   - [FAQ](faq.md)
 
 - CI Scripts

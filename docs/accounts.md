@@ -17,7 +17,6 @@ To list all available accounts run following query.
     }
   }
 }
-
 ```
 
 If you know the Automator account name, the query can be filtered using this name:
