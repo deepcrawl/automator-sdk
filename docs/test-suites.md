@@ -125,6 +125,7 @@ mutation {
     }
   }
 }
+```
 
 All settings and tests will be cloned into a new test suite with the name: 'Copy of <original test suite name>'.
 
@@ -281,3 +282,52 @@ Name | Type
 `useRobotsOverwrite` | Boolean
 
 <!-- tabs:end -->
+
+## Global Templates
+
+This feature enables you to link two or multiple test suites together, by making one of it a global template. When any of the global template configuration in Step 2 or any test configuration in Step 3 is updated, all the linked test suites configurations and test configurations will be updated.
+
+!> There is only one level of links, meaning that: if a test suite is already a global template, then the test suite can't be linked to another global template; a test suite can only be linked to a global template at a time.
+
+### Linking a test suite to a global template
+
+```
+{
+  mutation {
+    linkChildTestSuiteToParentTestSuite(input: {
+      parentTestSuiteId: "TjAwOVRlc3RTdWl0ZTM0MjQ1MA"
+      childTestSuiteId: "TjAwOVRlc3RTdWl0ZTMzOTUyOQ"
+    }) {
+      parentTestSuite {
+        id
+      }
+      childTestSuite {
+        id
+      }
+    }
+  }
+}
+```
+
+!> In case you link two test suites together and none of them are linked, the `parentTestSuiteId` will become a Global Template
+
+### Unlinking a test suite from a global template
+
+```
+{
+  mutation {
+    unlinkChildTestSuiteFromParentTestSuite(input: {
+      childTestSuiteId: "TjAwOVRlc3RTdWl0ZTMzOTUyOQ"
+    }) {
+      parentTestSuite {
+        id
+      }
+      childTestSuite {
+        id
+      }
+    }
+  }
+}
+```
+
+!> An error will be thrown if the `childTestSuiteId` is not linked to a global template.
