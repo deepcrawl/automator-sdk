@@ -11,6 +11,7 @@
   - [URL File Upload](url-file-uploads.md)
   - [Slack Webhooks](slack-webhooks.md)
   - [Automator Statistics](automator-statistics.md)
+  - [Integrations](integrations.md)
   - [FAQ](faq.md)
 
 - CI Scripts

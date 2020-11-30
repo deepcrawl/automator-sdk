@@ -3,7 +3,7 @@
 
 ## Getting Automator Statistics for a given Account
 
-In order to get the statistics for a given account, use the following query, by providing the account id, in `accountId` argument:
+In order to get the statistics for a given account use the following query, by providing the account id in `accountId` argument:
 
 ```graphql
 {
