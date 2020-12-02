@@ -8,7 +8,7 @@ The query to list 100 test suites looks like:
 
 ```graphql
 {
-  node(id: "your-automator-account-id") {
+  node(id: "{ACCOUNT_ID}") {
     ... on Account {
       testSuites(last: 100) {
         nodes {
@@ -27,9 +27,9 @@ You can also search for a test suite using the account name:
 
 ```graphql
 {
-  node(id: "your-automator-account-id") {
+  node(id: "{ACCOUNT_ID}") {
     ... on Account {
-      testSuites(first: 5, filters: {nameCont: "staging test sutite"}) {
+      testSuites(first: 5, filters: {nameCont: "{NAME_CONTAINS}"}) {
         nodes {
           name
           id
@@ -50,9 +50,9 @@ Example mutation:
 ```graphql
 mutation {
   createTestSuite(input: {
-    accountId: "your-automator-account-id",
-    name: "New test suite",
-    sitePrimary: "https://staging.com"
+    accountId: "{ACCOUNT_ID}",
+    name: "{TEST_SUITE_NAME}",
+    sitePrimary: "{TEST_SUITE_SITE_PRIMARY_URL}"
   }) {
     testSuite {
       # New test suite fields to be returned
@@ -73,9 +73,9 @@ Example mutation:
 ```graphql
 mutation {
   updateTestSuite(input: {
-    testSuiteId: "test-suite-id",
-    name: "Different test suite name",
-    alertEmails: ["xyz@email.com"]
+    testSuiteId: "{TEST_SUITE_ID}",
+    name: "{TEST_SUITE_NAME}",
+    alertEmails: ["{ALERT_EMAIL}"]
   }) {
     testSuite {
       # Updated test suite fields to be returned
@@ -97,7 +97,7 @@ Example mutation:
 ```graphql
 mutation {
   deleteTestSuite(input: {
-    testSuiteId: "test-suite-id"
+    testSuiteId: "{TEST_SUITE_ID}"
   }) {
     testSuite {
       # Deleted test suite fields to be returned
@@ -117,7 +117,7 @@ Example mutation:
 ```graphql
 mutation {
   cloneTestSuite(input: {
-    testSuiteId: "test-suite-id"
+    testSuiteId: "{TEST_SUITE_ID}"
   }) {
     testSuite {
       # Cloned test suite fields to be returned
@@ -125,10 +125,65 @@ mutation {
     }
   }
 }
+```
 
-All settings and tests will be cloned into a new test suite with the name: 'Copy of <original test suite name>'.
+All settings and tests will be cloned into a new test suite with the name: '{CURRENT_TIMESTAMP} Copy of <original test suite name>'.
 
 !> File uploads won't be copied into a new test suite.
+
+
+## Global Templates
+
+This feature enables you to link two or multiple test suites together, by making one of it a global template. When any of the global template configuration in Step 2 or any test configuration in Step 3 is updated, all the linked test suites configurations and test configurations will be updated.
+
+!> Crawl type will be set by default to Web, for all children. 
+
+!> Start URLs will not be copied over.
+
+!> There is only one level of links, meaning that: if a test suite is already a global template, then the test suite can't be linked to another global template; a test suite can only be linked to a global template at a time.
+
+### Linking a test suite to a global template
+
+```
+{
+  mutation {
+    linkChildTestSuiteToParentTestSuite(input: {
+      parentTestSuiteId: "{PARENT_TEST_SUITE_ID}"
+      childTestSuiteId: "{CHILD_TEST_SUITE_ID}"
+    }) {
+      parentTestSuite {
+        id
+      }
+      childTestSuite {
+        id
+      }
+    }
+  }
+}
+```
+
+!> In case you link two test suites together and none of them are linked, the `parentTestSuiteId` will become a Global Template
+
+### Unlinking a test suite from a global template
+
+```
+{
+  mutation {
+    unlinkChildTestSuiteFromParentTestSuite(input: {
+      childTestSuiteId: "{CHILD_TEST_SUITE_ID}"
+    }) {
+      parentTestSuite {
+        id
+      }
+      childTestSuite {
+        id
+      }
+    }
+  }
+}
+```
+
+!> An error will be thrown if the `childTestSuiteId` is not linked to a global template.
 
 ## List of available test suite fields
 

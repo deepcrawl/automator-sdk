@@ -9,7 +9,7 @@ Example
 
 ```graphql
 {
-  node(id: "build-id") {
+  node(id: "{BUILD_ID}") {
     ... on Build {
       status
       passed

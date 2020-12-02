@@ -51,6 +51,8 @@ Coming soon
 
 ### Azure Pipelines
 
+Azure pipelines can either be configured by using [our Azure Devops Etension](https://deepcrawl.github.io/automator-sdk/#/azure-devops-extension), or by using the Powershell task, by copying the `ps1` script to your repository:
+
 ```yaml
 trigger:
   - master

@@ -10,9 +10,12 @@
   - [Test Results](test-results.md)
   - [URL File Upload](url-file-uploads.md)
   - [Slack Webhooks](slack-webhooks.md)
+  - [Automator Statistics](automator-statistics.md)
+  - [Integrations](integrations.md)
   - [FAQ](faq.md)
 
 - CI Scripts
   
   - [Overview](/ci-scripts.md)
+  - [Azure Devops Extension](/azure-devops-extension.md)
   - [Tools API](/automator-tools.md)

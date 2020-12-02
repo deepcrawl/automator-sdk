@@ -8,7 +8,7 @@ The following query lists 50 tests:
 
 ```graphql
 {
-  node(id: "test-suite-id") {
+  node(id: "{TEST_SUITE_ID}") {
     ... on TestSuite {
       tests(first: 50) {
         nodes {
@@ -40,8 +40,8 @@ Example mutation:
 ```graphql
 mutation {
   createTest(input: {
-    testSuiteId: "test-suite-id",
-    reportTemplateCode: "5xx_errors"
+    testSuiteId: "{TEST_SUITE_ID}",
+    reportTemplateCode: "{REPORT_TEMPLATE_CODE}"
   }) {
     test {
       id
@@ -61,9 +61,9 @@ Example:
 ```graphql
 mutation {
   updateTest(input: {
-    testId: "test-id",
-    relativeThreshold: 20,
-    severity: Warning
+    testId: "{TEST_ID}",
+    relativeThreshold: {RELATIVE_THRESHOLD},
+    severity: {SEVERITY}
   }) {
     test {
       id
@@ -88,7 +88,7 @@ Example:
 ```graphql
 mutation {
   deleteTest(input: {
-    testId: "test-id"
+    testId: "{TEST_ID}"
   }) {
     test {
       # Deleted test fields to be returned

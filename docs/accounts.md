@@ -17,14 +17,13 @@ To list all available accounts run following query.
     }
   }
 }
-
 ```
 
 If you know the Automator account name, the query can be filtered using this name:
 ```graphql
 {
   me {
-    accounts(first: 1, filters: {nameEq: "Your Automator Account name"}) {
+    accounts(first: 1, filters: {nameEq: "{ACCOUNT_NAME}"}) {
       nodes {
         name
         id
@@ -42,8 +41,8 @@ Response:
       "accounts": {
         "nodes": [
           {
-            "name": "Your Automator Account name",
-            "id": "TjAwN0FjY291bnQxMA"
+            "name": "{ACCOUNT_NAME}",
+            "id": "{ACCOUNT_ID}"
           }
         ]
       }
@@ -56,7 +55,7 @@ When the account ID has been obtained, subsequent queries can be filtered to thi
 
 ```graphql
 {
-  node(id: "TjAwN0FjY291bnQxMA") {
+  node(id: "{ACCOUNT_ID}") {
     ... on Account {
       id
       name
@@ -70,8 +69,8 @@ Response:
 {
   "data": {
     "node": {
-      "id": "TjAwN0FjY291bnQxMA",
-      "name": "DeepCrawl Tech"
+      "id": "{ACCOUNT_ID}",
+      "name": "{ACCOUNT_NAME}"
     }
   }
 }
@@ -108,7 +107,7 @@ As GraphQL allows easy access to nested resources: to access other resources you
 The following request lists first 5 Test Suites for an account and the last build in each Test Suite:
 ```graphql
 {
-  node(id: "TjAwN0FjY291bnQxMA") {
+  node(id: "{ACCOUNT_ID}") {
     ... on Account {
       id
       name
@@ -131,7 +130,7 @@ or using account name:
 ```graphql
 {
   me {
-    accounts(first: 1, filters: {nameEq: "Your Automator Account name"}) {
+    accounts(first: 1, filters: {nameEq: "{ACCOUNT_NAME}"}) {
       nodes {
         id
         name

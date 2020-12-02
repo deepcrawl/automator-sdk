@@ -8,8 +8,8 @@ Use the `createSessionUsingUsername` mutation to get regular auth token, providi
 mutation {
   createSessionUsingUsername(
     input: {
-      username: "your-deepcrawl-username",
-      password: "your-deepcrawl-password"
+      username: "{USERNAME}",
+      password: "{PASSWORD}"
     }
   ) {
     token
@@ -22,7 +22,7 @@ Response:
 {
   "data": {
     "createSessionUsingUsername": {
-      "token": "your-auth-token"
+      "token": "{TOKEN}"
     }
   }
 }
@@ -44,12 +44,12 @@ Response:
 {
   "data": {
     "createAutomatorAuthToken": {
-      "value": "your-long-lasting-auth-token"
+      "value": "{TOKEN}"
     }
   }
 }
 ```
-Now you can use `your-long-lasting-auth-token` in the `X-Auth-Token` header.
+Now you can use `{TOKEN}` in the `X-Auth-Token` header.
 
 ## User Keys
 
@@ -75,7 +75,7 @@ You can delete the key using `createUserKey` mutation:
 ```graphql
 mutation {
   deleteUserKey(input: {
-    userKeyId: "<your user key id>"
+    userKeyId: "{USER_KEY_ID}"
   }) {
     userKey {
       id
@@ -90,8 +90,8 @@ Once you have the user key, you can get your 'X-Auth-Token' unsing `createSessio
 mutation {
   createSessionUsingUserKey(
     input: {
-      userKeyId: "<your-user-key-id>",
-      secret: "<your-user-key-secret>"
+      userKeyId: "{USER_KEY_ID}",
+      secret: "{USER_KEY_SECRET}"
     }
   ) {
     token

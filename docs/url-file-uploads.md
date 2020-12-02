@@ -9,7 +9,7 @@ Example curl request:
 curl https://graph.deepcrawl.com/graphql \
   -H 'X-Auth-Token: <auth token>' \
   -H 'Accept: */*, application/vnd.deepcrawl.meridian-preview' \
-  -F operations='{ "query": "mutation ($file: Upload) { createUrlFileUpload(file: $file, input: { crawlType: List, testSuiteId: \"test-suite-id\" }) { urlFileUpload { fileName } } }", "variables": { "file": null } }' \
+  -F operations='{ "query": "mutation ($file: Upload) { createUrlFileUpload(file: $file, input: { crawlType: List, testSuiteId: \"{TEST_SUITE_ID}" }) { urlFileUpload { fileName } } }", "variables": { "file": null } }' \
   -F map='{ "0": ["variables.file"] }' \
   -F 0=@url-list-file.csv
 ```
@@ -25,7 +25,7 @@ Example mutation:
 ```graphql
 mutation {
   updateUrlFileUpload(input: {
-    uploadBaseDomain: "http://new-test.com"
+    uploadBaseDomain: "{UPLOAD_BASE_DOMAIN}"
   }) {
     urlFileUpload {
       uploadBaseDomain
@@ -44,7 +44,7 @@ Example mutation:
 ```graphql
 mutation {
   deleteUrlFileUpload(input: {
-    urlFileUploadId: "url-file-upload-id"
+    urlFileUploadId: "{URL_FILE_UPLOAD_ID}"
   }) {
     urlFileUpload {
       id

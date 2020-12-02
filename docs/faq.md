@@ -8,9 +8,9 @@ To check if a given test suite already exists, send a query with a "name" filter
 ```graphql
 {
   me {
-    node(id: "account-id") {
+    node(id: "{ACCOUNT_ID}") {
       ... on Account {
-        testSuites(first: 1, filters: {nameEq: "Test suite name"}){
+        testSuites(first: 1, filters: {nameEq: "{TEST_SUITE_NAME}"}){
           nodes {
             id
             name
@@ -50,9 +50,9 @@ To update `alertEmail` field on an existing test suite, you'll need to find that
 ```graphql
 {
   me {
-    node(id: "account-id") {
+    node(id: "{ACCOUNT_ID}") {
       ... on Account {
-        testSuites(first: 1, filters: {nameEq: "Test suite name"}){
+        testSuites(first: 1, filters: {nameEq: "{ACCOUNT_NAME}"}){
           nodes {
             id
             name
@@ -71,8 +71,8 @@ Response:
     "node": {
       "testSuites": {
         "nodes": [{
-          "id": "your-test-suite-id",
-          "name": "Test suite name"
+          "id": "{TEST_SUITE_ID}",
+          "name": "{TEST_SUITE_NAME}"
         }]
       }
     }
@@ -85,7 +85,7 @@ Once you have the test suite ID, use [updateTestSuite](test-suites?id=updating-a
 ```graphql
 mutation {
   updateTestSuite(input: {
-    alertEmails: ["your@email.com"]
+    alertEmails: ["{ALERT_EMAIL}"]
   }) {
     testSuite {
       id
