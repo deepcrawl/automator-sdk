@@ -13,7 +13,7 @@ It has the following tasks:
 - Ask for extension permissions
 - Once permission is given, install the extension from: https://marketplace.visualstudio.com/items?itemName=deepcrawl.automator-tools
 - Generate an API key on: https://app.deepcrawl.com/dc-api
-- Make sure you have the test suite created and the id, if not create your test suite in automator: https://automator.deepcrawl.com/
+- Make sure you have the test suite created and the test suite id, if not create your test suite in automator: https://automator.deepcrawl.com/
 - Add the following task to your azure devops pipeline `yaml` file:
 
 ```yaml
@@ -34,7 +34,7 @@ It has the following tasks:
 - Ask for extension permissions
 - Once permission is given, install the extension from: https://marketplace.visualstudio.com/items?itemName=deepcrawl.automator-tools
 - Generate an API key on: https://app.deepcrawl.com/dc-api
-- Make sure you have the test suite created and the id, if not create your test suite in automator: https://automator.deepcrawl.com/
+- Make sure you have the test suite created and the test suite id, if not create your test suite in automator: https://automator.deepcrawl.com/
 - Create new private repository with default README: https://github.com/new
 - Go to your Azure Organisation page: http://dev.azure.com/
 - Create new project

@@ -25,13 +25,13 @@ Available params:
 
 Example request:
 ```
-curl -s -X POST "https://tools.automator.deepcrawl.com/start" -H "Content-Type:application/json" -d "{\"authToken\":\"YourGraphAPIAuthToken\",\"testSuiteId\":\"YourTestSuiteId\"}"
+curl -s -X POST "https://tools.automator.deepcrawl.com/start" -H "Content-Type:application/json" -d "{\"authToken\":\"{TOKEN}\",\"testSuiteId\":\"{TEST_SUITE_ID}\"}"
 ```
 
 Response:
 ```json
 { 
-  "buildId": "IdOfABuildThatHasBeenRun"
+  "buildId": "{BUILD_ID}"
 }
 ```
 
@@ -51,7 +51,7 @@ Available params:
 
 Exampler request:
 ```
-curl -s -X POST "https://tools.automator.deepcrawl.com/poller" -H "Content-Type:application/json" -d "{\"authToken\":\"YourGraphAPIAuthToken\",\"buildId\":"YourBuildID"}"
+curl -s -X POST "https://tools.automator.deepcrawl.com/poller" -H "Content-Type:application/json" -d "{\"authToken\":\"{TOKEN}\",\"buildId\":"{BUILD_ID}"}"
 ```
 
 If build is still running the response HTTP status will be `202` and the body will be empty.
@@ -59,7 +59,7 @@ If build is still running the response HTTP status will be `202` and the body wi
 If build has finished running the response HTTP status will be `200` and the example body will look like this:
 ```json
 {
-  "id": "YourBuildId",
+  "id": "{BUILD_ID}",
   "status": "Finished",
   "passed:: true
 }

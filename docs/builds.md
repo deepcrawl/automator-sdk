@@ -8,7 +8,7 @@ Example query to list latest 50 buildss would look like this:
 
 ```graphql
 {
-  node(id: "test-suite-id") {
+  node(id: "{TEST_SUITE_ID}") {
     ... on TestSuite {
       builds(last : 50) {
         nodes {
@@ -30,7 +30,7 @@ A common query is finding the latest build in a Test Suite, for instance to chec
 
 ```graphql
 {
-  node(id: "test-suite-id") {
+  node(id: "{TEST_SUITE_ID}") {
     ... on TestSuite {
       builds(first: 1, orderBy: {direction: DESC, field: createdAt}) {
         nodes {
@@ -51,8 +51,8 @@ Example mutation:
 ```graphql
 mutation {
   createAndRunBuild(input: {
-    testSuiteId: "test-suite-id",
-    ciBuildId: "custom-build-id"
+    testSuiteId: "{TEST_SUITE_ID}",
+    ciBuildId: "{CI_BUILD_ID}"
   }) {
     build {
       # New build fields to be returned
@@ -63,7 +63,7 @@ mutation {
   }
 }
 ```
-`testSuiteId` is the only required field. `ciBuildId` is an optional string that you can set to identify your CI build. These are the only two parameters available during build creation.
+`{TEST_SUTIE_ID}` is the only required field. `{CI_BUILD_ID}` is an optional string that you can set to identify your CI build. These are the only two parameters available during build creation.
 
 !> Build status may be still `Queued` immediately after running the mutation. It will change to `Running` after DeepCrawl starts crawling your website.
 
@@ -75,7 +75,7 @@ Example:
 ```graphql
 mutation {
   cancelBuild(input: {
-    buildId: "build-id"
+    buildId: "{BUILD_ID}"
   }) {
     build {
       # Canceled build fields to be returned

@@ -10,7 +10,7 @@ The query to list 10 webhooks looks like:
 
 ```graphql
 {
-  node(id: "your-test-suite-id") {
+  node(id: "{TEST_SUITE_ID}") {
     ... on TestSuite {
       slackWebhooks(last: 10) {
         nodes {
@@ -31,8 +31,8 @@ Example mutation:
 ```graphql
 mutation {
   createAutomatorSlackWebhook(input: {
-    testSuiteId: "your-test-suite-id",
-    url: "https://url-to-a-slack-webhook.com"
+    testSuiteId: "{TEST_SUITE_ID}",
+    url: "{URL}"
   }) {
     slackWebhook {
       id
@@ -51,7 +51,7 @@ Example mutation:
 ```graphql
 mutation {
   deleteAutomatorSlackWebhook(input: {
-    slackWebhookId: "slack-webhook-id"
+    slackWebhookId: "{SLACK_WEBHOOK_ID}"
   }) {
     slackWebhook {
       # Deleted slack webhook fields to be returned

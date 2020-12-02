@@ -1,15 +1,19 @@
 # Integrations
 ---
 
+There will be multiple types of integrations present in Automator. So far, we only have JIRA integrations. Due to the level of abstraction, some of the mutations are the same for any type of integration. In order to differentiate between the types of integrations we have `integrationCode` field exposed on the `Integration` type.
+
 In order to use this feature, an additional header needs to be passed:
 
 - `Accept: application/vnd.deepcrawl.tray-io-integration-preview` 
+
+!> `linkIntegrationToTestSuite`, `unlinkIntegrationFromTestSuite` and `deleteIntegration` mutations are the same for any type of integration used.
 
 ## Getting an integration by id
 
 ```graphql
 {
-  node(id: "TjAxMUludGVncmF0aW9uNg") {
+  node(id: "{INTEGRATION_ID}") {
     ...on Integration {
       integrationCode
       name
@@ -38,7 +42,7 @@ In order to get integrations for a given account use the following query, by pro
 
 ```graphql
 {
-  node(id: "TjAwN0FjY291bnQxMA") {
+  node(id: "{ACCOUNT_ID}") {
     ...on Account {
       integrations {
         nodes {
@@ -72,7 +76,7 @@ In order to get integrations for a given account use the following query, by pro
 
 ```graphql
 {
-  node(id: "TjAwOVRlc3RTdWl0ZTMzOTUyOQ") {
+  node(id: "{TEST_SUITE_ID}") {
     ...on TestSuite {
       jiraIntegration {
         id
@@ -109,9 +113,9 @@ In order to create a JIRA integration, a configuration needs to be generated and
 {
   mutation {
     createJiraIntegration(input: {
-      accountId: "TjAwN0FjY291bnQxMA"
-      traySolutionInstanceId: "tray-solution-instance-id"
-      name: "integration-name"
+      accountId: "{ACCOUNT_ID}"
+      traySolutionInstanceId: "{TRAY_SOLUTION_INSTANCE_ID}"
+      name: "{INTEGRATION_NAME}"
     }) {
       integration {
         integrationCode
@@ -135,26 +139,16 @@ If you want to update a JIRA integration authentication, project and issue type,
 ```graphql
 {
   mutation {
-    updateJiraIntegration(input: {
-      integrationId: "TjAxMUludGVncmF0aW9uNg"
-      name: "integration-name"
+    updateJiraIntegrationConfiguration(input: {
+      integrationId: "{INTEGRATION_ID}"
     }) {
-      integration {
-        integrationCode
-        name
-        metadata {
-          key
-          value
-        }
-        createdAt
-        updatedAt
-      }
+      configurationUrl
     }
   }
 }
 ```
 
-!> Once this is completed, call `updateJiraIntegration` mutation above, so the configuration metadata gets updated (`name` can be skipped).
+!> Use `configurationUrl` to update the JIRA configuration. Once this is completed, call `updateJiraIntegration` mutation above, so the configuration metadata gets updated (`name` can be skipped).
 
 ## Updating a JIRA integration
 
@@ -164,8 +158,8 @@ If you want to update a JIRA integration name or refresh the JIRA integration me
 {
   mutation {
     updateJiraIntegration(input: {
-      integrationId: "TjAxMUludGVncmF0aW9uNg"
-      name: "integration-name"
+      integrationId: "{INTEGRATION_ID}"
+      name: "{INTEGRATION_NAME}"
     }) {
       integration {
         integrationCode
@@ -190,8 +184,8 @@ If you want to update a JIRA integration name or refresh the JIRA integration me
 {
   mutation {
     linkIntegrationToTestSuite(input: {
-      integrationId: "TjAxMUludGVncmF0aW9uNg"
-      testSuiteId: "TjAwOVRlc3RTdWl0ZTMzOTUyOQ"
+      integrationId: "{INTEGRATION_ID}"
+      testSuiteId: "{TEST_SUITE_ID}"
     }) {
       integration {
         id
@@ -206,14 +200,14 @@ If you want to update a JIRA integration name or refresh the JIRA integration me
 
 !> In case of a JIRA integration, it will throw error if test suite is already linked to an integration
 
-## Unlinking an integrtion from a test suite
+## Unlinking an integration from a test suite
 
 ```graphql
 {
   mutation {
     unlinkIntegrationFromTestSuite(input: {
-      integrationId: "TjAxMUludGVncmF0aW9uNg"
-      testSuiteId: "TjAwOVRlc3RTdWl0ZTMzOTUyOQ"
+      integrationId: "{INTERGATION_ID}"
+      testSuiteId: "{TEST_SUITE_ID}"
     }) {
       integration {
         id
@@ -232,7 +226,7 @@ If you want to update a JIRA integration name or refresh the JIRA integration me
 {
   mutation {
     deleteIntegration(input: {
-      integrationId: "TjAxMUludGVncmF0aW9uNg"
+      integrationId: "{INTEGRATION_ID}"
     }) {
       integration {
         id

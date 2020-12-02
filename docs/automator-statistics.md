@@ -7,7 +7,7 @@ In order to get the statistics for a given account use the following query, by p
 
 ```graphql
 {
-  getAutomatorAccountStatistics(accountId: "TjAwN0FjY291bnQxMA") {
+  getAutomatorAccountStatistics(accountId: "{ACCOUNT_ID}") {
     testSuitesCount
     buildsCount
     testsPerformedCount
