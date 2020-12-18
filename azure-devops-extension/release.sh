@@ -1,5 +1,6 @@
 rm -rf .tmp
 mkdir .tmp
+cp README.md ./.tmp
 cp vss-extension.json .tmp/.
 cp package.json .tmp/.
 cp yarn.lock .tmp/.

@@ -3,14 +3,14 @@
   "id": "e9302682-32cb-444e-b36e-595281a8a409",
   "name": "run-automator-build-task",
   "friendlyName": "Automator Run Build",
-  "description": "Runs build on Automator",
+  "description": "A task used for running a build for a given test suite on Automator.",
   "helpMarkDown": "",
   "category": "Utility",
   "author": "Deepcrawl",
   "version": {
     "Major": 1,
     "Minor": 0,
-    "Patch": 2
+    "Patch": 3
   },
   "instanceNameFormat": "Running Automator Build for Test Suite with ID #$(testSuiteId)",
   "inputs": [
