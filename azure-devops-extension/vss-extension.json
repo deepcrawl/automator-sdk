@@ -9,8 +9,7 @@
   }],    
   "description": "A collection of tasks used for interacting with Automator.",
   "categories": [
-    "Azure Pipelines",
-    "Utility"
+    "Azure Pipelines"
   ],
   "tags": [
     "automator",
