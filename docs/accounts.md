@@ -1,11 +1,13 @@
 # Accounts
+
 ---
 
 ## Listing available accounts
+
 The API currently lists all of the DeepCrawl accounts that the user has access to, this is not limited to accounts which have permission to access Automator.
 
-
 To list all available accounts run following query.
+
 ```graphql
 {
   me {
@@ -20,10 +22,11 @@ To list all available accounts run following query.
 ```
 
 If you know the Automator account name, the query can be filtered using this name:
+
 ```graphql
 {
   me {
-    accounts(first: 1, filters: {nameEq: "{ACCOUNT_NAME}"}) {
+    accounts(first: 1, filter: { name: { eq: "{ACCOUNT_NAME}" } }) {
       nodes {
         name
         id
@@ -34,6 +37,7 @@ If you know the Automator account name, the query can be filtered using this nam
 ```
 
 Response:
+
 ```json
 {
   "data": {
@@ -65,6 +69,7 @@ When the account ID has been obtained, subsequent queries can be filtered to thi
 ```
 
 Response:
+
 ```json
 {
   "data": {
@@ -82,29 +87,31 @@ Response:
 
 #### ** Query **
 
-Name | Type
---- | ---
-`limitPagesMax` | Int!
-`limitLevelsMax` | Int!
-`phone` | String
-`country` | String
-`addressCity` | String
-`addressZip` | String
-`name` | String
-`packagePlan` | String!
-`createdAt` | DateTime!
-`updatedAt` | DateTime!
-`id` | ObjectID!
-`testSuites(...)` | TestSuiteConnection
-`projects(...)` | ProjectConnection!
-`featureFlags` | [FeatureFlag!]!
+| Name              | Type                |
+| ----------------- | ------------------- |
+| `limitPagesMax`   | Int!                |
+| `limitLevelsMax`  | Int!                |
+| `phone`           | String              |
+| `country`         | String              |
+| `addressCity`     | String              |
+| `addressZip`      | String              |
+| `name`            | String              |
+| `packagePlan`     | String!             |
+| `createdAt`       | DateTime!           |
+| `updatedAt`       | DateTime!           |
+| `id`              | ObjectID!           |
+| `testSuites(...)` | TestSuiteConnection |
+| `projects(...)`   | ProjectConnection!  |
+| `featureFlags`    | [FeatureFlag!]!     |
 
 <!-- tabs:end -->
 
 ## Requesting other resources
+
 As GraphQL allows easy access to nested resources: to access other resources you need to nest it in a parent's query.
 
 The following request lists first 5 Test Suites for an account and the last build in each Test Suite:
+
 ```graphql
 {
   node(id: "{ACCOUNT_ID}") {
@@ -126,11 +133,16 @@ The following request lists first 5 Test Suites for an account and the last buil
 }
 ```
 
-or using account name: 
+or using account name:
+
 ```graphql
 {
   me {
-    accounts(first: 1, filters: {nameEq: "{ACCOUNT_NAME}"}) {
+    accounts(first: 1, filter: {
+      name: {
+        eq: "{ACCOUNT_NAME}"
+      }
+    }) {
       nodes {
         id
         name

@@ -1,14 +1,16 @@
 # Overview
+
 ---
 
 Automator API uses [GraphQL](https://graphql.github.io/) data query language.
 GraphQL offers flexible way of interacting with your Automator data.
 
 Our API allows two operations:
- - Query - for querying data
- - Mutation - for interacting with data
 
-<!-- TODO: Add info about filters, pagination and ordering -->
+- Query - for querying data
+- Mutation - for interacting with data
+
+<!-- TODO: Add info about filter, pagination and ordering -->
 <!-- TODO: Add list of available field types -->
 <!-- TODO: Add embedded resources to field lists -->
 <!-- TODO: Consider separating query fields from mutation params, currently some query fields are missing coz I copied them from create input params. Or add a `settable` and `gettable` column if field can be queried/updated -->
@@ -40,7 +42,7 @@ A GraphQL query is for getting the data from our API. A basic query looks like:
 
 There are two special types: `node` and `nodes`. `node` returns a single object based on it's ID. `nodes` returns multiple objects for multiple IDs.
 
-Example queries: 
+Example queries:
 
 ```graphql
 {
@@ -66,16 +68,17 @@ Example queries:
 
 There are 6 available query params that can be used:
 
-Name | Type | Description
---- | --- | ---
-`first` | Int | Number of first results to return
-`after` | String | ID of a resource after which results should be returned. This can be used for pagination.
-`last` | Int | Number of last results to return
-`before` | String | ID of a resource before which results should be returned. This can be used for pagination.
-`filters` | [TypeFilter!] | Array of filters in the form of `[{field1Predicate: value, field2Predicate: value}, {field3Predicate: value}]`.
-`orderBy` | [TypeOrder!] | Array of order objects, e.g. `[{direction: DESC, field: fieldName}]`. Available directions are `DESC` and `ASC`.
+| Name      | Type         | Description                                                                                                      |
+| --------- | ------------ | ---------------------------------------------------------------------------------------------------------------- |
+| `first`   | Int          | Number of first results to return                                                                                |
+| `after`   | String       | ID of a resource after which results should be returned. This can be used for pagination.                        |
+| `last`    | Int          | Number of last results to return                                                                                 |
+| `before`  | String       | ID of a resource before which results should be returned. This can be used for pagination.                       |
+| `filter`  | TypeFilter   | Filter object in the form of `{ field1: { predicate: value }, field2: { predicate: value } }`.                   |
+| `orderBy` | [TypeOrder!] | Array of order objects, e.g. `[{direction: DESC, field: fieldName}]`. Available directions are `DESC` and `ASC`. |
 
 ## Mutation
+
 GraphQL mutatations are for interacting with resources. A basic mutation looks like:
 
 ```graphql
