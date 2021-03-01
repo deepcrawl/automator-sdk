@@ -51,11 +51,9 @@ Currently a test suite can only be linked to one build schedule at a time.
 }
 ```
 
-!> `buildScheduleTestSuites` is used to obtain all links betwenn the current build schedule and test suites, together with last build executed part of this link (`lastRunBuild`).
+!> `buildScheduleTestSuites` is used to obtain all links between the current build schedule and test suites, together with last build executed part of this link (`lastRunBuild`).
 
 ## Listing all build schedules in a given account
-
-In order to get integrations for a given account use the following query, by providing the account id in `id` argument:
 
 ```graphql
 {
