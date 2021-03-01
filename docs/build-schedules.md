@@ -2,7 +2,7 @@
 
 ---
 
-Using build schedules, you can schedule your test suites to run at a given time. Repetition rate is also available and it can be used to repeat running the test suites at a given rate. The following repetition rates are available:
+Using build schedules, test suites can be scheduled at a given time. Repetition rate is also available and it can be used to repeat running the test suites at a given rate. The following repetition rates are available:
 
 - `Hourly` (\*) - this is disabled in Automator application and should be used with caution. Having a build schedule running `Hourly` might involve making sure the test suites in it don't take more than 1 hour to run individually, otherwise, the builds won't finish.
 - `EveryFourHours`
@@ -11,7 +11,7 @@ Using build schedules, you can schedule your test suites to run at a given time.
 - `Monthly`
 - `EveryWeekday`
 
-Build schedules are checked every 15 minutes, respectively at minute `00`, `15`, `30` and `45`. Having a build schedule set to start at any minute between those intervals, will make it run at the next check. e.g. If you have a build schedule scheduled to run at 00:10, then it will run at 00:15.
+Build schedules are checked every 15 minutes, respectively at minute `00`, `15`, `30` and `45`. Having a build schedule set to start at any minute between those intervals, will make it run at the next check. e.g. If a build schedule is scheduled to run at 00:10, then it will run at 00:15.
 
 Currently a test suite can only be linked to one build schedule at a time.
 
@@ -113,7 +113,7 @@ Currently a test suite can only be linked to one build schedule at a time.
 ```
 
 !> `name` is unique per Account.
-!> `repetitionRate` is optional, meaning that you can make a build schedule non-repeatable.
+!> `repetitionRate` is optional, meaning that build schedules can be non-repeatable.
 
 ## Updating a build schedule
 
