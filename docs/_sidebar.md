@@ -12,10 +12,12 @@
   - [Slack Webhooks](slack-webhooks.md)
   - [Automator Statistics](automator-statistics.md)
   - [Integrations](integrations.md)
+  - [Build Schedules](build-schedules.md)
+  - [Automatic Threshold](automatic-threshold.md)
   - [FAQ](faq.md)
 
 - CI Scripts
-  
+
   - [Overview](/ci-scripts.md)
   - [Azure Devops Extension](/azure-devops-extension.md)
   - [Tools API](/automator-tools.md)
