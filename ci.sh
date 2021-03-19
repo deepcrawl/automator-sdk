@@ -14,12 +14,20 @@ testResults=''
 function GetAuthToken() {
     local bodyMutation="{\"query\":\"mutation{createSessionUsingUserKey(input:{userKeyId:\\\"$AUTOMATOR_USER_KEY_ID\\\",secret:\\\"$AUTOMATOR_USER_KEY_SECRET\\\"}){token}}\"}"
     resultResponse=$(curl -s -X POST "https://graph.deepcrawl.com/" -H "Content-Type:application/json" -d $bodyMutation)
-    authToken=$(echo $resultResponse | jq -r '.data.createSessionUsingUserKey.token')
+    errors=$(echo $resultResponse | jq -r '.errors')
+    if [ $errors == "null" ]; 
+    then authToken=$(echo $resultResponse | jq -r '.data.createSessionUsingUserKey.token')
+    else echo 'Getting Auth Token > Errors Found:' $errors
+    fi
 }
 
 function DeleteAuthToken() {
     local bodyMutation="{\"query\":\"mutation{deleteSession{token}}\"}"
     resultResponse=$(curl -s -H "X-Auth-Token: $authToken" -X POST "https://graph.deepcrawl.com/" -H "Content-Type:application/json" -d $bodyMutation)
+    errors=$(echo $resultResponse | jq -r '.errors')
+    if [ $errors != "null" ]; 
+    then echo 'Delete Auth Token > Errors Found:' $errors
+    fi
 }
 
 function GetResults() {

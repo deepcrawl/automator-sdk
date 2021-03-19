@@ -44,18 +44,18 @@ $env:AUTOMATOR_USER_KEY_SECRET = <string>
 ### Bash
 Example 1
 ```
-AUTOMATOR_TEST_SUITE_ID=<string>
-AUTOMATOR_USER_KEY_SECRET=<string>
-AUTOMATOR_TEST_SUITE_ID=<number>
-AUTOMATOR_START_ONLY=<boolean> | 0 | 1
+export AUTOMATOR_TEST_SUITE_ID=<string>
+export AUTOMATOR_USER_KEY_SECRET=<string>
+export AUTOMATOR_TEST_SUITE_ID=<number>
+export AUTOMATOR_START_ONLY=<boolean> | 0 | 1
 ./ci.sh
 ```
 
 Example 2
 * replace **AUTOMATOR_TEST_SUITE_ID** with your id
 ```
-AUTOMATOR_USER_KEY_SECRET=<string>
-AUTOMATOR_TEST_SUITE_ID=<number>
+export AUTOMATOR_USER_KEY_SECRET=<string>
+export AUTOMATOR_TEST_SUITE_ID=<number>
 ./ci.sh AUTOMATOR_TEST_SUITE_ID
 ```
 
