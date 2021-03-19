@@ -7,18 +7,24 @@ $secret = $env:AUTOMATOR_USER_KEY_SECRET
 $key_id = $env:AUTOMATOR_USER_KEY_ID
 
 function Get-Auth-Token {
+
     $query = @{"query" = "mutation { createSessionUsingUserKey(input: {userKeyId:""$key_id"" secret:""$secret""}) { token }}"} | ConvertTo-Json -Depth 9
+
     $params = @{
         Uri         = "https://graph.deepcrawl.com/"
         Method      = 'Post'
         Body        = ($query)
         ContentType = "application/json"
     }
+
     try {
         $response = Invoke-RestMethod @params;
     } catch {
+        Write-Host " "
+        Write-Host "Get Auth Token Error"
+        Write-Host "===================="
         Write-Host "StatusCode:" $_.Exception.Response.StatusCode.value__ 
-        Write-Host "StatusDescription:" $_.Exception.Response.StatusDescription
+        Write-Host "Error Message:" $_.Exception.Message
     }
 
     return $response.data.createSessionUsingUserKey.token
@@ -37,8 +43,11 @@ function Delete-Auth-Token {
     try {
         $response = Invoke-RestMethod @params;
     } catch {
+        Write-Host " "
+        Write-Host "Delete Auth Token Error"
+        Write-Host "======================="
         Write-Host "StatusCode:" $_.Exception.Response.StatusCode.value__ 
-        Write-Host "StatusDescription:" $_.Exception.Response.StatusDescription
+        Write-Host "Error Message:" $_.Exception.Message
     }
     return $response.data.deleteSession.token 
 }
@@ -68,8 +77,11 @@ function Get-Results {
         try {
             $resultResponse = Invoke-RestMethod @params;
         } catch {
+            Write-Host " "
+            Write-Host "Get Results Error"
+            Write-Host "================="
             Write-Host "StatusCode:" $_.Exception.Response.StatusCode.value__ 
-            Write-Host "StatusDescription:" $_.Exception.Response.StatusDescription
+            Write-Host "Error Message:" $_.Exception.Message
         }
 
         return $resultResponse
@@ -131,14 +143,16 @@ function Start-Build {
         Method      = 'Post'
         Body        = ($body | ConvertTo-Json)
         ContentType = "application/json"
-
     }
     
     try {
         $triggerResponse = Invoke-RestMethod @params;
     } catch {
+        Write-Host " "
+        Write-Host "StartBuild Error"
+        Write-Host "================"
         Write-Host "StatusCode:" $_.Exception.Response.StatusCode.value__ 
-        Write-Host "StatusDescription:" $_.Exception.Response.StatusDescription
+        Write-Host "Error Message:" $_.Exception.Message
     }
 
     if (($startOnly -eq $true) -or ($startOnly -eq 1)) {

@@ -33,12 +33,12 @@ $env:AUTOMATOR_START_ONLY = <boolean> | 1 | 0
 Example 2: 
 
 * replace **AUTOMATOR_TEST_SUITE_ID** with your id
-* replace **AUTOMATOR_USER_KEY_SECRET** with your API secret
-* replace **AUTOMATOR_USER_KEY_ID** with your API key
 * (optional) replace **AUTOMATOR_START_ONLY** and can be set to 1, 0, false or true
 
 ```
-./ci.ps1 -testSuiteId AUTOMATOR_TEST_SUITE_ID -userKeySecret AUTOMATOR_USER_KEY_SECRET -userKeyId AUTOMATOR_USER_KEY_ID -startOnly AUTOMATOR_START_ONLY
+$env:AUTOMATOR_USER_KEY_ID = <number>
+$env:AUTOMATOR_USER_KEY_SECRET = <string>
+./ci.ps1 -testSuiteId AUTOMATOR_TEST_SUITE_ID -startOnly AUTOMATOR_START_ONLY
 ```
 
 ### Bash
