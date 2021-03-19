@@ -9,22 +9,56 @@ The Automator shell scripts allow your CI platform to start a crawl on a develop
 The following environment variables should be set in your CI platform to allow the scripts to work correctly.
 
 ```
-AUTOMATOR_USER_KEY_ID (Key ID for generated API Key)
+AUTOMATOR_USER_KEY_ID (-userKeyId) (Key ID for generated API Key)
 
-AUTOMATOR_USER_KEY_SECRET (Secret value for generated API Key)
+AUTOMATOR_USER_KEY_SECRET (-userKeySecret) (Secret value for generated API Key)
 
-AUTOMATOR_TEST_SUITE_ID (optional) // can be passed into ci as param
+AUTOMATOR_TEST_SUITE_ID (-testSuiteId) (optional) // can be passed into ci as param
 
-AUTOMATOR_START_ONLY (optional, set to `1` or `true` to run Automator without blocking a build)
+AUTOMATOR_START_ONLY (-startOnly) (optional, set to `1` or `true` to run Automator without blocking a build)
 ```
 
-example:
-**AUTOMATOR_TEST_SUITE_ID** replace with your id
+### PowerShell
 
-```bash
-$: ./ci.ps1 -testSuiteId AUTOMATOR_TEST_SUITE_ID
-$: ./ci.sh AUTOMATOR_TEST_SUITE_ID
+Example 1:
+
 ```
+$env:AUTOMATOR_USER_KEY_ID = <number>
+$env:AUTOMATOR_USER_KEY_SECRET = <string>
+$env:AUTOMATOR_TEST_SUITE_ID = <string>
+$env:AUTOMATOR_START_ONLY = <boolean> | 1 | 0
+./ci.ps1
+```
+
+Example 2: 
+
+* replace **AUTOMATOR_TEST_SUITE_ID** with your id
+* replace **AUTOMATOR_USER_KEY_SECRET** with your API secret
+* replace **AUTOMATOR_USER_KEY_ID** with your API key
+* (optional) replace **AUTOMATOR_START_ONLY** and can be set to 1, 0, false or true
+
+```
+./ci.ps1 -testSuiteId AUTOMATOR_TEST_SUITE_ID -userKeySecret AUTOMATOR_USER_KEY_SECRET -userKeyId AUTOMATOR_USER_KEY_ID -startOnly AUTOMATOR_START_ONLY
+```
+
+### Bash
+Example 1
+```
+AUTOMATOR_TEST_SUITE_ID=<string>
+AUTOMATOR_USER_KEY_SECRET=<string>
+AUTOMATOR_TEST_SUITE_ID=<number>
+AUTOMATOR_START_ONLY=<boolean> | 0 | 1
+./ci.sh
+```
+
+Example 2
+* replace **AUTOMATOR_TEST_SUITE_ID** with your id
+```
+AUTOMATOR_USER_KEY_SECRET=<string>
+AUTOMATOR_TEST_SUITE_ID=<number>
+./ci.sh AUTOMATOR_TEST_SUITE_ID
+```
+
 ### Authentication variables
 The authentication variables `AUTOMATOR_USER_KEY_ID` and `AUTOMATOR_USER_KEY_SECRET` can be retrieved from either your [DeepCrawl API settings](https://app.deepcrawl.com/dc-api), or by [generating them in the API](https://deepcrawl.github.io/automator-sdk/#/authentication)
 
