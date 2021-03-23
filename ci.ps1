@@ -6,17 +6,27 @@ param(
 $secret = $env:AUTOMATOR_USER_KEY_SECRET
 $key_id = $env:AUTOMATOR_USER_KEY_ID
 
-Write-Output $testSuiteId
-
 function Get-Auth-Token {
+
+    $query = @{"query" = "mutation { createSessionUsingUserKey(input: {userKeyId:""$key_id"" secret:""$secret""}) { token }}"} | ConvertTo-Json -Depth 9
+
     $params = @{
         Uri         = "https://graph.deepcrawl.com/"
         Method      = 'Post'
-        Body        = (@{"query" = "mutation { createSessionUsingUserKey(input: {userKeyId:`"$($key_id)`", secret:`"$($secret)`"}) { token }}"} | ConvertTo-Json)
+        Body        = ($query)
         ContentType = "application/json"
     }
 
-    $response = Invoke-RestMethod @params;
+    try {
+        $response = Invoke-RestMethod @params;
+    } catch {
+        Write-Host " "
+        Write-Host "Get Auth Token Error"
+        Write-Host "===================="
+        Write-Host "StatusCode:" $_.Exception.Response.StatusCode.value__ 
+        Write-Host "Error Message:" $_.Exception.Message
+    }
+
     return $response.data.createSessionUsingUserKey.token
 }
 
@@ -30,17 +40,19 @@ function Delete-Auth-Token {
             'X-Auth-Token' = $token
         }
     }
-
-    $response = Invoke-RestMethod @params;
-    return $response.data.deleteSession.token
+    try {
+        $response = Invoke-RestMethod @params;
+    } catch {
+        Write-Host " "
+        Write-Host "Delete Auth Token Error"
+        Write-Host "======================="
+        Write-Host "StatusCode:" $_.Exception.Response.StatusCode.value__ 
+        Write-Host "Error Message:" $_.Exception.Message
+    }
+    return $response.data.deleteSession.token 
 }
 
 $token = Get-Auth-Token
-
-$body = @{
-    "authToken"   = $token
-    "testSuiteId" = $testSuiteId
-}
 
 [int]$totalRunTime = 0
 [int]$maxRunTime = 3000
@@ -62,8 +74,15 @@ function Get-Results {
             ContentType = "application/json"
 
         }
-
-        $resultResponse = Invoke-RestMethod @params;
+        try {
+            $resultResponse = Invoke-RestMethod @params;
+        } catch {
+            Write-Host " "
+            Write-Host "Get Results Error"
+            Write-Host "================="
+            Write-Host "StatusCode:" $_.Exception.Response.StatusCode.value__ 
+            Write-Host "Error Message:" $_.Exception.Message
+        }
 
         return $resultResponse
     }
@@ -114,16 +133,27 @@ function Get-Timeout() {
 
 function Start-Build {
 
+    $body = @{
+        "authToken"   = $token
+        "testSuiteId" = $testSuiteId
+    }
+
     $params = @{
         Uri         = "https://tools.automator.deepcrawl.com/start"
         Method      = 'Post'
         Body        = ($body | ConvertTo-Json)
         ContentType = "application/json"
-
     }
-
-    $triggerResponse = Invoke-RestMethod @params;
-    Write-Output $triggerResponse;
+    
+    try {
+        $triggerResponse = Invoke-RestMethod @params;
+    } catch {
+        Write-Host " "
+        Write-Host "StartBuild Error"
+        Write-Host "================"
+        Write-Host "StatusCode:" $_.Exception.Response.StatusCode.value__ 
+        Write-Host "Error Message:" $_.Exception.Message
+    }
 
     if (($startOnly -eq $true) -or ($startOnly -eq 1)) {
         Write-Output "DeepCrawl Skipped Polling"
