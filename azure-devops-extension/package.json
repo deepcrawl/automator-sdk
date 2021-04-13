@@ -4,6 +4,7 @@
   "description": "Automator Tools for Azure Devops",
   "main": "index.js",
   "scripts": {
+    "preinstall": "yarn audit",
     "release": "yarn && ./release.sh"
   },
   "author": "Andrei Bitca, Daniel Mon Chit & Lukas Kalcok",

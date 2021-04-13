@@ -4,6 +4,7 @@
   "description": "## Introduction",
   "main": "index.js",
   "scripts": {
+    "preinstall": "yarn audit",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
