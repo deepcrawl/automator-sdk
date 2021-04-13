@@ -17,7 +17,9 @@ exports[`GraphAPIClient #getAuthToken should return token 1`] = `
 Object {
   "operationName": "CreateSessionUsingUserKey",
   "query": "mutation CreateSessionUsingUserKey($userKeyId: ObjectID!, $userKeySecret: String!) {
-  createSessionUsingUserKey(input: {userKeyId: $userKeyId, secret: $userKeySecret}) {
+  createSessionUsingUserKey(
+    input: {userKeyId: $userKeyId, secret: $userKeySecret}
+  ) {
     token
     __typename
   }
