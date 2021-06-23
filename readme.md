@@ -1,6 +1,8 @@
 
 # DeepCrawl Automator
 
+[<img src="https://www.deepcrawl.com/wp-content/themes/deepcrawl/images/logo-footer.svg">](https://www.deepcrawl.com/)
+
 ## Introduction
 
 Automator is a platform for ensuring that deployments are not causing SEO regressions. It works by connecting DeepCrawl to your CI/CD pipeline to kick off a crawl of a staging or development environment, and returns a "passed" or "failed" status along with notifications about the specific regressions.
