@@ -37,21 +37,36 @@ function GetResults() {
 }
 
 function WriteResults() {
-    if [ $(echo "$1" | jq '.passed') == "true" ]; then
+    if [ $(echo "$2" | jq '.passed') == "true" ]; then
         #have tests passed
         echo "DeepCrawl Tests Passed"
+        GetBuildUrl $1
         exit 0
     else
         #have tests failed
         echo "DeepCrawl Tests Failed"
+        GetBuildUrl $1
         exit 1
+    fi
+}
+
+function GetBuildUrl() {
+    buildId=$(echo $1 | sed 's/"//g')
+    resultResponse=$(curl -s -X POST "https://graph.deepcrawl.com/" -H "Content-Type:application/json" -H "X-Auth-Token: $authToken" -d "{\"query\":\"{node(id: \\\"$buildId\\\"){ ...on Build{ testSuite { id account { id } } }}}\"}")
+    errors=$(echo $resultResponse | jq -r '.errors')
+    if [ $errors != "null" ]; then 
+        echo 'Get Build Url> Errors Found:' $errors
+    else 
+        buildAccountId=$(echo $resultResponse | jq -r '.data.node.testSuite.account.id')
+        buildTestSuiteId=$(echo $resultResponse | jq -r '.data.node.testSuite.id')
+        echo "A detailed report can be viewed at: https://automator.deepcrawl.com/account/$buildAccountId/test-suites/$buildTestSuiteId/build-tests/$buildId"
     fi
 }
 
 function StartPoll() {
     testResults="$(GetResults $1)"
     if [ $testResults ]; then
-        WriteResults $testResults
+        WriteResults $1 $testResults
     else
         echo "Waiting for DeepCrawl Test Results ..."
         sleep 30

@@ -94,18 +94,47 @@ function Get-Results {
 }
 
 function Write-Results {
-    Param($resultsData)
+    Param($BuildId, $resultsData)
     Write-Information $resultsData
     if ($testResults.passed -eq $true) {
         #have tests passed 
         Write-Output "DeepCrawl Tests Passed"
+        $url = Get-Build-Url($BuildId)
+        Write-Output $url
         exit 0
     }
     else {
         #have tests failed
         Write-Output "DeepCrawl Tests Failed"
+        $url = Get-Build-Url($BuildId)
+        Write-Output $url
         exit 1
     }
+}
+
+function Get-Build-Url {
+    Param($BuildId)
+    $params = @{
+        Uri         = "https://graph.deepcrawl.com/"
+        Method      = 'Post'
+        Body        = (@{"query" = "{ node(id: `"$BuildId`") { ...on Build { testSuite { id account { id } } } } }"} | ConvertTo-Json)
+        ContentType = "application/json"
+        Headers     = @{
+            'X-Auth-Token' = $token
+        }
+    }
+    try {
+        $response = Invoke-RestMethod @params;
+    } catch {
+        Write-Host " "
+        Write-Host "Get Build Url Error"
+        Write-Host "======================="
+        Write-Host "StatusCode:" $_.Exception.Response.StatusCode.value__ 
+        Write-Host "Error Message:" $_.Exception.Message
+    }
+    $BuildAccountId = $response.data.node.testSuite.account.id;
+    $BuildTestSuiteId = $response.data.node.testSuite.id;
+    return "A detailed report can be viewed at: https://automator.deepcrawl.com/account/$BuildAccountId/test-suites/$BuildTestSuiteId/build-tests/$BuildId"
 }
 
 function Start-Poll {
@@ -113,7 +142,7 @@ function Start-Poll {
     $testResults = Get-Results -Uri "https://tools.automator.deepcrawl.com/poller" -BuildId $BuildId
     if ( [bool]($testResults.PSobject.Properties.name -match "passed")) {
         #do results contain the passed prop
-        Write-Results($testResults)
+        Write-Results($BuildId, $testResults)
     }
     else {
         Write-Output "Waiting for DeepCrawl Test Results ..."
