@@ -59,7 +59,7 @@ function GetBuildUrl() {
     else 
         buildAccountId=$(echo $resultResponse | jq -r '.data.node.testSuite.account.id')
         buildTestSuiteId=$(echo $resultResponse | jq -r '.data.node.testSuite.id')
-        echo "A detailed report can be viewed at: https://automator.deepcrawl.com/account/$buildAccountId/test-suites/$buildTestSuiteId/build-tests/$buildId/all"
+        echo "A detailed report can be viewed at: https://automator.deepcrawl.com/account/$buildAccountId/test-suites/$buildTestSuiteId/build-tests/$buildId"
     fi
 }
 
