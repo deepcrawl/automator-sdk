@@ -3,7 +3,8 @@ testSuiteId=${1:-$AUTOMATOR_TEST_SUITE_ID}
 startOnly=${2:-$AUTOMATOR_START_ONLY}
 ciBuildId=${3:-$CI_BUILD_ID}
 
-if [ -z $testSuiteId ]; then
+if [[ -z $testSuiteId ]] 
+then
     exit "No TestSuite Id Set"
 fi
 
@@ -15,9 +16,11 @@ function GetAuthToken() {
     local bodyMutation="{\"query\":\"mutation{createSessionUsingUserKey(input:{userKeyId:\\\"$AUTOMATOR_USER_KEY_ID\\\",secret:\\\"$AUTOMATOR_USER_KEY_SECRET\\\"}){token}}\"}"
     resultResponse=$(curl -s -X POST "https://graph.deepcrawl.com/" -H "Content-Type:application/json" -d $bodyMutation)
     errors=$(echo $resultResponse | jq -r '.errors')
-    if [ $errors == "null" ]; 
-    then authToken=$(echo $resultResponse | jq -r '.data.createSessionUsingUserKey.token')
-    else echo 'Getting Auth Token > Errors Found:' $errors
+    if [[ $errors == "null" ]]
+    then 
+        authToken=$(echo $resultResponse | jq -r '.data.createSessionUsingUserKey.token')
+    else 
+        echo 'Getting Auth Token > Errors Found:' $errors
     fi
 }
 
@@ -25,8 +28,9 @@ function DeleteAuthToken() {
     local bodyMutation="{\"query\":\"mutation{deleteSession{token}}\"}"
     resultResponse=$(curl -s -H "X-Auth-Token: $authToken" -X POST "https://graph.deepcrawl.com/" -H "Content-Type:application/json" -d $bodyMutation)
     errors=$(echo $resultResponse | jq -r '.errors')
-    if [ $errors != "null" ]; 
-    then echo 'Delete Auth Token > Errors Found:' $errors
+    if [[ $errors != "null" ]]
+    then 
+        echo 'Delete Auth Token > Errors Found:' $errors
     fi
 }
 
@@ -37,7 +41,8 @@ function GetResults() {
 }
 
 function WriteResults() {
-    if [ $(echo "$2" | jq '.passed') == "true" ]; then
+    if [[ $(echo "$2" | jq '.passed') == "true" ]] 
+    then
         #have tests passed
         echo "DeepCrawl Tests Passed"
         GetBuildUrl $1
@@ -54,7 +59,8 @@ function GetBuildUrl() {
     buildId=$(echo $1 | sed 's/"//g')
     resultResponse=$(curl -s -X POST "https://graph.deepcrawl.com/" -H "Content-Type:application/json" -H "X-Auth-Token: $authToken" -d "{\"query\":\"{node(id: \\\"$buildId\\\"){ ...on Build{ testSuite { id account { id } } }}}\"}")
     errors=$(echo $resultResponse | jq -r '.errors')
-    if [ $errors != "null" ]; then 
+    if [[ $errors != "null" ]] 
+    then 
         echo 'Get Build Url> Errors Found:' $errors
     else 
         buildAccountId=$(echo $resultResponse | jq -r '.data.node.testSuite.account.id')
@@ -65,7 +71,8 @@ function GetBuildUrl() {
 
 function StartPoll() {
     testResults="$(GetResults $1)"
-    if [ $testResults ]; then
+    if [[ $testResults ]]
+    then
         WriteResults $1 $testResults
     else
         echo "Waiting for DeepCrawl Test Results ..."
@@ -79,13 +86,16 @@ function StartBuild() {
     RESPONSE=$(curl -s -X POST "https://tools.automator.deepcrawl.com/start" -H "Content-Type:application/json" -d $body)
     resp=$(echo $RESPONSE | jq '.buildId')
 
-    if [ "$startOnly" = "true" ] || [ "$startOnly" = "1" ]; then
+    if [[ "$startOnly" = "true" ]] || [[ "$startOnly" = "1" ]] 
+    then
         echo "DeepCrawl Skipped Polling"
         exit 0
     fi
 
-    if [ $? -eq 0 ]; then
-        until [[ $testResults && $totalRunTime -lt $maxRunTime ]]; do
+    if [[ $? -eq 0 ]] 
+    then
+        until [[ $testResults && $totalRunTime -lt $maxRunTime ]]
+        do
             StartPoll $resp
         done
     fi
