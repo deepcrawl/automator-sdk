@@ -17,8 +17,8 @@ At the moment we offer the following possibilites of connecting Automation Hub t
 - [Automation Hub CircleCI Orb](https://github.com/deepcrawl/deepcrawl-test-orb)
 - [Automation Hub Azure Devops Extension](./azure-devops-extension/README.md)
 - [Automation Hub Shell Script](#connecting-automation-hub-to-your-ci-pipeline-with-the-shell-script)
-- [Automation Hub CLI Tools](https://github.com/deepcrawl/deepcrawl-test/packages/test-cli/README.md)
-- [Automation Hub SDK NodeJS Client](https://github.com/deepcrawl/deepcrawl-test/packages/test-nodejs-sdk/README.md)
+- [Automation Hub CLI Tools](https://github.com/deepcrawl/deepcrawl-test/tree/main/packages/test-cli/README.md)
+- [Automation Hub SDK NodeJS Client](https://github.com/deepcrawl/deepcrawl-test/tree/main/packages/test-nodejs-sdk/README.md)
 - [Automation Hub API](https://deepcrawl.github.io/automator-sdk/)
 
 ## Connecting Automation Hub to your CI pipeline with the Shell Script
