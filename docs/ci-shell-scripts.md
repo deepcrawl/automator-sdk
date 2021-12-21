@@ -30,10 +30,10 @@ $env:AUTOMATOR_START_ONLY = <boolean> | 1 | 0
 ./ci.ps1
 ```
 
-Example 2: 
+Example 2:
 
-* replace **AUTOMATOR_TEST_SUITE_ID** with your id
-* (optional) replace **AUTOMATOR_START_ONLY** and can be set to 1, 0, false or true
+- replace **AUTOMATOR_TEST_SUITE_ID** with your id
+- (optional) replace **AUTOMATOR_START_ONLY** and can be set to 1, 0, false or true
 
 ```
 $env:AUTOMATOR_USER_KEY_ID = <number>
@@ -42,7 +42,9 @@ $env:AUTOMATOR_USER_KEY_SECRET = <string>
 ```
 
 ### Bash
+
 Example 1
+
 ```
 export AUTOMATOR_TEST_SUITE_ID=<string>
 export AUTOMATOR_USER_KEY_SECRET=<string>
@@ -52,7 +54,9 @@ export AUTOMATOR_START_ONLY=<boolean> | 0 | 1
 ```
 
 Example 2
-* replace **AUTOMATOR_TEST_SUITE_ID** with your id
+
+- replace **AUTOMATOR_TEST_SUITE_ID** with your id
+
 ```
 export AUTOMATOR_USER_KEY_SECRET=<string>
 export AUTOMATOR_TEST_SUITE_ID=<number>
@@ -60,6 +64,7 @@ export AUTOMATOR_TEST_SUITE_ID=<number>
 ```
 
 ### Authentication variables
+
 The authentication variables `AUTOMATOR_USER_KEY_ID` and `AUTOMATOR_USER_KEY_SECRET` can be retrieved from either your [DeepCrawl API settings](https://app.deepcrawl.com/dc-api), or by [generating them in the API](https://deepcrawl.github.io/automator-sdk/#/authentication)
 
 ## CI Platform Usage
@@ -81,6 +86,7 @@ matrix:
 ```
 
 ### Jenkins
+
 Coming soon
 
 ### Azure Pipelines
