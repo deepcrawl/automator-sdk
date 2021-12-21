@@ -45,4 +45,4 @@ All configuration takes place within the Automation Hub app - contact your DeepC
 
 ## Using the Automation Hub API
 
-The Automation Hub API uses the GraphQL protocol to make it easy to retrieve any information or make any changes you'd like to make. [You can find the full API documentation here.](https://deepcrawl.github.io/Automation Hub-sdk/)
+The Automation Hub API uses the GraphQL protocol to make it easy to retrieve any information or make any changes you'd like to make. [You can find the full API documentation here.](https://deepcrawl.github.io/automator-sdk/)
