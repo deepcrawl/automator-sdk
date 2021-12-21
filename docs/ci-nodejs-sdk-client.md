@@ -1,6 +1,6 @@
 # NodeJS SDK Client
 
-Github Repository: https://github.com/deepcrawl/deepcrawl-test/tree/develop/packages/test-nodejs-sdk
+[Github Repository](https://github.com/deepcrawl/deepcrawl-test/tree/develop/packages/test-nodejs-sdk)
 
 Automation Hub SDK NodeJS Client can be used to start builds on Automation Hub, by adding it as a dependency into your NodeJS project.
 

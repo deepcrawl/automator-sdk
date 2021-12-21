@@ -1,6 +1,6 @@
 # CLI Tools
 
-Github Repository: https://github.com/deepcrawl/deepcrawl-test/tree/develop/packages/test-cli
+[Github Repository](https://github.com/deepcrawl/deepcrawl-test/tree/develop/packages/test-cli)
 
 ## Introduction
 

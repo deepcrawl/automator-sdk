@@ -1,7 +1,6 @@
 # Github Integration
 
-Github Repository: https://github.com/deepcrawl/deepcrawl-test-action
-Marketplace: https://github.com/marketplace/actions/deepcrawl-automation-hub
+[Marketplace](https://github.com/marketplace/actions/deepcrawl-automation-hub) | [Github Repository](https://github.com/deepcrawl/deepcrawl-test-action)
 
 ## Introduction
 

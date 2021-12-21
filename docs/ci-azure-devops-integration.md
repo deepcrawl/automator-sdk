@@ -1,7 +1,6 @@
 # Azure Devops Integration
 
-Github Repository: https://github.com/deepcrawl/automator-sdk/tree/master/azure-devops-extension
-Marketplace: https://marketplace.visualstudio.com/items?itemName=deepcrawl.automator-tools
+[Marketplace](https://marketplace.visualstudio.com/items?itemName=deepcrawl.automator-tools) | [Github Repository](https://github.com/deepcrawl/automator-sdk/tree/master/azure-devops-extension)
 
 ## Introduction
 
