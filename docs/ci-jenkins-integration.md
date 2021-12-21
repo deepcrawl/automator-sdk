@@ -1,6 +1,7 @@
 # Jenkins Integration
 
 Github Repository: https://github.com/jenkinsci/deepcrawl-test-plugin
+Marketplace: https://plugins.jenkins.io/deepcrawl-test
 
 ## Introduction
 

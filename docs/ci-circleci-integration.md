@@ -1,6 +1,7 @@
 # CircleCI Integration
 
 Github Repository: https://github.com/deepcrawl/deepcrawl-test-orb
+Marketplace: https://circleci.com/developer/orbs/orb/deepcrawl/deepcrawl-test
 
 ## Introduction
 
