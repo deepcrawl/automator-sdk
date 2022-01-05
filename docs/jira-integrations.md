@@ -8,9 +8,11 @@ A JIRA Authentication consists of: a name, the JIRA Cloud ID, the JIRA url and t
 
 A JIRA Integration consists of: a name, the created JIRA authentication id, the JIRA project id and the JIRA issue type id.
 
-!> JIRA Integrations work only with JIRA Cloud
+!> A test suite can only be linked to a JIRA integration at a time.
 
-## Getting an JIRA Authentication by id
+!> JIRA Integrations work only with JIRA Cloud.
+
+## Getting a JIRA Authentication by id
 
 ```graphql
 {
@@ -19,22 +21,6 @@ A JIRA Integration consists of: a name, the created JIRA authentication id, the 
       name
       cloudId
       jiraUrl
-      createdAt
-      updatedAt
-    }
-  }
-}
-```
-
-## Getting an JIRA Integration by id
-
-```graphql
-{
-  node(id: "{INTEGRATION_ID}") {
-    ... on JiraIntegration {
-      name
-      jiraProjectId
-      jiraIssueTypeId
       createdAt
       updatedAt
     }
@@ -71,24 +57,6 @@ In order to get all JIRA authentications for a given account use the following q
 }
 ```
 
-## Getting the JIRA integration linked to a given test suite
-
-```graphql
-{
-  node(id: "{TEST_SUITE_ID}") {
-    ... on TestSuite {
-      testSuiteJiraIntegration {
-        jiraIntegration {
-          id
-        }
-      }
-    }
-  }
-}
-```
-
-!> A test suite can only be linked to a JIRA integration at a time
-
 ## Creating a JIRA Authentication
 
 ```graphql
@@ -113,122 +81,186 @@ In order to get all JIRA authentications for a given account use the following q
 }
 ```
 
-## Creating a JIRA integration
+## Updating a JIRA Authentication
 
-In order to create a JIRA integration, an authentication needs to be created, using `createJiraAuthentication` (see above).
+```graphql
+{
+  mutation {
+    updateJiraAuthentication(
+      input: {
+        jiraAuhtenticationId: "TjAwN0FjY291bnQxMA"
+        name: "Updated Default JIRA Authentication"
+      }
+    ) {
+      name
+      cloudId
+      jiraUrl
+      createdAt
+      updatedAt
+    }
+  }
+}
+```
+
+## Deleting a JIRA Authentication
+
+```graphql
+{
+  mutation {
+    deleteJiraAuthentication(
+      input: {
+        jiraAuhtenticationId: "TjAwN0FjY291bnQxMA"
+      }
+    ) {
+      name
+      cloudId
+      jiraUrl
+      createdAt
+      updatedAt
+    }
+  }
+}
+```
+
+!> Deleting a JIRA Authentication will delete all JIRA Integrations associated with it.
+
+## Getting an JIRA Integration by id
+
+```graphql
+{
+  node(id: "{INTEGRATION_ID}") {
+    ... on JiraIntegration {
+      name
+      jiraProjectId
+      jiraIssueTypeId
+      createdAt
+      updatedAt
+    }
+  }
+}
+```
+## Getting the JIRA integration linked to a given test suite
+
+```graphql
+{
+  node(id: "{TEST_SUITE_ID}") {
+    ... on TestSuite {
+      testSuiteJiraIntegration {
+        jiraIntegration {
+          id
+        }
+      }
+    }
+  }
+}
+```
+
+## Creating a JIRA Integration
 
 ```graphql
 {
   mutation {
     createJiraIntegration(
       input: {
-        accountId: "{ACCOUNT_ID}"
-        traySolutionInstanceId: "{TRAY_SOLUTION_INSTANCE_ID}"
-        name: "{INTEGRATION_NAME}"
+        jiraAuthenticationId: "TjAwN0FjY291bnQxMA"
+        name: "Default JIRA Integration"
+        jiraProjectId: "1"
+        jiraIssueTypeId: "1"
       }
     ) {
-      integration {
-        integrationCode
-        name
-        metadata {
-          key
-          value
-        }
-        createdAt
-        updatedAt
-      }
+      name
+      jiraProjectId
+      jiraIssueTypeId
+      createdAt
+      updatedAt
     }
   }
 }
 ```
 
-## Updating a JIRA integration configuration
+!> JIRA Project Id and JIRA Issue Type Id need to correspond to your JIRA projects and issue types.
 
-If you want to update a JIRA integration authentication, project and issue type, use this mutation and complete the configuration:
+## Updating a JIRA Integration
 
 ```graphql
 {
   mutation {
-    updateJiraIntegrationConfiguration(input: { integrationId: "{INTEGRATION_ID}" }) {
-      configurationUrl
+    updateJiraIntegration(
+      input: {
+        jiraIntegrationId: "TjAwN0FjY291bnQxMA"
+        name: "Updated Default JIRA Integration"
+        jiraProjectId: "2"
+        jiraIssueTypeId: "2"
+      }
+    ) {
+      name
+      jiraProjectId
+      jiraIssueTypeId
+      createdAt
+      updatedAt
     }
   }
 }
 ```
 
-!> Use `configurationUrl` to update the JIRA configuration. Once this is completed, call `updateJiraIntegration` mutation above, so the configuration metadata gets updated (`name` can be skipped).
-
-## Updating a JIRA integration
-
-If you want to update a JIRA integration name or refresh the JIRA integration metadata, use:
+## Deleting a JIRA Integration
 
 ```graphql
 {
   mutation {
-    updateJiraIntegration(input: { integrationId: "{INTEGRATION_ID}", name: "{INTEGRATION_NAME}" }) {
-      integration {
-        integrationCode
-        name
-        metadata {
-          key
-          value
-        }
-        createdAt
-        updatedAt
+    deleteJiraIntegration(
+      input: {
+        jiraIntegrationId: "TjAwN0FjY291bnQxMA"
       }
+    ) {
+      name
+      jiraProjectId
+      jiraIssueTypeId
+      createdAt
+      updatedAt
     }
   }
 }
 ```
 
-!> `name` can be skipped, if you only want to refresh the metadata
+!> Deleting a JIRA Integration will delete all associations between Test Suites and that JIRA Integration.
 
-## Linking an integration to a test suite
+# Linking a JIRA Integration to a Test Suite
 
 ```graphql
 {
   mutation {
-    linkIntegrationToTestSuite(input: { integrationId: "{INTEGRATION_ID}", testSuiteId: "{TEST_SUITE_ID}" }) {
-      integration {
-        id
+    linkJiraIntegrationToTestSuite(
+      input: {
+        testSuiteId: "TjAwN0FjY291bnQxMB"
+        jiraIntegrationId: "TjAwN0FjY291bnQxMA"
       }
+    ) {
       testSuite {
         id
       }
+      jiraIntegration {
+        id
+      }
     }
   }
 }
 ```
 
-!> In case of a JIRA integration, it will throw error if test suite is already linked to an integration
-
-## Unlinking an integration from a test suite
+# Unlinking a JIRA Integration from a Test Suite
 
 ```graphql
 {
   mutation {
-    unlinkIntegrationFromTestSuite(input: { integrationId: "{INTERGATION_ID}", testSuiteId: "{TEST_SUITE_ID}" }) {
-      integration {
-        id
+    unlinkJiraIntegrationFromTestSuite(
+      input: {
+        testSuiteJiraIntegrationId: "TjAwN0FjY291bnQxMA"
       }
-      testSuite {
-        id
-      }
+    ) {
+      id
     }
   }
 }
 ```
 
-## Deleting an integration
-
-```graphql
-{
-  mutation {
-    deleteIntegration(input: { integrationId: "{INTEGRATION_ID}" }) {
-      integration {
-        id
-      }
-    }
-  }
-}
-```
+!> Use the relationship id.
