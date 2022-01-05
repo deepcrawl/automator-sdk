@@ -28,14 +28,14 @@ Automation Hub can be connected to all popular CI or CD platforms by adding a sh
 It is required to install `jq` to run the shell scripts. [Download jq here.](https://stedolan.github.io/jq/download/)
 
 Our sample shell scripts are available in this repository in a range of languages ([`ci.sh`](ci.sh) and [`ci.ps1`](ci.ps1)), and require both API credentials from your DeepCrawl account, and the test suite ID from Automation Hub.
-[Find full information about using these shell scripts in our documentation.](https://deepcrawl.github.io/Automation Hub-sdk/#/ci-scripts)
+[Find full information about using these shell scripts in our documentation.](https://deepcrawl.github.io/automator-sdk/#/ci-scripts)
 
 ### Preventing Automation Hub from delaying or blocking builds
 
 Crawling a test environment can take several minutes depending on the configured speed and number of URLs. During your initial usage of Automation Hub, you may not want Automation Hub to delay your builds, or have the ability to block a deployment.
 In this case, you can configure the shell script to have a "start only" behaviour.
 
-Under this strategy, the bash script will start a crawl of the environment then immediate return a passed status. The crawl will continue in the background and will send a notification of the test results on completion. [See the documentation for further information](https://deepcrawl.github.io/Automation Hub-sdk/#/ci-scripts).
+Under this strategy, the bash script will start a crawl of the environment then immediate return a passed status. The crawl will continue in the background and will send a notification of the test results on completion. [See the documentation for further information](https://deepcrawl.github.io/automator-sdk/#/ci-scripts).
 
 ## Configuring tests
 
