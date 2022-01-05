@@ -1,6 +1,6 @@
 # Automator Tools Extension for Azure Devops
 
-In order to access our Azure Devops extension, please request permissions, in order to see the extension in Microsoft Marketplace.
+In order to access our Azure Devops extension, please request permissions. This way you will be able to see the extension in Microsoft Marketplace.
 
 Once you are given access to the extension, install it through Microsoft Marketplace for your ogranization and configure it in your project.
 
