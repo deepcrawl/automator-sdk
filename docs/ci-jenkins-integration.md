@@ -6,7 +6,7 @@
 
 In order to integrate with Jenkins, you need to use our Jenkins plugin:
 
-Deepcrawl Automation Hub is a Jenkins plugin that runs a build on Deepcrawl Automation Hub.
+Deepcrawl Automate is a Jenkins plugin that runs a build on Deepcrawl Automate.
 
 ## How to use
 
@@ -22,7 +22,7 @@ pipeline {
     }
 
     stages {
-        stage('Automation Hub Build') {
+        stage('Deepcrawl Automate Build') {
             steps {
                 runAutomationHubBuild testSuiteId: ''
             }

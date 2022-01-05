@@ -9,7 +9,7 @@ In order to integrate with Github, you need to use our Github action in your Git
 ## How to use
 
 ```yaml
-name: Automation Hub Build
+name: Deepcrawl Automate Build
 
 # Configure the trigger of your workflow
 #
@@ -22,9 +22,9 @@ name: Automation Hub Build
 jobs:
   automation-hub-build:
     runs-on: ubuntu-latest # we support all OSes (windows / linux / macos)
-    name: Automation Hub Build
+    name: Deepcrawl Automate Build
     steps:
-      - name: Automation Hub Build
+      - name: Deepcrawl Automate Build
         id: automation-hub-build
         uses: deepcrawl/deepcrawl-test-action@v1.0.0
         with:

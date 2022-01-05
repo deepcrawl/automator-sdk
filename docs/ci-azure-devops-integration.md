@@ -4,7 +4,7 @@
 
 ## Introduction
 
-In order to integrate with Azure Devops, you need to use our Automation Hub Azure Devops extension:
+In order to integrate with Azure Devops, you need to use our Deepcrawl Automate Azure Devops extension:
 
 This extension can be installed through Azure Devops extensions and it can be found under the name "Automator Tools".
 

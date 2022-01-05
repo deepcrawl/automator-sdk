@@ -1,6 +1,6 @@
-# Automation Hub CI Integrations
+# Deepcrawl Automate CI Integrations
 
-Here is a list containing guides on how to integrate Automation Hub with all well-known CI/CD providers:
+Here is a list containing guides on how to integrate Deepcrawl Automate with all well-known CI/CD providers:
 
 - [Azure Devops Integration](ci-azure-devops-integration.md)
 - [CircleCI Integration](ci-circleci-integration.md)
@@ -13,4 +13,4 @@ For other CI/CD providers or custom implementations, please use one of the follo
 - [Shell Scripts](ci-shell-scripts.md)
 - [CLI Tools](ci-cli-tools.md)
 - [NodeJS SDK Client](ci-nodejs-sdk-integration.md)
-- [Tools API](ci-tools-api.md) and [Automation Hub API](/)
+- [Tools API](ci-tools-api.md) and [Deepcrawl Automate API](/)
