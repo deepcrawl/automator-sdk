@@ -60,17 +60,17 @@ In order to get all JIRA authentications for a given account use the following q
 ## Creating a JIRA Authentication
 
 ```graphql
-{
-  mutation {
-    createJiraAuthentication(
-      input: {
-        accountId: "TjAwN0FjY291bnQxMA"
-        name: "Default JIRA Authentication"
-        cloudId: "cloud-id"
-        jiraUrl: "https://jira.organization.com"
-        refreshToken: "refres-token"
-      }
-    ) {
+mutation {
+  createJiraAuthentication(
+    input: {
+      accountId: "TjAwN0FjY291bnQxMA"
+      name: "Default JIRA Authentication"
+      cloudId: "cloud-id"
+      jiraUrl: "https://jira.organization.com"
+      refreshToken: "refres-token"
+    }
+  ) {
+    jiraAuthentication {
       name
       cloudId
       jiraUrl
@@ -84,14 +84,14 @@ In order to get all JIRA authentications for a given account use the following q
 ## Updating a JIRA Authentication
 
 ```graphql
-{
-  mutation {
-    updateJiraAuthentication(
-      input: {
-        jiraAuhtenticationId: "TjAwN0FjY291bnQxMA"
-        name: "Updated Default JIRA Authentication"
-      }
-    ) {
+mutation {
+  updateJiraAuthentication(
+    input: {
+      jiraAuhtenticationId: "TjAwN0FjY291bnQxMA"
+      name: "Updated Default JIRA Authentication"
+    }
+  ) {
+    jiraAuthentication {
       name
       cloudId
       jiraUrl
@@ -105,13 +105,13 @@ In order to get all JIRA authentications for a given account use the following q
 ## Deleting a JIRA Authentication
 
 ```graphql
-{
-  mutation {
-    deleteJiraAuthentication(
-      input: {
-        jiraAuhtenticationId: "TjAwN0FjY291bnQxMA"
-      }
-    ) {
+mutation {
+  deleteJiraAuthentication(
+    input: {
+      jiraAuhtenticationId: "TjAwN0FjY291bnQxMA"
+    }
+  ) {
+    jiraAuthentication {
       name
       cloudId
       jiraUrl
@@ -158,16 +158,16 @@ In order to get all JIRA authentications for a given account use the following q
 ## Creating a JIRA Integration
 
 ```graphql
-{
-  mutation {
-    createJiraIntegration(
-      input: {
-        jiraAuthenticationId: "TjAwN0FjY291bnQxMA"
-        name: "Default JIRA Integration"
-        jiraProjectId: "1"
-        jiraIssueTypeId: "1"
-      }
-    ) {
+mutation {
+  createJiraIntegration(
+    input: {
+      jiraAuthenticationId: "TjAwN0FjY291bnQxMA"
+      name: "Default JIRA Integration"
+      jiraProjectId: "1"
+      jiraIssueTypeId: "1"
+    }
+  ) {
+    jiraIntegration {
       name
       jiraProjectId
       jiraIssueTypeId
@@ -183,16 +183,16 @@ In order to get all JIRA authentications for a given account use the following q
 ## Updating a JIRA Integration
 
 ```graphql
-{
-  mutation {
-    updateJiraIntegration(
-      input: {
-        jiraIntegrationId: "TjAwN0FjY291bnQxMA"
-        name: "Updated Default JIRA Integration"
-        jiraProjectId: "2"
-        jiraIssueTypeId: "2"
-      }
-    ) {
+mutation {
+  updateJiraIntegration(
+    input: {
+      jiraIntegrationId: "TjAwN0FjY291bnQxMA"
+      name: "Updated Default JIRA Integration"
+      jiraProjectId: "2"
+      jiraIssueTypeId: "2"
+    }
+  ) {
+    jiraIntegration {
       name
       jiraProjectId
       jiraIssueTypeId
@@ -206,13 +206,13 @@ In order to get all JIRA authentications for a given account use the following q
 ## Deleting a JIRA Integration
 
 ```graphql
-{
-  mutation {
-    deleteJiraIntegration(
-      input: {
-        jiraIntegrationId: "TjAwN0FjY291bnQxMA"
-      }
-    ) {
+mutation {
+  deleteJiraIntegration(
+    input: {
+      jiraIntegrationId: "TjAwN0FjY291bnQxMA"
+    }
+  ) {
+    jiraIntegration {
       name
       jiraProjectId
       jiraIssueTypeId
@@ -228,14 +228,15 @@ In order to get all JIRA authentications for a given account use the following q
 # Linking a JIRA Integration to a Test Suite
 
 ```graphql
-{
-  mutation {
-    linkJiraIntegrationToTestSuite(
-      input: {
-        testSuiteId: "TjAwN0FjY291bnQxMB"
-        jiraIntegrationId: "TjAwN0FjY291bnQxMA"
-      }
-    ) {
+mutation {
+  linkJiraIntegrationToTestSuite(
+    input: {
+      testSuiteId: "TjAwN0FjY291bnQxMB"
+      jiraIntegrationId: "TjAwN0FjY291bnQxMA"
+    }
+  ) {
+    testSuiteJiraIntegration {
+      id
       testSuite {
         id
       }
@@ -250,13 +251,13 @@ In order to get all JIRA authentications for a given account use the following q
 # Unlinking a JIRA Integration from a Test Suite
 
 ```graphql
-{
-  mutation {
-    unlinkJiraIntegrationFromTestSuite(
-      input: {
-        testSuiteJiraIntegrationId: "TjAwN0FjY291bnQxMA"
-      }
-    ) {
+mutation {
+  unlinkJiraIntegrationFromTestSuite(
+    input: {
+      testSuiteJiraIntegrationId: "TjAwN0FjY291bnQxMA"
+    }
+  ) {
+    testSuiteJiraIntegration {
       id
     }
   }
