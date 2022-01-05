@@ -33,7 +33,7 @@ Every new test suite has 3 default tests assigned:
 
 ## Adding test to tests suite
 
-Automator tests are based on DeepCrawl reports, to add test to a test suite, use the `createTest` mutation:
+Deepcrawl Automate tests are based on DeepCrawl reports, to add test to a test suite, use the `createTest` mutation:
 
 Example mutation:
 

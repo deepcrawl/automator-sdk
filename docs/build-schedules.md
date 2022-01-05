@@ -4,7 +4,7 @@
 
 Using build schedules, test suites can be scheduled at a given time. Repetition rate is also available and it can be used to repeat running the test suites at a given rate. The following repetition rates are available:
 
-- `Hourly` (\*) - this is disabled in Automator application and should be used with caution. Having a build schedule running `Hourly` might involve making sure the test suites in it don't take more than 1 hour to run individually, otherwise, the builds won't finish.
+- `Hourly` (\*) - this is disabled in Deepcrawl Automate application and should be used with caution. Having a build schedule running `Hourly` might involve making sure the test suites in it don't take more than 1 hour to run individually, otherwise, the builds won't finish.
 - `EveryFourHours`
 - `Daily`
 - `Weekly`

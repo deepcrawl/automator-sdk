@@ -2,13 +2,11 @@
 
 ---
 
-A test suite can be integrated with JIRA, in order to get notified if a test fails or warns. In order to use JIRA Integration, you first need to created a JIRA Authentication, than use that authentication in order to create a JIRA Integration and than connect that JIRA Integration to a test suite.
+A test suite can be integrated with JIRA, in order to get notified if a test fails or warns. In order to use JIRA Integration, you first need to create a JIRA Authentication, then use that authentication in order to create a JIRA Integration and then connect that JIRA Integration to a test suite.
 
 A JIRA Authentication consists of: a name, the JIRA Cloud ID, the JIRA url and the JIRA refresh token (obtained after authorizing the app).
 
 A JIRA Integration consists of: a name, the created JIRA authentication id, the JIRA project id and the JIRA issue type id.
-
-!> A test suite can only be linked to a JIRA integration at a time.
 
 !> JIRA Integrations work only with JIRA Cloud.
 

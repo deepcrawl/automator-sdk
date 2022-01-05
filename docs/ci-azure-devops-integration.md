@@ -10,7 +10,7 @@ This extension can be installed through Azure Devops extensions and it can be fo
 
 It has the following tasks:
 
-## Run Automator Build Task (`run-automator-build-task`)
+## Run Deepcrawl Automate Build Task (`run-automator-build-task`)
 
 ### How to run
 

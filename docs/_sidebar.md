@@ -1,4 +1,4 @@
-- Automator API
+- Deepcrawl Automate API
 
   - [Overview](/)
   - [Request](request.md)
@@ -10,7 +10,7 @@
   - [Test Results](test-results.md)
   - [URL File Upload](url-file-uploads.md)
   - [Slack Webhooks](slack-webhooks.md)
-  - [Automator Statistics](automator-statistics.md)
+  - [Deepcrawl Automate Statistics](automator-statistics.md)
   - [JIRA Integrations](jira-integrations.md)
   - [Build Schedules](build-schedules.md)
   - [Automatic Threshold](automatic-threshold.md)

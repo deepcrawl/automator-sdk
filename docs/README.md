@@ -2,8 +2,8 @@
 
 ---
 
-Automator API uses [GraphQL](https://graphql.github.io/) data query language.
-GraphQL offers flexible way of interacting with your Automator data.
+Deepcrawl Automate API uses [GraphQL](https://graphql.github.io/) data query language.
+GraphQL offers flexible way of interacting with your Deepcrawl Automate data.
 
 Our API allows two operations:
 

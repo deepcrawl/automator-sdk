@@ -1,4 +1,4 @@
-# Automator Tools Extension for Azure Devops
+# Deepcrawl Automate Tools Extension for Azure Devops
 
 In order to access our Azure Devops extension, please request permissions. This way you will be able to see the extension in Microsoft Marketplace.
 
@@ -8,7 +8,7 @@ It has the following tasks:
 
 ## Tasks
 
-## Run Automator Build Task (`run-automator-build-task`)
+## Run Deepcrawl Automate Build Task (`run-automator-build-task`)
 
 ### How to run
 
