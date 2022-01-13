@@ -30,7 +30,7 @@ Response:
 All other API requests must be authorised by setting the `X-Auth-Token` HTTP header with an auth token (`your-auth-token`).
 
 ## Long lasting Auth token
-It is possible to generate special Automator long lasting token. This gives the same permissions as regular token, but lasts for 120 days. This can be helpful for using as part of CI scripts or environments. You'll need to be authenticated with regular token to request the following mutation.
+It is possible to generate special Deepcrawl Automate long lasting token. This gives the same permissions as regular token, but lasts for 120 days. This can be helpful for using as part of CI scripts or environments. You'll need to be authenticated with regular token to request the following mutation.
 
 ```graphql
 mutation {

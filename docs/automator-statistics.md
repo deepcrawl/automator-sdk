@@ -1,7 +1,7 @@
-# Automator Statistics
+# Deepcrawl Automate Statistics
 ---
 
-## Getting Automator Statistics for a given Account
+## Getting Deepcrawl Automate Statistics for a given Account
 
 In order to get the statistics for a given account use the following query, by providing the account id in `accountId` argument:
 

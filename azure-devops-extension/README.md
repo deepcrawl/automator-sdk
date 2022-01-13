@@ -1,12 +1,14 @@
-# Automator Tools Extension for Azure Devops
+# Deepcrawl Automate Tools Extension for Azure Devops
 
-This extension can be installed through Azure Devops extensions and it can be found under the name "Automator Tools".
+In order to access our Azure Devops extension, please request permissions. This way you will be able to see the extension in Microsoft Marketplace.
+
+Once you are given access to the extension, install it through Microsoft Marketplace for your ogranization and configure it in your project.
 
 It has the following tasks:
 
 ## Tasks
 
-## Run Automator Build Task (`run-automator-build-task`)
+## Run Deepcrawl Automate Build Task (`run-automator-build-task`)
 
 ### How to run
 
@@ -26,7 +28,7 @@ It has the following tasks:
     startOnly: false (optional - boolean - use it if you want to skip polling)
 ```
 
-*Note: Unless `startOnly` is set to `true`, max polling time is set to 50 minutes. If the build takes longer than 50 minutes, it will automatically fail the pipeline.* 
+_Note: Unless `startOnly` is set to `true`, max polling time is set to 50 minutes. If the build takes longer than 50 minutes, it will automatically fail the pipeline._
 
 ### How to test (QA)
 
@@ -61,7 +63,7 @@ steps:
 
 - Save and run
 - Go to the job and check it
-- Once tested, make sure to remove the deepcrawl api key generated 
+- Once tested, make sure to remove the deepcrawl api key generated
 
 ### Inputs
 
@@ -137,7 +139,9 @@ In order to release, the following steps should be followed:
 - In each of your modified task, increment the version of the task in `task.json`
 - Increment the version of the extension accordingly, in `vss-extension.json`
 - Package the extension:
+
 ```
 yarn release
 ```
+
 - Manually release the extension through Azure Devops extensions

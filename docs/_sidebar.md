@@ -1,4 +1,4 @@
-- Automator API
+- Deepcrawl Automate API
 
   - [Overview](/)
   - [Request](request.md)
@@ -10,14 +10,21 @@
   - [Test Results](test-results.md)
   - [URL File Upload](url-file-uploads.md)
   - [Slack Webhooks](slack-webhooks.md)
-  - [Automator Statistics](automator-statistics.md)
-  - [Integrations](integrations.md)
+  - [Deepcrawl Automate Statistics](automator-statistics.md)
+  - [JIRA Integrations](jira-integrations.md)
   - [Build Schedules](build-schedules.md)
   - [Automatic Threshold](automatic-threshold.md)
   - [FAQ](faq.md)
 
-- CI Scripts
+- CI Integrations
 
-  - [Overview](/ci-scripts.md)
-  - [Azure Devops Extension](/azure-devops-extension.md)
-  - [Tools API](/automator-tools.md)
+  - [Overview](ci-overview.md)
+  - [Azure Devops Integration](ci-azure-devops-integration.md)
+  - [CircleCI Integration](ci-circleci-integration.md)
+  - [Github Integration](ci-github-integration.md)
+  - [Jenkins Integration](ci-jenkins-integration.md)
+  - [Travis Integration](ci-travis-integration.md)
+  - [Shell Scripts](ci-shell-scripts.md)
+  - [CLI Tools](ci-cli-tools.md)
+  - [NodeJS SDK Client](ci-nodejs-sdk-client.md)
+  - [Tools API](ci-tools-api.md)

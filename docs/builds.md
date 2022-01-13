@@ -94,7 +94,7 @@ Name | Description
 --- | ---
 `Queued` | Build has been created but not run yet
 `Running` | Build has been run and corresponding crawl is crawling.
-`Aborted` | Build has been stopped due to automator internal reasons. It's impossible to resume an aborted build.
+`Aborted` | Build has been stopped due to Deepcrawl Automate internal reasons. It's impossible to resume an aborted build.
 `Cancelled` | Build has been stopped by the user. It's impossible to resume cancelled build.
 `Finished` | Build is ready and test results are available.
 

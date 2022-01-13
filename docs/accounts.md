@@ -21,7 +21,7 @@ To list all available accounts run following query.
 }
 ```
 
-If you know the Automator account name, the query can be filtered using this name:
+If you know the Deepcrawl Automate account name, the query can be filtered using this name:
 
 ```graphql
 {
@@ -162,4 +162,4 @@ or using account name:
 }
 ```
 
-The next sections explain in more detail how to interact with other Automator resources.
+The next sections explain in more detail how to interact with other Deepcrawl Automate resources.

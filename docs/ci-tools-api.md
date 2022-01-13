@@ -1,8 +1,8 @@
-# Automator Tools API
+# Deepcrawl Automate Tools API
 
 ## Introduction
 
-Automator Tools is a helper REST API that CI scripts are using to start and poll builds.
+Deepcrawl Automate Tools is a helper REST API that CI scripts are using to start and poll builds.
 You can use this API along with Graph API to write your own scripts.
 
 URL: https://tools.automator.deepcrawl.com
