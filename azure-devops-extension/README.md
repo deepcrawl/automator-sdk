@@ -14,8 +14,8 @@ It has the following tasks:
 
 - Ask for extension permissions
 - Once permission is given, install the extension from: https://marketplace.visualstudio.com/items?itemName=deepcrawl.automator-tools
-- Generate an API key on: https://app.deepcrawl.com/dc-api
-- Make sure you have the test suite created and the test suite id, if not create your test suite in automator: https://automator.deepcrawl.com/
+- Generate an API key on: https://legacy.deepcrawl.com/dc-api
+- Make sure you have the test suite created and the test suite id, if not create your test suite in automator: https://automate.deepcrawl.com/
 - Add the following task to your azure devops pipeline `yaml` file:
 
 ```yaml
@@ -35,8 +35,8 @@ _Note: Unless `startOnly` is set to `true`, max polling time is set to 50 minute
 - Create accounts on: https://dev.azure.com/ (use @deepcrawl email address)
 - Ask for extension permissions
 - Once permission is given, install the extension from: https://marketplace.visualstudio.com/items?itemName=deepcrawl.automator-tools
-- Generate an API key on: https://app.deepcrawl.com/dc-api
-- Make sure you have the test suite created and the test suite id, if not create your test suite in automator: https://automator.deepcrawl.com/
+- Generate an API key on: https://legacy.deepcrawl.com/dc-api
+- Make sure you have the test suite created and the test suite id, if not create your test suite in automator: https://automate.deepcrawl.com/
 - Create new private repository with default README: https://github.com/new
 - Go to your Azure Organisation page: http://dev.azure.com/
 - Create new project

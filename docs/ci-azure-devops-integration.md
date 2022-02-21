@@ -16,8 +16,8 @@ It has the following tasks:
 
 - Ask for extension permissions
 - Once permission is given, install the extension from: https://marketplace.visualstudio.com/items?itemName=deepcrawl.automator-tools
-- Generate an API key on: https://app.deepcrawl.com/dc-api
-- Make sure you have the test suite created and the test suite id, if not create your test suite in automator: https://automator.deepcrawl.com/
+- Generate an API key on: https://legacy.deepcrawl.com/dc-api
+- Make sure you have the test suite created and the test suite id, if not create your test suite in automator: https://automate.deepcrawl.com/
 - Add the following task to your azure devops pipeline `yaml` file:
 
 ```yaml
