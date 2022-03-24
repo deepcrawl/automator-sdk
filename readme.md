@@ -19,7 +19,7 @@ At the moment we offer the following possibilites of connecting Automation Hub t
 - [Automation Hub Shell Scripts](#connecting-automation-hub-to-your-ci-pipeline-with-the-shell-scripts)
 - [Automation Hub CLI Tools](https://github.com/deepcrawl/deepcrawl-test/tree/main/packages/test-cli/README.md)
 - [Automation Hub SDK NodeJS Client](https://github.com/deepcrawl/deepcrawl-test/tree/main/packages/test-nodejs-sdk/README.md)
-- [Automation Hub API](https://deepcrawl.github.io/automator-sdk/)
+- [Automation Hub API](https://graph-docs.deepcrawl.com/docs/automate/test-suites/test-suites-overview)
 
 ## Connecting Automation Hub to your CI pipeline with the Shell Scripts
 
@@ -28,14 +28,14 @@ Automation Hub can be connected to all popular CI or CD platforms by adding a sh
 It is required to install `jq` to run the shell scripts. [Download jq here.](https://stedolan.github.io/jq/download/)
 
 Our sample shell scripts are available in this repository in a range of languages ([`ci.sh`](ci.sh) and [`ci.ps1`](ci.ps1)), and require both API credentials from your DeepCrawl account, and the test suite ID from Automation Hub.
-[Find full information about using these shell scripts in our documentation.](https://deepcrawl.github.io/automator-sdk/#/ci-scripts)
+[Find full information about using these shell scripts in our documentation.](https://graph-docs.deepcrawl.com/docs/automate/ci/ci-shell-scripts)
 
 ### Preventing Automation Hub from delaying or blocking builds
 
 Crawling a test environment can take several minutes depending on the configured speed and number of URLs. During your initial usage of Automation Hub, you may not want Automation Hub to delay your builds, or have the ability to block a deployment.
 In this case, you can configure the shell script to have a "start only" behaviour.
 
-Under this strategy, the bash script will start a crawl of the environment then immediate return a passed status. The crawl will continue in the background and will send a notification of the test results on completion. [See the documentation for further information](https://deepcrawl.github.io/automator-sdk/#/ci-scripts).
+Under this strategy, the bash script will start a crawl of the environment then immediate return a passed status. The crawl will continue in the background and will send a notification of the test results on completion. [See the documentation for further information](https://graph-docs.deepcrawl.com/docs/automate/ci/ci-shell-scripts).
 
 ## Configuring tests
 
@@ -45,4 +45,4 @@ All configuration takes place within the Automation Hub app - contact your DeepC
 
 ## Using the Automation Hub API
 
-The Automation Hub API uses the GraphQL protocol to make it easy to retrieve any information or make any changes you'd like to make. [You can find the full API documentation here.](https://deepcrawl.github.io/automator-sdk/)
+The Automation Hub API uses the GraphQL protocol to make it easy to retrieve any information or make any changes you'd like to make. [You can find the full API documentation here.](https://graph-docs.deepcrawl.com/docs/automate/test-suites/test-suites-overview)
