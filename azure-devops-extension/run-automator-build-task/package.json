@@ -54,7 +54,7 @@
     "axios": "^0.21.1",
     "azure-pipelines-task-lib": "^2.11.2",
     "graphql": "^15.3.0",
-    "node-fetch": "^2.6.1",
+    "node-fetch": "^2.6.7",
     "pino": "^6.7.0",
     "pino-pretty": "^4.3.0"
   }
