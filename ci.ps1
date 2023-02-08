@@ -11,7 +11,7 @@ function Get-Auth-Token {
     $query = @{"query" = "mutation { createSessionUsingUserKey(input: {userKeyId:""$key_id"" secret:""$secret""}) { token }}"} | ConvertTo-Json -Depth 9
 
     $params = @{
-        Uri         = "https://graph.deepcrawl.com/"
+        Uri         = "https://api.lumar.io/graphql"
         Method      = 'Post'
         Body        = ($query)
         ContentType = "application/json"
@@ -32,7 +32,7 @@ function Get-Auth-Token {
 
 function Delete-Auth-Token {
     $params = @{
-        Uri         = "https://graph.deepcrawl.com/"
+        Uri         = "https://api.lumar.io/graphql"
         Method      = 'Post'
         Body        = (@{"query" = "mutation { deleteSession { token }}"} | ConvertTo-Json)
         ContentType = "application/json"
@@ -115,7 +115,7 @@ function Write-Results {
 function Get-Build-Url {
     Param($BuildId)
     $params = @{
-        Uri         = "https://graph.deepcrawl.com/"
+        Uri         = "https://api.lumar.io/graphql"
         Method      = 'Post'
         Body        = (@{"query" = "{ node(id: `"$BuildId`") { ...on Build { testSuite { id account { id } } } } }"} | ConvertTo-Json)
         ContentType = "application/json"

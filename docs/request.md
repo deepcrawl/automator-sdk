@@ -4,7 +4,7 @@
 
 Our GraphQL uses single endpoint:
 ```
-https://graph.deepcrawl.com/
+https://api.lumar.io/graphql
 ```
 
 ## Request method
@@ -27,7 +27,7 @@ curl -H 'Content-Type: application/json' \
   -H "X-Auth-Token: {TOKEN}" \
   -X POST \
   -d '{ "query":"{ me { username }}"}' \
-  https://graph.deepcrawl.com/
+  https://api.lumar.io/graphql
 ```
 
 Response will come in JSON format: 

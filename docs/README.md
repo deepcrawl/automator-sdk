@@ -17,7 +17,7 @@ Our API allows two operations:
 
 The following documentation describes how to connect to our API and achieve common tasks.
 
-If you want to explore our GraphQL in more detail please see the [schema playground](https://graph.deepcrawl.com/).
+If you want to explore our GraphQL in more detail please see the [schema playground](https://api.lumar.io/graphql).
 
 ## Query
 
