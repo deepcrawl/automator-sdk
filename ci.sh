@@ -14,7 +14,7 @@ testResults=''
 
 function GetAuthToken() {
     local bodyMutation="{\"query\":\"mutation{createSessionUsingUserKey(input:{userKeyId:\\\"$AUTOMATOR_USER_KEY_ID\\\",secret:\\\"$AUTOMATOR_USER_KEY_SECRET\\\"}){token}}\"}"
-    resultResponse=$(curl -s -X POST "https://graph.deepcrawl.com/" -H "Content-Type:application/json" -d $bodyMutation)
+    resultResponse=$(curl -s -X POST "https://api.lumar.io/graphql" -H "Content-Type:application/json" -d $bodyMutation)
     errors=$(echo $resultResponse | jq -r '.errors')
     if [[ $errors == "null" ]]
     then 
@@ -26,7 +26,7 @@ function GetAuthToken() {
 
 function DeleteAuthToken() {
     local bodyMutation="{\"query\":\"mutation{deleteSession{token}}\"}"
-    resultResponse=$(curl -s -H "X-Auth-Token: $authToken" -X POST "https://graph.deepcrawl.com/" -H "Content-Type:application/json" -d $bodyMutation)
+    resultResponse=$(curl -s -H "X-Auth-Token: $authToken" -X POST "https://api.lumar.io/graphql" -H "Content-Type:application/json" -d $bodyMutation)
     errors=$(echo $resultResponse | jq -r '.errors')
     if [[ $errors != "null" ]]
     then 
@@ -57,7 +57,7 @@ function WriteResults() {
 
 function GetBuildUrl() {
     buildId=$(echo $1 | sed 's/"//g')
-    resultResponse=$(curl -s -X POST "https://graph.deepcrawl.com/" -H "Content-Type:application/json" -H "X-Auth-Token: $authToken" -d "{\"query\":\"{node(id: \\\"$buildId\\\"){ ...on Build{ testSuite { id account { id } } }}}\"}")
+    resultResponse=$(curl -s -X POST "https://api.lumar.io/graphql" -H "Content-Type:application/json" -H "X-Auth-Token: $authToken" -d "{\"query\":\"{node(id: \\\"$buildId\\\"){ ...on Build{ testSuite { id account { id } } }}}\"}")
     errors=$(echo $resultResponse | jq -r '.errors')
     if [[ $errors != "null" ]] 
     then 
