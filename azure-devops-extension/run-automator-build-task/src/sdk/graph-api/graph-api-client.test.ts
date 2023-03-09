@@ -39,7 +39,9 @@ describe("GraphAPIClient", () => {
             },
           ];
         });
-      expect(await graphAPIClient.getAuthToken(userKeyId, userKeySecret)).toEqual(`${userKeyId},${userKeySecret}`);
+      await expect(graphAPIClient.getAuthToken(userKeyId, userKeySecret)).resolves.toBe(
+        `${userKeyId},${userKeySecret}`,
+      );
     });
   });
 
@@ -73,7 +75,7 @@ describe("GraphAPIClient", () => {
             },
           ];
         });
-      expect(await graphAPIClient.deleteAuthToken(token)).toEqual(token);
+      await expect(graphAPIClient.deleteAuthToken(token)).resolves.toEqual(token);
     });
   });
 });

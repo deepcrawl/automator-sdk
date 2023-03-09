@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "target": "es2019",
-    "lib": ["es2019", "esnext"],
+    "target": "es2021",
+    "lib": ["es2021", "esnext"],
     "moduleResolution": "node",
     "module": "commonjs",
     "outDir": "dist",
@@ -18,12 +18,7 @@
       "@tests/*": ["__tests__/*"],
       "@src/*": ["*"]
     },
-    "plugins": [
-      {
-        "transform": "@zerollup/ts-transform-paths",
-        "exclude": ["*"]
-      }
-    ]
+    "plugins": [{ "transform": "typescript-transform-paths" }]
   },
   "include": ["src"]
 }
