@@ -1,7 +1,7 @@
 {
   "name": "automator-tools-azure-pipelines-extension",
   "version": "1.0.2",
-  "description": "Azure task for running the build of Automator/Deepcrawl test suite.",
+  "description": "Azure task for running the build of Protect/Lumar test suite.",
   "main": "index.js",
   "scripts": {
     "preinstall": "yarn audit",

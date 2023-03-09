@@ -2,7 +2,7 @@
 
 [Github Repository](https://github.com/deepcrawl/deepcrawl-test/tree/develop/packages/test-nodejs-sdk)
 
-Deepcrawl Automate SDK NodeJS Client can be used to start builds on Deepcrawl Automate, by adding it as a dependency into your NodeJS project.
+Lumar Protect SDK NodeJS Client can be used to start builds on Lumar Protect, by adding it as a dependency into your NodeJS project.
 
 ## Prerequisites
 

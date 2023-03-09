@@ -1,4 +1,4 @@
-# Deepcrawl Automate Tools Extension for Azure Devops
+# Lumar Protect Tools Extension for Azure Devops
 
 In order to access our Azure Devops extension, please request permissions. This way you will be able to see the extension in Microsoft Marketplace.
 
@@ -8,21 +8,21 @@ It has the following tasks:
 
 ## Tasks
 
-## Run Deepcrawl Automate Build Task (`run-automator-build-task`)
+## Run Lumar Protect Build Task (`run-automator-build-task`)
 
 ### How to run
 
 - Ask for extension permissions
 - Once permission is given, install the extension from: https://marketplace.visualstudio.com/items?itemName=deepcrawl.automator-tools
 - Generate an API key on: https://legacy.deepcrawl.com/dc-api
-- Make sure you have the test suite created and the test suite id, if not create your test suite in automator: https://automate.deepcrawl.com/
+- Make sure you have the test suite created and the test suite id, if not create your test suite in Protect: https://protect.lumar.io/
 - Add the following task to your azure devops pipeline `yaml` file:
 
 ```yaml
 - task: run-automator-build-task@1
   inputs:
-    userKeyId: 'USER_KEY_ID' (string - generate new api key on deepcrawl core app)
-    userKeySecret: 'USER_KEY_SECRET' (string - generate new api key on deepcrawl core app)
+    userKeyId: 'USER_KEY_ID' (string - generate new api key on Lumar core app)
+    userKeySecret: 'USER_KEY_SECRET' (string - generate new api key on Lumar core app)
     testSuiteId: 'TEST_SUITE_ID' (string - use your created test suite id)
     ciBuildId: 'CI_BUILD_ID' (optional - string)
     startOnly: false (optional - boolean - use it if you want to skip polling)
@@ -36,7 +36,7 @@ _Note: Unless `startOnly` is set to `true`, max polling time is set to 50 minute
 - Ask for extension permissions
 - Once permission is given, install the extension from: https://marketplace.visualstudio.com/items?itemName=deepcrawl.automator-tools
 - Generate an API key on: https://legacy.deepcrawl.com/dc-api
-- Make sure you have the test suite created and the test suite id, if not create your test suite in automator: https://automate.deepcrawl.com/
+- Make sure you have the test suite created and the test suite id, if not create your test suite in Protect: https://protect.lumar.io/
 - Create new private repository with default README: https://github.com/new
 - Go to your Azure Organisation page: http://dev.azure.com/
 - Create new project
@@ -54,8 +54,8 @@ pool:
 steps:
 - task: run-automator-build-task@1
   inputs:
-    userKeyId: 'USER_KEY_ID' (string - generate new api key on deepcrawl core app)
-    userKeySecret: 'USER_KEY_SECRET' (string - generate new api key on deepcrawl core app)
+    userKeyId: 'USER_KEY_ID' (string - generate new api key on Lumar core app)
+    userKeySecret: 'USER_KEY_SECRET' (string - generate new api key on Lumar core app)
     testSuiteId: 'TEST_SUITE_ID' (string - use your created test suite id)
     ciBuildId: 'CI_BUILD_ID' (optional - string)
     startOnly: false (optional - boolean - use it if you want to skip polling)
@@ -63,7 +63,7 @@ steps:
 
 - Save and run
 - Go to the job and check it
-- Once tested, make sure to remove the deepcrawl api key generated
+- Once tested, make sure to remove the Lumar api key generated
 
 ### Inputs
 

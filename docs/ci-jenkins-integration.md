@@ -6,7 +6,7 @@
 
 In order to integrate with Jenkins, you need to use our Jenkins plugin:
 
-Deepcrawl Automate is a Jenkins plugin that runs a build on Deepcrawl Automate.
+Lumar Protect is a Jenkins plugin that runs a build on Lumar Protect.
 
 ## How to use
 
@@ -22,7 +22,7 @@ pipeline {
     }
 
     stages {
-        stage('Deepcrawl Automate Build') {
+        stage('Lumar Protect Build') {
             steps {
                 runAutomationHubBuild testSuiteId: ''
             }

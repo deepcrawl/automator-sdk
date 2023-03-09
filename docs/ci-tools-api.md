@@ -1,8 +1,8 @@
-# Deepcrawl Automate Tools API
+# Lumar Protect Tools API
 
 ## Introduction
 
-Deepcrawl Automate Tools is a helper REST API that CI scripts are using to start and poll builds.
+Lumar Protect Tools is a helper REST API that CI scripts are using to start and poll builds.
 You can use this API along with Graph API to write your own scripts.
 
 URL: https://tools.automator.deepcrawl.com
@@ -21,7 +21,7 @@ Available params:
 
 `testSuiteId` - ID of a test suite for which to run a build.
 
-`ciBuildId` (optional) - Your internal build ID that can help you to identify the build in Automator.
+`ciBuildId` (optional) - Your internal build ID that can help you to identify the build in Protect.
 
 Example request:
 

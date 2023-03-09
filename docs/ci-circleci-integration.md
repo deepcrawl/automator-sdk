@@ -4,13 +4,13 @@
 
 ## Introduction
 
-In order to integrate with CircleCI, you need to use our Deepcrawl Automate CircleCI orb:
+In order to integrate with CircleCI, you need to use our Lumar Protect CircleCI orb:
 
-`deepcrawl/deepcrawl-test` is exposing the `run-build` job which will run a build on Deepcrawl Automate.
+`deepcrawl/deepcrawl-test` is exposing the `run-build` job which will run a build on Lumar Protect.
 
 ## How to use
 
-In order to use Deepcrawl Automate CircleCI Orb, you need to:
+In order to use Lumar Protect CircleCI Orb, you need to:
 
 1. Create a CircleCI context `deepcrawl-test`, which contains the following environment variables:
 
@@ -31,7 +31,7 @@ workflows:
       - deepcrawl-test/run-build:
           # Context defined at step 1
           context: deepcrawl-test
-          # Test suite ID created in Deepcrawl Automate
+          # Test suite ID created in Lumar Protect
           testSuiteId: "YOUR_TEST_SUITE_ID"
           # Can be used to make it non-blocking
           startOnly: false

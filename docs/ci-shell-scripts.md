@@ -1,8 +1,8 @@
-# Deepcrawl Automate CI Scripts
+# Lumar Protect CI Scripts
 
 ## Introduction
 
-The Deepcrawl Automate shell scripts allow your CI platform to start a crawl on a development environment and waits for a result. They can be found in the main repo ([`ci.sh`](https://github.com/deepcrawl/automator-sdk/blob/master/ci.sh) and [`ci.ps`](https://github.com/deepcrawl/automator-sdk/blob/master/ci.ps)) and should be placed in your CI platform after deployment is complete.
+The Lumar Protect shell scripts allow your CI platform to start a crawl on a development environment and waits for a result. They can be found in the main repo ([`ci.sh`](https://github.com/deepcrawl/automator-sdk/blob/master/ci.sh) and [`ci.ps`](https://github.com/deepcrawl/automator-sdk/blob/master/ci.ps)) and should be placed in your CI platform after deployment is complete.
 
 ## Environment Variables
 
@@ -15,7 +15,7 @@ AUTOMATOR_USER_KEY_SECRET (-userKeySecret) (Secret value for generated API Key)
 
 AUTOMATOR_TEST_SUITE_ID (-testSuiteId) can be passed into ci as param or provided as environmental variable
 
-AUTOMATOR_START_ONLY (-startOnly) (optional, set to `1` or `true` to run Deepcrawl Automate without blocking a build)
+AUTOMATOR_START_ONLY (-startOnly) (optional, set to `1` or `true` to run Lumar Protect without blocking a build)
 ```
 
 ### PowerShell
@@ -65,7 +65,7 @@ export AUTOMATOR_TEST_SUITE_ID=<number>
 
 ### Authentication variables
 
-The authentication variables `AUTOMATOR_USER_KEY_ID` and `AUTOMATOR_USER_KEY_SECRET` can be retrieved from either your [DeepCrawl API settings](https://app.deepcrawl.com/dc-api), or by [generating them in the API](https://deepcrawl.github.io/automator-sdk/#/authentication)
+The authentication variables `AUTOMATOR_USER_KEY_ID` and `AUTOMATOR_USER_KEY_SECRET` can be retrieved from either your [Lumar API settings](https://app.deepcrawl.com/dc-api), or by [generating them in the API](https://deepcrawl.github.io/automator-sdk/#/authentication)
 
 ## CI Platform Usage
 
@@ -115,11 +115,11 @@ steps:
 
 Run either script with the correct environment variables. This should start the test suite build and poll for results.
 
-## Using Deepcrawl Automate scripts without blocking builds
+## Using Lumar Protect scripts without blocking builds
 
-From time to time, you may want to use Deepcrawl Automate without letting your CI system wait for the crawl to complete, or allowing the script impact whether your build succeeds. In this case, you can add the `AUTOMATOR_START_ONLY` environment variable set to `true` or `1`. You can also pass the value as a second script argument after test suite ID. This flag modifies the behaviour of the script to start a test suite test, then return without polling for a result.
+From time to time, you may want to use Lumar Protect without letting your CI system wait for the crawl to complete, or allowing the script impact whether your build succeeds. In this case, you can add the `AUTOMATOR_START_ONLY` environment variable set to `true` or `1`. You can also pass the value as a second script argument after test suite ID. This flag modifies the behaviour of the script to start a test suite test, then return without polling for a result.
 
-In this case Deepcrawl Automate will send an email or other notification about the status of your tests, and the test results will be available in the Deepcrawl Automate app.
+In this case Lumar Protect will send an email or other notification about the status of your tests, and the test results will be available in the Lumar Protect app.
 
 ## Debugging
 
