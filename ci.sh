@@ -3,7 +3,7 @@ testSuiteId=${1:-$AUTOMATOR_TEST_SUITE_ID}
 startOnly=${2:-$AUTOMATOR_START_ONLY}
 ciBuildId=${3:-$CI_BUILD_ID}
 
-if [[ -z $testSuiteId ]] 
+if [[ -z $testSuiteId ]]
 then
     exit "No TestSuite Id Set"
 fi
@@ -17,9 +17,9 @@ function GetAuthToken() {
     resultResponse=$(curl -s -X POST "https://api.lumar.io/graphql" -H "Content-Type:application/json" -d $bodyMutation)
     errors=$(echo $resultResponse | jq -r '.errors')
     if [[ $errors == "null" ]]
-    then 
+    then
         authToken=$(echo $resultResponse | jq -r '.data.createSessionUsingUserKey.token')
-    else 
+    else
         echo 'Getting Auth Token > Errors Found:' $errors
     fi
 }
@@ -29,7 +29,7 @@ function DeleteAuthToken() {
     resultResponse=$(curl -s -H "X-Auth-Token: $authToken" -X POST "https://api.lumar.io/graphql" -H "Content-Type:application/json" -d $bodyMutation)
     errors=$(echo $resultResponse | jq -r '.errors')
     if [[ $errors != "null" ]]
-    then 
+    then
         echo 'Delete Auth Token > Errors Found:' $errors
     fi
 }
@@ -41,15 +41,15 @@ function GetResults() {
 }
 
 function WriteResults() {
-    if [[ $(echo "$2" | jq '.passed') == "true" ]] 
+    if [[ $(echo "$2" | jq '.passed') == "true" ]]
     then
         #have tests passed
-        echo "DeepCrawl Tests Passed"
+        echo "Lumar Tests Passed"
         GetBuildUrl $1
         exit 0
     else
         #have tests failed
-        echo "DeepCrawl Tests Failed"
+        echo "Lumar Tests Failed"
         GetBuildUrl $1
         exit 1
     fi
@@ -59,10 +59,10 @@ function GetBuildUrl() {
     buildId=$(echo $1 | sed 's/"//g')
     resultResponse=$(curl -s -X POST "https://api.lumar.io/graphql" -H "Content-Type:application/json" -H "X-Auth-Token: $authToken" -d "{\"query\":\"{node(id: \\\"$buildId\\\"){ ...on Build{ testSuite { id account { id } } }}}\"}")
     errors=$(echo $resultResponse | jq -r '.errors')
-    if [[ $errors != "null" ]] 
-    then 
+    if [[ $errors != "null" ]]
+    then
         echo 'Get Build Url> Errors Found:' $errors
-    else 
+    else
         buildAccountId=$(echo $resultResponse | jq -r '.data.node.testSuite.account.id')
         buildTestSuiteId=$(echo $resultResponse | jq -r '.data.node.testSuite.id')
         echo "A detailed report can be viewed at: https://automator.deepcrawl.com/account/$buildAccountId/test-suites/$buildTestSuiteId/build-tests/$buildId"
@@ -75,7 +75,7 @@ function StartPoll() {
     then
         WriteResults $1 $testResults
     else
-        echo "Waiting for DeepCrawl Test Results ..."
+        echo "Waiting for Lumar Test Results ..."
         sleep 30
         totalRunTime=$(($totalRunTime + 30))
     fi
@@ -86,13 +86,13 @@ function StartBuild() {
     RESPONSE=$(curl -s -X POST "https://tools.automator.deepcrawl.com/start" -H "Content-Type:application/json" -d $body)
     resp=$(echo $RESPONSE | jq '.buildId')
 
-    if [[ "$startOnly" = "true" ]] || [[ "$startOnly" = "1" ]] 
+    if [[ "$startOnly" = "true" ]] || [[ "$startOnly" = "1" ]]
     then
-        echo "DeepCrawl Skipped Polling"
+        echo "Lumar Skipped Polling"
         exit 0
     fi
 
-    if [[ $? -eq 0 ]] 
+    if [[ $? -eq 0 ]]
     then
         until [[ $testResults && $totalRunTime -lt $maxRunTime ]]
         do

@@ -2,8 +2,8 @@
 
 ---
 
-Deepcrawl Automate API uses [GraphQL](https://graphql.github.io/) data query language.
-GraphQL offers flexible way of interacting with your Deepcrawl Automate data.
+Lumar Protect API uses [GraphQL](https://graphql.github.io/) data query language.
+GraphQL offers flexible way of interacting with your Lumar Protect data.
 
 Our API allows two operations:
 

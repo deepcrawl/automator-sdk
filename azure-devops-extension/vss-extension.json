@@ -1,19 +1,19 @@
 {
   "manifestVersion": 1,
   "id": "automator-tools",
-  "name": "Automator Tools",
+  "name": "Protect Tools",
   "version": "1.0.3",
   "publisher": "deepcrawl",
   "targets": [{
     "id": "Microsoft.VisualStudio.Services"
-  }],    
-  "description": "A collection of tasks used for interacting with Automator.",
+  }],
+  "description": "A collection of tasks used for interacting with Protect.",
   "categories": [
     "Azure Pipelines"
   ],
   "tags": [
-    "automator",
-    "deepcrawl",
+    "protect",
+    "lumar",
     "build"
   ],
   "content": {
@@ -22,7 +22,7 @@
     }
   },
   "icons": {
-    "default": "images/extension-icon.png"        
+    "default": "images/extension-icon.png"
   },
   "files": [{
     "path": "run-automator-build-task"
