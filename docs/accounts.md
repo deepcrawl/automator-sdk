@@ -4,7 +4,7 @@
 
 ## Listing available accounts
 
-The API currently lists all of the DeepCrawl accounts that the user has access to, this is not limited to accounts which have permission to access Automator.
+The API currently lists all of the Lumar accounts that the user has access to, this is not limited to accounts which have permission to access Automator.
 
 To list all available accounts run following query.
 
@@ -21,7 +21,7 @@ To list all available accounts run following query.
 }
 ```
 
-If you know the Deepcrawl Automate account name, the query can be filtered using this name:
+If you know the Lumar Protect account name, the query can be filtered using this name:
 
 ```graphql
 {
@@ -162,4 +162,4 @@ or using account name:
 }
 ```
 
-The next sections explain in more detail how to interact with other Deepcrawl Automate resources.
+The next sections explain in more detail how to interact with other Lumar Protect resources.

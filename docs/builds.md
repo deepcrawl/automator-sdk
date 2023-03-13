@@ -65,7 +65,7 @@ mutation {
 ```
 `{TEST_SUTIE_ID}` is the only required field. `{CI_BUILD_ID}` is an optional string that you can set to identify your CI build. These are the only two parameters available during build creation.
 
-!> Build status may be still `Queued` immediately after running the mutation. It will change to `Running` after DeepCrawl starts crawling your website.
+!> Build status may be still `Queued` immediately after running the mutation. It will change to `Running` after Lumar starts crawling your website.
 
 ## Canceling a build
 
@@ -94,7 +94,7 @@ Name | Description
 --- | ---
 `Queued` | Build has been created but not run yet
 `Running` | Build has been run and corresponding crawl is crawling.
-`Aborted` | Build has been stopped due to Deepcrawl Automate internal reasons. It's impossible to resume an aborted build.
+`Aborted` | Build has been stopped due to Lumar Protect internal reasons. It's impossible to resume an aborted build.
 `Cancelled` | Build has been stopped by the user. It's impossible to resume cancelled build.
 `Finished` | Build is ready and test results are available.
 

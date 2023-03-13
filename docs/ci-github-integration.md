@@ -9,7 +9,7 @@ In order to integrate with Github, you need to use our Github action in your Git
 ## How to use
 
 ```yaml
-name: Deepcrawl Automate Build
+name: Lumar Protect Build
 
 # Configure the trigger of your workflow
 #
@@ -22,9 +22,9 @@ name: Deepcrawl Automate Build
 jobs:
   automation-hub-build:
     runs-on: ubuntu-latest # we support all OSes (windows / linux / macos)
-    name: Deepcrawl Automate Build
+    name: Lumar Protect Build
     steps:
-      - name: Deepcrawl Automate Build
+      - name: Lumar Protect Build
         id: automation-hub-build
         uses: deepcrawl/deepcrawl-test-action@v1.0.0
         with:

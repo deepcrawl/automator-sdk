@@ -2,7 +2,7 @@
 ---
 ## Regular Auth token
 
-Use the `createSessionUsingUsername` mutation to get regular auth token, providing your DeepCrawl username and password. This token will be valid for 30 days.
+Use the `createSessionUsingUsername` mutation to get regular auth token, providing your Lumar username and password. This token will be valid for 30 days.
 
 ```graphql
 mutation {
@@ -30,7 +30,7 @@ Response:
 All other API requests must be authorised by setting the `X-Auth-Token` HTTP header with an auth token (`your-auth-token`).
 
 ## Long lasting Auth token
-It is possible to generate special Deepcrawl Automate long lasting token. This gives the same permissions as regular token, but lasts for 120 days. This can be helpful for using as part of CI scripts or environments. You'll need to be authenticated with regular token to request the following mutation.
+It is possible to generate special Lumar Protect long lasting token. This gives the same permissions as regular token, but lasts for 120 days. This can be helpful for using as part of CI scripts or environments. You'll need to be authenticated with regular token to request the following mutation.
 
 ```graphql
 mutation {

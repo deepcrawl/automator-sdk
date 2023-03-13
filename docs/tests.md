@@ -33,7 +33,7 @@ Every new test suite has 3 default tests assigned:
 
 ## Adding test to tests suite
 
-Deepcrawl Automate tests are based on DeepCrawl reports, to add test to a test suite, use the `createTest` mutation:
+Lumar Protect tests are based on Lumar reports, to add test to a test suite, use the `createTest` mutation:
 
 Example mutation:
 
@@ -166,7 +166,7 @@ Code | Name | Description
 `disallowed_urls` | Disallowed URLs | All URLs which were disallowed in the robots.txt file on the live site, or from a custom robots.txt file in our Advanced Settings.
 `301_redirects` | 301 Redirects | URLs that redirect to another URL using a 301 HTTP status code (a permanent redirect).
 `canonicalized_pages` | Canonicalized Pages | Pages with URLs that are different to the canonical URL specified in the canonical tag in either the HTML or HTTP header.
-`failed_urls` | Failed URLs | URLs which were crawled, but did not respond within the DeepCrawl timeout period of 9 seconds.
+`failed_urls` | Failed URLs | URLs which were crawled, but did not respond within the Lumar timeout period of 9 seconds.
 `max_external_links` | High External Linking | All pages exceeding the maximum number of external links specified in Advanced settings > Report settings (default: 10 links).
 `http_pages` | HTTP Pages | All pages using the non-secure HTTP scheme.
 `javascript_redirects` | Javascript Redirects | Pages which, when rendered, were redirected to another URL by Javascript.

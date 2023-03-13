@@ -39,7 +39,7 @@ Response
 
 When the testSuite `nodes` array is empty, this means there is no test suite with "Test suite name" name.
 
-## Create the DeepCrawl project/test suite if it does not exist, with all required details.
+## Create the Lumar project/test suite if it does not exist, with all required details.
 
 1. To see if project exists see [previous section](faq?id=checking-if-test-suite-with-given-name-already-exists)
 2. To create a new test suite use [createTestSuite](test-suites?id=creating-a-test-suite)

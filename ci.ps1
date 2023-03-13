@@ -1,4 +1,4 @@
-param( 
+param(
     [string]$testSuiteId = $env:AUTOMATOR_TEST_SUITE_ID,
     [string]$startOnly = $env:AUTOMATOR_START_ONLY
 )
@@ -23,7 +23,7 @@ function Get-Auth-Token {
         Write-Host " "
         Write-Host "Get Auth Token Error"
         Write-Host "===================="
-        Write-Host "StatusCode:" $_.Exception.Response.StatusCode.value__ 
+        Write-Host "StatusCode:" $_.Exception.Response.StatusCode.value__
         Write-Host "Error Message:" $_.Exception.Message
     }
 
@@ -46,10 +46,10 @@ function Delete-Auth-Token {
         Write-Host " "
         Write-Host "Delete Auth Token Error"
         Write-Host "======================="
-        Write-Host "StatusCode:" $_.Exception.Response.StatusCode.value__ 
+        Write-Host "StatusCode:" $_.Exception.Response.StatusCode.value__
         Write-Host "Error Message:" $_.Exception.Message
     }
-    return $response.data.deleteSession.token 
+    return $response.data.deleteSession.token
 }
 
 $token = Get-Auth-Token
@@ -80,7 +80,7 @@ function Get-Results {
             Write-Host " "
             Write-Host "Get Results Error"
             Write-Host "================="
-            Write-Host "StatusCode:" $_.Exception.Response.StatusCode.value__ 
+            Write-Host "StatusCode:" $_.Exception.Response.StatusCode.value__
             Write-Host "Error Message:" $_.Exception.Message
         }
 
@@ -97,15 +97,15 @@ function Write-Results {
     Param($BuildId, $resultsData)
     Write-Information $resultsData
     if ($testResults.passed -eq $true) {
-        #have tests passed 
-        Write-Output "DeepCrawl Tests Passed"
+        #have tests passed
+        Write-Output "Lumar Tests Passed"
         $url = Get-Build-Url($BuildId)
         Write-Output $url
         exit 0
     }
     else {
         #have tests failed
-        Write-Output "DeepCrawl Tests Failed"
+        Write-Output "Lumar Tests Failed"
         $url = Get-Build-Url($BuildId)
         Write-Output $url
         exit 1
@@ -129,12 +129,12 @@ function Get-Build-Url {
         Write-Host " "
         Write-Host "Get Build Url Error"
         Write-Host "======================="
-        Write-Host "StatusCode:" $_.Exception.Response.StatusCode.value__ 
+        Write-Host "StatusCode:" $_.Exception.Response.StatusCode.value__
         Write-Host "Error Message:" $_.Exception.Message
     }
     $BuildAccountId = $response.data.node.testSuite.account.id;
     $BuildTestSuiteId = $response.data.node.testSuite.id;
-    return "A detailed report can be viewed at: https://automator.deepcrawl.com/account/$BuildAccountId/test-suites/$BuildTestSuiteId/build-tests/$BuildId"
+    return "A detailed report can be viewed at: https://protect.lumar.io/account/$BuildAccountId/test-suites/$BuildTestSuiteId/build-tests/$BuildId"
 }
 
 function Start-Poll {
@@ -145,7 +145,7 @@ function Start-Poll {
         Write-Results($BuildId, $testResults)
     }
     else {
-        Write-Output "Waiting for DeepCrawl Test Results ..."
+        Write-Output "Waiting for Lumar Test Results ..."
         Start-Sleep -Seconds 30 #wait and run poll again
         $totalRunTime += 30
     }
@@ -173,19 +173,19 @@ function Start-Build {
         Body        = ($body | ConvertTo-Json)
         ContentType = "application/json"
     }
-    
+
     try {
         $triggerResponse = Invoke-RestMethod @params;
     } catch {
         Write-Host " "
         Write-Host "StartBuild Error"
         Write-Host "================"
-        Write-Host "StatusCode:" $_.Exception.Response.StatusCode.value__ 
+        Write-Host "StatusCode:" $_.Exception.Response.StatusCode.value__
         Write-Host "Error Message:" $_.Exception.Message
     }
 
     if (($startOnly -eq $true) -or ($startOnly -eq 1)) {
-        Write-Output "DeepCrawl Skipped Polling"
+        Write-Output "Lumar Skipped Polling"
         exit 0
     }
 
@@ -193,7 +193,7 @@ function Start-Build {
         #poll server
         Start-Poll -BuildId $triggerResponse.buildId
     }
-    
+
 }
 
 Start-Build
