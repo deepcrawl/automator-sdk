@@ -1,0 +1,31 @@
+name: Node test
+
+on:
+  push:
+    branches:
+      - master
+      - develop
+    paths:
+      - "azure-devops-extension/run-automator-build-task/**"
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths:
+      - "azure-devops-extension/run-automator-build-task/**"
+
+jobs:
+  node-test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'yarn'
+      - run: npm install -g yarn
+      - run: yarn install --frozen-lockfile
+      - run: yarn build
+      - run: yarn test
