@@ -47,7 +47,6 @@
     "azure-pipelines-task-lib": "^4.3.0",
     "graphql": "^16.6.0",
     "node-fetch": "^2.6.9",
-    "pino": "^8.11.0",
-    "pino-pretty": "^9.4.0"
+    "winston": "3.8.2"
   }
 }
