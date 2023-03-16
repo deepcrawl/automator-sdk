@@ -1,7 +1,7 @@
 {
-  "name": "automator-tools-azure-pipelines-extension",
+  "name": "lumar-protect-tools-azure-pipelines-extension",
   "version": "1.0.2",
-  "description": "Protect Tools for Azure Devops",
+  "description": "Lumar Protect Tools for Azure Devops",
   "main": "index.js",
   "scripts": {
     "preinstall": "yarn audit",
