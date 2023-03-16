@@ -28,10 +28,10 @@ describe("ToolsAPIClient", () => {
             testSuiteId,
             ciBuildId,
           });
-          expect(this.req.headers["content-type"]).toEqual("application/json");
+          expect(this.req.headers["content-type"]).toBe("application/json");
           return [200, { buildId }];
         });
-      expect(await toolsAPIClient.startBuild(authToken, testSuiteId, ciBuildId)).toEqual(buildId);
+      await expect(toolsAPIClient.startBuild(authToken, testSuiteId, ciBuildId)).resolves.toEqual(buildId);
     });
   });
 
@@ -51,7 +51,7 @@ describe("ToolsAPIClient", () => {
             authToken,
             buildId,
           });
-          expect(this.req.headers["content-type"]).toEqual("application/json");
+          expect(this.req.headers["content-type"]).toBe("application/json");
           return [200, { passed: true }];
         });
       await toolsAPIClient.poll(authToken, buildId);
@@ -71,7 +71,7 @@ describe("ToolsAPIClient", () => {
           nock(baseURL)
             .post(pollBuildResultsPath)
             .reply(function () {
-              expect(true).toEqual(true);
+              expect(true).toBe(true);
               return [200, { passed: true }];
             });
           return [202];

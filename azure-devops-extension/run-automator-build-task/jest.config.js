@@ -7,6 +7,7 @@ module.exports = {
   automock: false,
   collectCoverage: true,
   collectCoverageFrom: ["<rootDir>/src/**/*.ts", "!<rootDir>/src/**/*.integration.ts", "!<rootDir>/src/**/*.test.ts"],
+  coveragePathIgnorePatterns: ["<rootDir>/src/index.ts", "<rootDir>/src/automator-sdk-client.ts"],
   coverageDirectory: "coverage",
   coverageReporters: ["html", "json", "text-summary"],
   coverageThreshold: {

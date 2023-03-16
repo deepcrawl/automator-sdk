@@ -1,4 +1,4 @@
-import azurePipelinesTask = require("azure-pipelines-task-lib");
+import azurePipelinesTask = require("azure-pipelines-task-lib/task");
 
 import { inputParameters } from "@common/constants";
 import { loggerService } from "@common/services/logger.service";

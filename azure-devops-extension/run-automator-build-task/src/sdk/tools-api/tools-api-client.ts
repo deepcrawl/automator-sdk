@@ -36,7 +36,7 @@ export class ToolsAPIClient implements IToolsAPIClient {
     baseURL,
     startBuildPath,
     pollBuildResultsPath,
-  }: Pick<IToolsAPIClientOptions, "baseURL" | "startBuildPath" | "pollBuildResultsPath">): Map<ToolsAPIRoute, string> {
+  }: Pick<IToolsAPIClientOptions, "baseURL" | "pollBuildResultsPath" | "startBuildPath">): Map<ToolsAPIRoute, string> {
     const routes = new Map<ToolsAPIRoute, string>();
     routes.set(ToolsAPIRoute.StartBuild, `${baseURL}${startBuildPath}`);
     routes.set(ToolsAPIRoute.PollBuildResults, `${baseURL}${pollBuildResultsPath}`);

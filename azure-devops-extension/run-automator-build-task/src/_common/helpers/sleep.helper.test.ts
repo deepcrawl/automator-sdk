@@ -6,6 +6,6 @@ describe("#sleep", () => {
     await sleep(1000);
     const endTimeStamp = Date.now();
     const secondsPassed = Math.floor((endTimeStamp - startTimeStamp) / 1000);
-    expect(secondsPassed).toEqual(1);
+    expect(secondsPassed).toBe(1);
   });
 });

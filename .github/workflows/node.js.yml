@@ -7,10 +7,12 @@ on:
       - develop
     paths:
       - "azure-devops-extension/run-automator-build-task/**"
+      - .github/workflows/node.js.yml
   pull_request:
     types: [opened, synchronize, reopened]
     paths:
       - "azure-devops-extension/run-automator-build-task/**"
+      - .github/workflows/node.js.yml
 
 jobs:
   node-test:
@@ -26,6 +28,12 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'yarn'
       - run: npm install -g yarn
-      - run: yarn install --frozen-lockfile
-      - run: yarn build
-      - run: yarn test
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+        working-directory: azure-devops-extension/run-automator-build-task
+      - name: Build
+        run: yarn build
+        working-directory: azure-devops-extension/run-automator-build-task
+      - name: Test
+        run: yarn test
+        working-directory: azure-devops-extension/run-automator-build-task
