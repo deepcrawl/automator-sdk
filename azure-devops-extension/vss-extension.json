@@ -8,6 +8,9 @@
     "id": "Microsoft.VisualStudio.Services"
   }],
   "description": "A collection of tasks used for interacting with Lumar Protect.",
+  "galleryFlags": [
+    "Public"
+  ],
   "links": {
     "home": {
       "uri": "https://www.lumar.io"
