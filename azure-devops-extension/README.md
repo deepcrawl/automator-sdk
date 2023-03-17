@@ -13,12 +13,13 @@ It has the following tasks:
 ### How to run
 
 - Install the extension from: https://marketplace.visualstudio.com/items?itemName=deepcrawl.lumar-protect-tools
-- Generate an API key on: https://legacy.lumar.io/dc-api
+- Generate an API key on: https://accounts.lumar.io/api-access
 - Make sure you have the test suite created and the test suite id, if not create your test suite in Protect: https://protect.lumar.io/
 - Add the following task to your azure devops pipeline `yaml` file:
 
 ```yaml
 - task: run-lumar-protect-build-task@1
+  displayName: 'Lumar Protect'
   inputs:
     userKeyId: 'USER_KEY_ID' (string - generate new api key on Lumar core app)
     userKeySecret: 'USER_KEY_SECRET' (string - generate new api key on Lumar core app)
