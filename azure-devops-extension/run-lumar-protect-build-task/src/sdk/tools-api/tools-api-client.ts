@@ -73,10 +73,10 @@ export class ToolsAPIClient implements IToolsAPIClient {
   ): Promise<void> {
     try {
       const didTestsPass = await this.getResults(token, buildId);
-      loggerService.info(`Lumar Tests ${didTestsPass ? "Passed" : "Failed"}`);
+      loggerService.info(`Lumar Protect Tests ${didTestsPass ? "Passed" : "Failed"}`);
     } catch (e) {
       if (!(e instanceof BuildNotFinishedError)) throw e;
-      loggerService.info("Waiting for Lumar Test Results ...");
+      loggerService.info("Waiting for Lumar Protect Test Results ...");
       if (currentRunTime > options.maxPollingTime) throw new BuildResultPollingTimeoutError(options.maxPollingTime);
       await sleep(options.pollingInterval);
       return this.poll(token, buildId, currentRunTime + options.pollingInterval);

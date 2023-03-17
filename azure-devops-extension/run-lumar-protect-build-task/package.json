@@ -1,7 +1,7 @@
 {
-  "name": "automator-tools-azure-pipelines-extension",
-  "version": "1.0.2",
-  "description": "Azure task for running the build of Protect/Lumar test suite.",
+  "name": "lumar-protect-tools-azure-pipelines-extension",
+  "version": "1.1.0",
+  "description": "Azure task for running the build of Lumar Protect test suite.",
   "main": "index.js",
   "scripts": {
     "preinstall": "yarn audit",

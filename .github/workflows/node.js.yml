@@ -6,12 +6,12 @@ on:
       - master
       - develop
     paths:
-      - "azure-devops-extension/run-automator-build-task/**"
+      - "azure-devops-extension/run-lumar-protect-build-task/**"
       - .github/workflows/node.js.yml
   pull_request:
     types: [opened, synchronize, reopened]
     paths:
-      - "azure-devops-extension/run-automator-build-task/**"
+      - "azure-devops-extension/run-lumar-protect-build-task/**"
       - .github/workflows/node.js.yml
 
 jobs:
@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [18.x]
+        node-version: [16.x]
     steps:
       - uses: actions/checkout@v3
       - name: Use Node.js ${{ matrix.node-version }}
@@ -30,10 +30,10 @@ jobs:
       - run: npm install -g yarn
       - name: Install dependencies
         run: yarn install --frozen-lockfile
-        working-directory: azure-devops-extension/run-automator-build-task
+        working-directory: azure-devops-extension/run-lumar-protect-build-task
       - name: Build
         run: yarn build
-        working-directory: azure-devops-extension/run-automator-build-task
+        working-directory: azure-devops-extension/run-lumar-protect-build-task
       - name: Test
         run: yarn test
-        working-directory: azure-devops-extension/run-automator-build-task
+        working-directory: azure-devops-extension/run-lumar-protect-build-task

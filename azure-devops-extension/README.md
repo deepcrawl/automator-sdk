@@ -8,18 +8,17 @@ It has the following tasks:
 
 ## Tasks
 
-## Run Lumar Protect Build Task (`run-automator-build-task`)
+## Run Lumar Protect Build Task (`run-lumar-protect-build-task`)
 
 ### How to run
 
-- Ask for extension permissions
-- Once permission is given, install the extension from: https://marketplace.visualstudio.com/items?itemName=deepcrawl.automator-tools
-- Generate an API key on: https://legacy.deepcrawl.com/dc-api
+- Install the extension from: https://marketplace.visualstudio.com/items?itemName=deepcrawl.lumar-protect-tools
+- Generate an API key on: https://legacy.lumar.io/dc-api
 - Make sure you have the test suite created and the test suite id, if not create your test suite in Protect: https://protect.lumar.io/
 - Add the following task to your azure devops pipeline `yaml` file:
 
 ```yaml
-- task: run-automator-build-task@1
+- task: run-lumar-protect-build-task@1
   inputs:
     userKeyId: 'USER_KEY_ID' (string - generate new api key on Lumar core app)
     userKeySecret: 'USER_KEY_SECRET' (string - generate new api key on Lumar core app)

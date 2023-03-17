@@ -1,6 +1,6 @@
 # Azure Devops Integration
 
-[Marketplace](https://marketplace.visualstudio.com/items?itemName=deepcrawl.automator-tools) | [Github Repository](https://github.com/deepcrawl/automator-sdk/tree/master/azure-devops-extension)
+[Marketplace](https://marketplace.visualstudio.com/items?itemName=deepcrawl.lumar-protect-tools) | [Github Repository](https://github.com/deepcrawl/automator-sdk/tree/master/azure-devops-extension)
 
 ## Introduction
 
@@ -14,9 +14,8 @@ It has the following tasks:
 
 ### How to run
 
-- Ask for extension permissions
-- Once permission is given, install the extension from: https://marketplace.visualstudio.com/items?itemName=deepcrawl.automator-tools
-- Generate an API key on: https://legacy.deepcrawl.com/dc-api
+- Install the extension from: https://marketplace.visualstudio.com/items?itemName=deepcrawl.lumar-protect-tools
+- Generate an API key on: https://legacy.lumar.io/dc-api
 - Make sure you have the test suite created and the test suite id, if not create your test suite in Protect: https://protect.lumar.io/
 - Add the following task to your azure devops pipeline `yaml` file:
 
