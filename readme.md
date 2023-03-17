@@ -1,6 +1,6 @@
 # Lumar Protect
 
-[<img src="images/lumar-logo.svg">](https://www.lumar.io/platform/protect)
+[<img src="images/lumar-logo.svg" width="51px" height="51px">](https://www.lumar.io/platform/protect)
 
 ## Introduction
 
