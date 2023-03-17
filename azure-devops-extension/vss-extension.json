@@ -2,7 +2,7 @@
   "manifestVersion": 1,
   "id": "lumar-protect-tools",
   "name": "Lumar Protect Tools",
-  "version": "1.1.7",
+  "version": "1.1.8",
   "publisher": "deepcrawl",
   "targets": [{
     "id": "Microsoft.VisualStudio.Services"
