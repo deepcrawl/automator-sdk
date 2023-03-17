@@ -1,6 +1,6 @@
 # Lumar Protect
 
-[<img src="https://www.deepcrawl.com/wp-content/themes/deepcrawl/images/logo-footer.svg">](https://www.deepcrawl.com/)
+[<img src="images/lumar-logo.svg">](https://www.lumar.io/platform/protect)
 
 ## Introduction
 
@@ -10,7 +10,7 @@ Users can define specific tests, thresholds, and severity of regressions in the 
 
 ## Connecting Protect to your CI pipeline
 
-At the moment we offer the following possibilites of connecting Protect to your CI/CD pipeline:
+At the moment we offer the following possibilities of connecting Protect to your CI/CD pipeline:
 
 - [Protect Github Action](https://github.com/deepcrawl/deepcrawl-test-action)
 - [Protect Jenkins Plugin](https://github.com/jenkinsci/deepcrawl-test-plugin)
@@ -27,7 +27,7 @@ Protect can be connected to all popular CI or CD platforms by adding a shell scr
 
 It is required to install `jq` to run the shell scripts. [Download jq here.](https://stedolan.github.io/jq/download/)
 
-Our sample shell scripts are available in this repository in a range of languages ([`ci.sh`](ci.sh) and [`ci.ps1`](ci.ps1)), and require both API credentials from your DeepCrawl account, and the test suite ID from Protect.
+Our sample shell scripts are available in this repository in a range of languages ([`ci.sh`](ci.sh) and [`ci.ps1`](ci.ps1)), and require both API credentials from your Lumar account, and the test suite ID from Protect.
 [Find full information about using these shell scripts in our documentation.](https://api-docs.lumar.io/docs/protect/ci/ci-shell-scripts)
 
 ### Preventing Protect from delaying or blocking builds
@@ -39,9 +39,9 @@ Under this strategy, the bash script will start a crawl of the environment then 
 
 ## Configuring tests
 
-When an Protect crawl is run on your environment, DeepCrawl will crawl a sample of webpages and assert a number of configured tests against them. Tests can be configured to look at a specific issue (i.e. broken links), with a threshold (i.e. greater than 10 broken links), to cause a given result (Fail - block deployment, Warn - pass deployment but notify).
+When a Protect crawl is run on your environment, Lumar will crawl a sample of webpages and assert a number of configured tests against them. Tests can be configured to look at a specific issue (i.e. broken links), with a threshold (i.e. greater than 10 broken links), to cause a given result (Fail - block deployment, Warn - pass deployment but notify).
 
-All configuration takes place within the Protect app - contact your DeepCrawl Customer Success Manager for more information.
+All configuration takes place within the Protect app - contact your Lumar Customer Success Manager for more information.
 
 ## Using the Protect API
 
