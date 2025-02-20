@@ -54,7 +54,7 @@ Available params:
 Exampler request:
 
 ```
-curl -s -X POST "https://tools.automator.deepcrawl.com/poller" -H "Content-Type:application/json" -d "{\"authToken\":\"{TOKEN}\",\"buildId\":"{BUILD_ID}"}"
+curl -s -X POST "https://tools.automator.deepcrawl.com/poller" -H "Content-Type:application/json" -d "{\"authToken\":\"{TOKEN}\",\"buildId\":\"{BUILD_ID}\"}"
 ```
 
 If build is still running the response HTTP status will be `202` and the body will be empty.
